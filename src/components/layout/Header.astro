@@ -3,7 +3,7 @@ import MobileMenu from './MobileMenu.astro';
 
 const navItems = [
   { label: 'Projetos', href: '/#projetos' },
-  { label: 'GitHub & Pesquisa', href: '/#github' },
+  { label: 'GitHub & Colaborações', href: '/#github' },
   { label: 'Trajetória', href: '/#trajetoria' },
   { label: 'Formação & Publicações', href: '/#credenciais' },
   { label: 'Contato', href: '/#contato' },
@@ -12,11 +12,14 @@ const navItems = [
 
 <header class="sticky top-0 z-40 border-b border-border-subtle bg-bg-canvas/95 backdrop-blur-sm">
   <div class="max-w-[1120px] mx-auto px-4 sm:px-8 h-16 flex items-center justify-between gap-4">
-    <a href="/" class="min-h-[44px] inline-flex items-center gap-2.5 shrink-0 whitespace-nowrap group">
+    <a href="/" class="min-h-[44px] inline-flex items-center gap-3 shrink-0 whitespace-nowrap group">
       <span
-        class="w-2 h-2 bg-metric-accent rounded-full transition-transform group-hover:scale-125 shrink-0"
-        aria-hidden="true"></span>
-      <span class="font-semibold text-base tracking-tight text-text-primary">Juan Silva Garcia</span>
+        class="inline-flex items-baseline justify-center px-2 py-0.5 border border-border-control bg-bg-surface font-display italic font-semibold text-base tracking-tight text-text-primary group-hover:border-accent-solid transition-colors"
+        aria-hidden="true"
+      >
+        JG<span class="text-accent-solid not-italic font-bold">.</span>
+      </span>
+      <span class="font-display font-medium text-lg tracking-tight text-text-primary">Juan Silva Garcia</span>
     </a>
 
     <nav aria-label="Navegação principal" class="hidden md:flex items-center gap-1 shrink-0">
@@ -24,7 +27,7 @@ const navItems = [
         navItems.map((item) => (
           <a
             href={item.href}
-            class="min-h-[44px] px-3 inline-flex items-center whitespace-nowrap text-sm text-text-secondary hover:text-text-primary hover:bg-bg-surface transition-colors"
+            class="min-h-[44px] px-3 inline-flex items-center whitespace-nowrap text-sm text-text-secondary hover:text-text-primary hover:bg-bg-surface/70 transition-colors"
           >
             {item.label}
           </a>

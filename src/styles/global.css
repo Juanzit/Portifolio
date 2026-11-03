@@ -1,31 +1,42 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-display: 'Newsreader', Georgia, Cambria, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
 /*
- * Identidade Visual Oficial — Tema B: Violet Nature
- * - Grafite mineral (#0B0A10 / #14121B / #1C1925) como superfície dominante.
- * - Roxo de engenharia (#7C3AED / #A78BFA) para interação, foco e navegação.
- * - Verde-limão técnico (#B6D63A) restrito a pequenos indicadores e métricas.
+ * Direção Artística Oficial — Direção 1: Caderno de Campo & Oficina Editorial
+ * - Papel mineral quente (#F5F2EB / #ECE7DC) como superfície principal.
+ * - Tinta carvão (#161514 / #524E48) para leitura de alto contraste (AAA).
+ * - Terracota editorial (#B93815 / #9E2E0E) para assinatura e interação.
+ * - Verde-mata profundo (#1F5137) para referências científicas e indicadores.
+ * - Palco escuro pontual (#151413 / #F4EFE6 / #E5A93C) reservado para Núcleo Selvagem e visualizações científicas.
  */
 :root {
-  --bg-canvas: #0B0A10;
-  --bg-surface: #14121B;
-  --bg-elevated: #1C1925;
-  --border-subtle: #302A3A;
-  /* Borda de controles e botões secundários: >= 3.57:1 (WCAG 1.4.11) sobre todas as superfícies */
-  --border-control: #756E88;
-  --text-primary: #F3F4F6;
-  --text-secondary: #AAA3B8;
-  --accent-primary: #7C3AED;
-  --accent-hover: #6D28D9;
-  --accent-active: #5B21B6;
-  --accent-text: #A78BFA;
-  --metric-accent: #B6D63A;
-  --status-warning: #F59E0B;
+  --bg-canvas: #F5F2EB;
+  --bg-surface: #ECE7DC;
+  --bg-elevated: #E2DDD0;
+  --border-subtle: #D5CEC0;
+  --border-control: #787064;
+  --text-primary: #161514;
+  --text-secondary: #524E48;
+  --accent-primary: #B93815;
+  --accent-hover: #992B0D;
+  --accent-active: #7C220A;
+  --accent-text: #9E2E0E;
+  --metric-accent: #1F5137;
+  --status-warning: #B45309;
+
+  /* Palco Escuro Pontual (Direção 2 — Jogos e Visualização Científica) */
+  --stage-bg: #151413;
+  --stage-surface: #1F1D1B;
+  --stage-border: #33302C;
+  --stage-text: #F4EFE6;
+  --stage-muted: #B8B0A4;
+  --stage-amber: #E5A93C;
+  --stage-green: #74C69D;
 }
 
 @theme inline {
@@ -46,6 +57,14 @@
   --color-metric-accent: var(--metric-accent);
   --color-status-success: var(--metric-accent);
   --color-status-warning: var(--status-warning);
+
+  --color-stage-bg: var(--stage-bg);
+  --color-stage-surface: var(--stage-surface);
+  --color-stage-border: var(--stage-border);
+  --color-stage-text: var(--stage-text);
+  --color-stage-muted: var(--stage-muted);
+  --color-stage-amber: var(--stage-amber);
+  --color-stage-green: var(--stage-green);
 }
 
 @layer base {
@@ -74,15 +93,19 @@
   *,
   *::before,
   *::after {
-    outline-color: var(--accent-text);
+    outline-color: var(--accent-primary);
   }
 
   *:focus-visible {
-    outline: 2px solid var(--accent-text);
+    outline: 2px solid var(--accent-primary);
     outline-offset: 2px;
   }
 
   code, pre, kbd, samp {
     font-family: var(--font-mono);
   }
+}
+
+.font-display {
+  font-family: var(--font-display);
 }

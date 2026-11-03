@@ -1,29 +1,32 @@
 # Status do Projeto — Portfólio Juan Silva Garcia
 
-## Fase Atual: Fase 2.1 Concluída — Estrutura Editorial Revisada (aguardando autorização para Fase 3)
+## Fase Atual: Fase 2.2 — Direção 1 (Caderno de Campo & Oficina Editorial) Aplicada na Home (aguardando revisão e aprovação)
 
-### 1. Implementado e Consolidado na Fase 2.1
-- **Revisão Editorial Completa da Home ([src/pages/index.astro](file:///c:/Projetos/Portifolio/src/pages/index.astro))**:
-  - Remoção de rótulos artificiais (`PRJ-01`, `SYS-01`, `GRP-01`, `CADERNO-01`, `VERIFICADO`, `DADOS AUDITADOS`), numeração excessiva e prévias fictícias do Tech Journal.
-  - **Hero em Primeira Pessoa**: localização em `Cataguases, MG`, formação em `IF Sudeste MG — Campus Rio Pomba` (Bacharelado em Ciência da Computação em andamento e Técnico em Informática) e comunicação direta dos 5 eixos de atuação (Desenvolvimento de Software, Mobile e Web, Inteligência Artificial e Pesquisa Aplicada, Educação e Ensino de Programação na CNA Digital e Kodland, e Desenvolvimento de Jogos e Sistemas Interativos).
-  - **4 Projetos Principais em Destaque (`#projetos`)**:
-    1. **ShapeMeApp** (*Mobile / Extensão — React Native, Expo SDK, Firebase* — Monorepo Aluno, Professor e Coordenador + versão Web `SmaAlunoWeb`, apresentado no VII SIMEPE 2025).
-    2. **Lundgren Atelier** (*Web Comercial em Produção — `https://lundgren-atelier.com/`* — Astro, Sanity.io, Tailwind CSS, Node.js e Cloudflare Pages).
-    3. **Detecção Acústica de Aves Ameaçadas Utilizando Aprendizado de Máquina** (*Pesquisa Científica em IA* — comparação entre **Cenário A (Controle)** e **Cenário B (Proposto)** sobre 136 espécies do Xeno-Canto, com **`F1-weighted: 0,82` obtido pela CNN no Cenário B**, sem equivaler F1-weighted à acurácia e sem link para o repositório GitHub enquanto o código público estiver em organização).
-    4. **Núcleo Selvagem** (*Game Development Autoral* — Roguelite de criaturas mutantes com expedições, evolução genética e Base Pessoal 2.0 em Roblox Studio, Luau e Blender).
-  - **Ecossistema GitHub, Pesquisa, Colaborações & Comunidade (`#github`)** em 4 categorias:
-    1. **Desenvolvimento e Programação**: `Blade of Albaia` (`https://github.com/Juanzit/Blade_of_Albaia`).
-    2. **Projetos Colaborativos**: `ArchFlow — Sistema de Gerenciamento Arquitetônico (LPS)` (`https://github.com/Victorlolmi/LPS_Sistema_de_Gerenciamento_Arquitetonico`), com atribuição explícita de coautoria entre **Victor Emanuel (`Victorlolmi`)** e **Juan Silva Garcia** e descrição das atividades confirmadas (refatoração do MVC, controle de acesso entre gestores e clientes, validações e tratamento de exceções, recuperação de senha e organização de diagramas UML e documentação).
-    3. **Pesquisa e Projetos Acadêmicos**: `PCMRC — Caminho Mínimo com Restrição de Recursos` (Java / Simulated Annealing), `Viga-Mestre` (Engenharia de Requisitos e 16 diagramas UML) e `Emparelhamento Máximo em Grafos — Hopcroft-Karp` (Python / C++).
-    4. **Ensino e Comunidade**: `Minicurso React Native — Do Zero ao APK` (`https://www.youtube.com/@CURSORNFIRP`) e `Roadmap Python` (`https://github.com/RoadMapPython`).
-  - **Separação Estrita de Trajetória e Credenciais (`#trajetoria` e `#credenciais`)**:
-    1. **Experiência Profissional (`#trajetoria`)**: Professor Tutor na CNA Digital (`04/2026 – Atual`), Professor Tutor na Kodland (`06/2025 – Atual`), Pesquisador em IA no IF Sudeste MG (`06/2025 – 06/2026`), Desenvolvedor Mobile Júnior no ShapeMeApp (`08/2024 – 01/2026`) e Membro de Projetos na EmComp (`06/2022 – 11/2025`). *(O registro de Desenvolvedor Java permanece suspenso até confirmação da natureza da atividade).*
-    2. **Formação Acadêmica (`#formacao`)**: Bacharelado em Ciência da Computação (`2022 – em andamento`) e Técnico em Informática (`2019 – 2021` / `2019 – 2022`) no IF Sudeste MG — Campus Rio Pomba.
-    3. **Publicações e Produção Científica (`#publicacoes`)**: Trabalho Completo nos *Anais do VII CoBICET* (`05/08/2026`, `ISSN 2764-0582`), *XVIII EAMC* (`2026`) e *VII SIMEPE* (`2025`).
-    4. **Cursos, Certificações e Extensão (`#certificacoes`)**: Certificação EmComp (100h), Monitoria Voluntária de LFA, Minicurso React com Firebase, Instrutor de Desenvolvimento Mobile (16 videoaulas) e Voluntário no curso *Python Básico pra Quem Tem Pressa*.
-  - **Canais de Contato (`#contato`)**: E-mail (`juansilvagarcia11037@gmail.com`), GitHub (`github.com/Juanzit`) e Currículo Lattes (`lattes.cnpq.br/9434044887106048`). O link do LinkedIn permanece oculto até confirmação da URL correta.
+### 1. Implementado e Consolidado na Fase 2.2
+- **Nova Identidade Visual Autoral — Direção 1: Caderno de Campo & Oficina Editorial ([src/styles/global.css](file:///c:/Projetos/Portifolio/src/styles/global.css), [src/layouts/BaseLayout.astro](file:///c:/Projetos/Portifolio/src/layouts/BaseLayout.astro))**:
+  - **Superfícies**: Papel Mineral Quente (`#F5F2EB`) e Papel Secundário (`#ECE7DC`), substituindo o padrão de site escuro com neon como identidade global.
+  - **Tintas e Acentos**: Tinta Carvão (`#161514`), Grafite Editorial (`#524E48`), Terracota Editorial (`#B93815` / `#9E2E0E`) e Verde-Mata Profundo (`#1F5137`).
+  - **Palco Escuro Pontual (elementos da Direção 2)**: Palco Obsidiana Quente (`#151413`), Marfim (`#F4EFE6`), Âmbar Quente (`#E5A93C`) e Verde Espectral (`#74C69D`), utilizados pontualmente na vitrine do **Núcleo Selvagem** e no painel comparativo experimental da pesquisa de **Bioacústica**.
+  - **Tipografia**: `Newsreader` (serifada editorial para títulos, citações e métricas), `Plus Jakarta Sans` (corpo de texto e navegação) e `IBM Plex Mono` (metadados técnicos pontuais).
+- **Hero Pessoal e Humano ([src/pages/index.astro](file:///c:/Projetos/Portifolio/src/pages/index.astro))**:
+  - Texto principal aprovado: *"Olá, eu sou o Juan."* / *"Entre aplicativos, pesquisa, jogos e ensino, venho explorando diferentes possibilidades da computação."* / *"Estudo Ciência da Computação no IF Sudeste MG. Neste portfólio, reúno projetos que desenvolvi e trabalhos em que colaborei, mostrando os problemas, as soluções e o que aprendi em cada experiência."*
+  - Ficha de Campo Lateral em formato de índice editorial aberto (Localização em `Cataguases, MG`, Formação em `IF Sudeste MG — Campus Rio Pomba`, Docência Atual na `CNA Digital & Kodland` e Foco de Pesquisa em `Bioacústica & Aprendizado de Máquina`).
+- **Composições Visuais Distintas para os 4 Projetos Principais (`#projetos`)**:
+  1. **Lundgren Atelier** (*Vitrine Editorial Split 7/5*): acompanhado de captura real da plataforma em produção (`https://lundgren-atelier.com/`, `/images/projetos/lundgren-atelier-home.png`).
+  2. **Detecção Acústica de Aves Ameaçadas Utilizando Aprendizado de Máquina** (*Artigo Científico & Caderno Experimental*): comparação estruturada entre **Cenário A (Controle)** e **Cenário B (Proposto)** sobre 136 espécies do Xeno-Canto, destacando **`F1-weighted = 0,82` obtido pela CNN no Cenário B (Proposto)** sem equivaler `F1-weighted` à acurácia e sem expor o link do repositório ainda em organização.
+  3. **ShapeMeApp** (*Estudo de Arquitetura de Ecossistema*): diagrama arquitetural aberto das 3 frentes conectadas ao Firebase (`Aluno Mobile & Web`, `Professor Mobile`, `Coordenador Mobile`), sem simulação artificial de tela.
+  4. **Núcleo Selvagem** (*Palco Escuro Pontual — Direção 2*): composição imersiva em `#151413` com acentos em âmbar (`#E5A93C`) e verde espectral (`#74C69D`), destacando os 3 pilares de engenharia e design de sistemas (*Expedições Roguelite*, *Evolução Genética* e *Base Pessoal 2.0*).
+- **Projetos com Imagens Reais Autorizadas & Índices Editoriais Abertos (`#github`)**:
+  - **Projetos Colaborativos (`ArchFlow — Sistema de Gerenciamento Arquitetônico`)**: vitrine com 2 capturas reais extraídas do repositório `Victorlolmi/LPS_Sistema_de_Gerenciamento_Arquitetonico` (`/images/projetos/archflow-projetos.png` e `/images/projetos/archflow-3d.png`), com atribuição explícita de coautoria a **Victor Emanuel (`Victorlolmi`, proprietário do repositório) e Juan Silva Garcia** e detalhamento das 5 frentes técnicas confirmadas.
+  - **Desenvolvimento e Programação (`Blade of Albaia`)**: vitrine com 2 imagens originais do repositório `Juanzit/Blade_of_Albaia` (`/images/projetos/blade-of-albaia-menu.png` e `/images/projetos/blade-of-albaia-fase1.png`).
+  - **Pesquisa e Projetos Acadêmicos (`PCMRC`, `Viga-Mestre`, `Hopcroft-Karp`)** e **Ensino e Comunidade (`Minicurso React Native`, `Roadmap Python`)**: apresentados em linhas editoriais abertas (`border-top`) sem repetição de caixas fechadas.
+- **Trajetória, Publicações e Credenciais (`#trajetoria` e `#credenciais`)**:
+  - **Experiência Profissional** e **Formação Acadêmica** em linhas do tempo abertas.
+  - **Publicações Científicas** em formato de citação bibliográfica acadêmica (*Anais do VII CoBICET*, `ISSN 2764-0582`; *XVIII EAMC*; *VII SIMEPE*).
+  - **Cursos, Certificações e Extensão** em tabela de registro com carga horária destacada em `Newsreader`.
 
-### 2. Pendências Mapeadas (Sem Bloquear o Projeto)
-- Confirmação da URL definitiva do **LinkedIn**.
-- Confirmação sobre a natureza do registro **"Desenvolvedor Java — IF Sudeste MG (09/2025 – 01/2026)"** antes de eventual inclusão em Experiência Profissional.
-- Organização do código público no repositório `Juanzit/Deteccao_acustica_aves` e envio futuro das capturas reais de telas/figuras dos projetos e certificados adicionais.
+### 2. Pendências e Decisões em Aberto
+- Escolha final entre o emblema conceitual **"Onda, Vértice & Origem"**, o **Monograma Editorial `JG.`** (atualmente aplicado no cabeçalho) ou a **Assinatura Tipográfica Pura**.
+- Confirmação da URL definitiva do **LinkedIn** (mantido oculto).
+- Confirmação da natureza do registro **"Desenvolvedor Java — IF Sudeste MG (09/2025 – 01/2026)"** (mantido fora de Experiência Profissional).
+- Organização futura do código público no repositório `Juanzit/Deteccao_acustica_aves` e envio futuro das capturas reais de `ShapeMeApp` e `Núcleo Selvagem`.

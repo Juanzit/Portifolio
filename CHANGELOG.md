@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.6.0 — Fase 2.2: Direção 1 (Caderno de Campo & Oficina Editorial), Imagens Reais Autorizadas e Composições Visuais Distintas
+- **Identidade Visual Autoral (`src/styles/global.css`, `src/layouts/BaseLayout.astro`, `Header.astro`, `Footer.astro`)**: aplicação da **Direção 1 — Caderno de Campo & Oficina Editorial** com fundo em papel mineral quente (`#F5F2EB` / `#ECE7DC`), tinta carvão (`#161514`), terracota (`#B93815`) e verde-mata (`#1F5137`), combinando `Newsreader`, `Plus Jakarta Sans` e `IBM Plex Mono`.
+- **Palco Escuro Pontual (Direção 2)**: aplicação localizada do palco obsidiana quente (`#151413`) com âmbar (`#E5A93C`) e verde espectral (`#74C69D`) na vitrine do **Núcleo Selvagem** e no painel comparativo experimental da pesquisa de **Bioacústica**.
+- **Hero Autoral (`src/pages/index.astro`)**: adoção integral do texto aprovado pelo usuário com ficha de campo lateral aberta.
+- **Imagens Reais Autorizadas (`public/images/projetos/`)**:
+  - `lundgren-atelier-home.png`: captura real de `https://lundgren-atelier.com/`.
+  - `archflow-projetos.png` e `archflow-3d.png`: capturas reais da aplicação `ArchFlow` extraídas do README de `Victorlolmi/LPS_Sistema_de_Gerenciamento_Arquitetonico`, com coautoria explícita entre **Victor Emanuel (`Victorlolmi`) e Juan Silva Garcia**.
+  - `blade-of-albaia-menu.png` e `blade-of-albaia-fase1.png`: imagens originais do repositório `Juanzit/Blade_of_Albaia`.
+- **Hierarquia Visual Anti-Template**: formatos visuais distintos para cada projeto principal e substituição de grades de cards repetitivos por listas editoriais abertas (`border-top`), citações bibliográficas e índice tabular de certificações.
+
 ## 0.5.0 — Fase 2.1: Revisão Editorial Anti-AI Slop, Curadoria do GitHub, ArchFlow e Separação de Credenciais
 - **Redesign Editorial da Home (`src/pages/index.astro`, `Header.astro`, `MobileMenu.astro`, `Footer.astro`)**: remoção de códigos artificiais (`PRJ-01`, `SYS-01`, `GRP-01`, `CADERNO-01`), remoção de prévias fictícias do Tech Journal e ocultação de rotas futuras (`Sobre`, `Game Lab`, `Journal`).
 - **4 Projetos Principais em Destaque**: `ShapeMeApp`, `Lundgren Atelier` (`https://lundgren-atelier.com/`), `Detecção Acústica de Aves Ameaçadas` (CNN `F1-weighted: 0,82` no **Cenário B (Proposto)** vs. **Cenário A (Controle)**, sem equivaler à acurácia e sem expor o repositório ainda vazio) e `Núcleo Selvagem`.
