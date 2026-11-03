@@ -40,6 +40,9 @@
   --color-accent-solid: var(--accent-primary);
   --color-accent-solid-hover: var(--accent-hover);
   --color-accent-solid-active: var(--accent-active);
+  --color-accent-text: var(--accent-text);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-active: var(--accent-active);
   --color-metric-accent: var(--metric-accent);
   --color-status-success: var(--metric-accent);
   --color-status-warning: var(--status-warning);
@@ -57,6 +60,14 @@
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
   }
 

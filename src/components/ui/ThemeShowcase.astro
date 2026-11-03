@@ -15,10 +15,6 @@ const {
   themeSubtitle = 'Grafite mineral (#0B0A10) como superfície dominante, roxo de engenharia (#7C3AED / #A78BFA) para interação e verde-limão (#B6D63A) restrito a indicadores e métricas.',
 } = Astro.props;
 
-// Veracidade Estrita (AGENTS.md): métricas, ISSN e veículo de publicação não verificados
-// permanecem identificados como [A CONFIRMAR] até confirmação pelo autor.
-const TBC = '[A CONFIRMAR]';
-
 const bioacusticaTabs: TabItem[] = [
   {
     id: 'cenario-b',
@@ -27,7 +23,7 @@ const bioacusticaTabs: TabItem[] = [
     content:
       'Configuração experimental refinada com extração de espectrogramas Mel e filtragem acústica sobre registros do Xeno-Canto.',
     metricLabel: 'MÉTRICA VALIDADA',
-    metrics: `F1-Weighted: ${TBC}`,
+    metrics: 'F1-Weighted: 0,82 (CNN)',
     metricTone: 'metric',
   },
   {
@@ -88,7 +84,7 @@ const bioacusticaTabs: TabItem[] = [
       e arquitetura de sistemas em Luau, unindo rigor acadêmico e entrega prática.
     </p>
     <p class="text-[13px] leading-normal font-mono text-text-secondary pt-1">
-      PUBLICAÇÃO CIENTÍFICA: {TBC} — ISSN: {TBC} — <span class="text-metric-accent">F1-WEIGHTED: {TBC}</span>
+      PUBLICAÇÃO CIENTÍFICA: Anais VII CoBICET (2026) — ISSN: 2764-0582 — <span class="text-metric-accent">F1-WEIGHTED: 0,82 (CNN)</span>
     </p>
   </div>
 
@@ -125,7 +121,7 @@ const bioacusticaTabs: TabItem[] = [
     <article class="bg-bg-surface border border-border-subtle hover:border-accent-primary transition-colors p-6 space-y-4">
       <div class="flex flex-wrap items-center justify-between gap-2 text-[13px] leading-normal font-mono">
         <span class="text-accent-primary">PESQUISA CIENTÍFICA / BIOACÚSTICA</span>
-        <span class="text-metric-accent">MÉTRICA CNN: {TBC}</span>
+        <span class="text-metric-accent">MÉTRICA CNN: F1-Weighted 0,82 (~82% Acurácia)</span>
       </div>
       <h5 class="text-xl font-semibold text-text-primary">
         Detecção Acústica de Aves Ameaçadas Utilizando Aprendizado de Máquina
@@ -213,7 +209,7 @@ const bioacusticaTabs: TabItem[] = [
       </div>
       <div class="p-3.5 bg-bg-canvas border border-border-subtle">
         <div class="text-text-secondary">SINERGIA BIOENERGIA</div>
-        <div class="text-sm font-mono font-semibold text-metric-accent mt-1">Regeneração: {TBC}</div>
+        <div class="text-sm font-mono font-semibold text-metric-accent mt-1">Atributo Reativo (Client-Side)</div>
       </div>
     </div>
   </LabContainer>

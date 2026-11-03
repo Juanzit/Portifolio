@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0 — Fase 2: Protótipo Visual da Home, Layout Compartilhado e Dados Comprovados
+- **Home Completa (`src/pages/index.astro`)**: implementação das 8 seções da página inicial (`Hero`, `00. Perfil Técnico`, `01. Projetos Selecionados`, `02. Game Development Lab`, `03. Experiência Profissional`, `04. Tech Journal`, `05. Competências Técnicas`, `06. Contato Direto`) sob o **Tema B — Violet Nature**.
+- **Layout Global (`src/components/layout/`)**: criação de `Header.astro`, `MobileMenu.astro` (com suporte a `aria-expanded`, `aria-controls` e fechamento por `Escape`) e `Footer.astro`.
+- **Dados Comprovados**: inclusão dos dados reais verificados do Currículo Lattes (`http://lattes.cnpq.br/9434044887106048`), publicação científica nos Anais do VII CoBICET (`ISSN 2764-0582`, CNN `F1-weighted: 0,82`, padronização **Cenário A (Controle)** e **Cenário B (Proposto)**), Lundgren Atelier, ShapeMeApp (SIMEPE 2025), Núcleo Selvagem, Kodland, CNA Idiomas Digital e EmComp.
+- **Acessibilidade (`src/styles/global.css`)**: regra `@media (prefers-reduced-motion: reduce)` expandida para suprimir animações e transições, mantendo tipografia mínima de `13px` e alvos de toque `>= 44×44px`.
+
 ## 0.3.0 — Fase 1 Estabilizada: Astro 7, Vite 8 e Oficialização do Tema B (Violet Nature)
 - **Identidade Visual Oficial**: consolidação do **Tema B — Violet Nature** (`#0B0A10` / `#14121B` / `#7C3AED` / `#A78BFA` / `#B6D63A`) e remoção completa do Tema A (Cobalt Technical).
 - **Migração de Stack**: atualização de `astro` para `^7.4.5` e `vite` para `8.3.5` (remoção do pin de Vite 7), zerando os 3 advisories do `npm audit`.

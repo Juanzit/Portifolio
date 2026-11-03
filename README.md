@@ -1,6 +1,6 @@
 # Portfólio — Juan Silva Garcia
 
-Portfólio de Engenharia de Software e Tech Journal. Aplicação 100% estática construída com **Astro 7**, **Vite 8**, **Tailwind CSS v4** e **TypeScript estrito**, sob a identidade visual **Tema B — Violet Nature**.
+Portfólio de Engenharia de Software, Pesquisa em IA e Sistemas Interativos. Aplicação 100% estática construída com **Astro 7**, **Vite 8**, **Tailwind CSS v4** e **TypeScript estrito**, sob a identidade visual **Tema B — Violet Nature**.
 
 ## Comandos
 
@@ -13,7 +13,7 @@ npm run preview    # serve o build de produção localmente
 
 ## Estado Atual
 
-**Fase 1 Estabilizada** — Identidade Visual (`Tema B — Violet Nature`), biblioteca de componentes compartilhados (`Button`, `Badge`, `Tabs`, `ControlField`, `LabContainer`, `ThemeShowcase`) e arquitetura de coleções (`src/content.config.ts`) concluídas e auditadas. A rota `/design-system/` apresenta o catálogo completo e o showcase integrado; `/` redireciona temporariamente para `/design-system` até o início autorizado da Fase 2. Consulte `PROJECT_STATUS.md`.
+**Fase 2 Concluída (Protótipo Visual da Home)** — A rota principal `/` (`src/pages/index.astro`) apresenta a página inicial completa em 8 seções com os componentes globais `Header.astro`, `MobileMenu.astro` e `Footer.astro` e dados comprovados do Currículo Lattes, currículo profissional e publicação científica nos Anais do VII CoBICET (`ISSN 2764-0582`). A rota `/design-system/` permanece ativa como catálogo vivo da identidade **Tema B — Violet Nature**. Consulte `PROJECT_STATUS.md`.
 
 ## Documentação de Governança
 
