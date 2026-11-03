@@ -1,0 +1,220 @@
+---
+import Button from './Button.astro';
+import Badge from './Badge.astro';
+import Tabs, { type TabItem } from './Tabs.astro';
+import ControlField from './ControlField.astro';
+import LabContainer from './LabContainer.astro';
+
+interface Props {
+  themeTitle?: string;
+  themeSubtitle?: string;
+}
+
+const {
+  themeTitle = 'Tema B — Violet Nature (Identidade Oficial)',
+  themeSubtitle = 'Grafite mineral (#0B0A10) como superfície dominante, roxo de engenharia (#7C3AED / #A78BFA) para interação e verde-limão (#B6D63A) restrito a indicadores e métricas.',
+} = Astro.props;
+
+// Veracidade Estrita (AGENTS.md): métricas, ISSN e veículo de publicação não verificados
+// permanecem identificados como [A CONFIRMAR] até confirmação pelo autor.
+const TBC = '[A CONFIRMAR]';
+
+const bioacusticaTabs: TabItem[] = [
+  {
+    id: 'cenario-b',
+    code: '01.',
+    label: 'Cenário B (Proposto)',
+    content:
+      'Configuração experimental refinada com extração de espectrogramas Mel e filtragem acústica sobre registros do Xeno-Canto.',
+    metricLabel: 'MÉTRICA VALIDADA',
+    metrics: `F1-Weighted: ${TBC}`,
+    metricTone: 'metric',
+  },
+  {
+    id: 'cenario-a',
+    code: '02.',
+    label: 'Cenário A (Controle)',
+    content:
+      'Linha de base comparativa inicial para avaliação de impacto do pré-processamento espectral.',
+    metricLabel: 'STATUS',
+    metrics: 'Baseline de Referência',
+    metricTone: 'accent',
+  },
+];
+---
+
+<section
+  id="showcase-violet"
+  class="border border-border-subtle bg-bg-canvas p-5 sm:p-8 space-y-10"
+>
+  <!-- 1. Cabeçalho Identificador do Tema -->
+  <header class="border-b border-border-subtle pb-5 flex flex-wrap items-center justify-between gap-4">
+    <div class="space-y-1">
+      <div class="flex items-center gap-2.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-metric-accent" aria-hidden="true"></span>
+        <span class="font-mono text-[13px] leading-normal uppercase tracking-wider text-accent-primary font-medium">
+          {themeTitle}
+        </span>
+      </div>
+      <p class="text-sm text-text-secondary max-w-[65ch]">{themeSubtitle}</p>
+    </div>
+    <nav aria-label="Navegação de amostra do portfólio" class="flex items-center gap-2">
+      <a
+        href="#showcase-violet"
+        aria-current="page"
+        class="min-h-[44px] px-3 inline-flex items-center text-[13px] leading-normal font-mono text-accent-primary border-b-2 border-accent-solid bg-bg-surface"
+      >
+        01. Projetos
+      </a>
+      <a
+        href="#showcase-violet"
+        class="min-h-[44px] px-3 inline-flex items-center text-[13px] leading-normal font-mono text-text-secondary hover:text-text-primary transition-colors"
+      >
+        02. Journal
+      </a>
+    </nav>
+  </header>
+
+  <!-- 2. Títulos, Tipografia e Metadados Revisados (13px / 14px) -->
+  <div class="space-y-3 border-b border-border-subtle pb-8">
+    <div class="text-[13px] leading-normal font-mono text-accent-primary uppercase tracking-wider">
+      ESCALA EDITORIAL & METADADOS (13PX–14PX)
+    </div>
+    <h3 class="text-2xl sm:text-3xl font-bold tracking-[-0.02em] text-text-primary">
+      Engenharia de Software, Pesquisa em IA e Sistemas Interativos
+    </h3>
+    <p class="text-base text-text-secondary leading-[1.65] max-w-[65ch]">
+      Desenvolvimento de aplicações mobile com React Native, classificação bioacústica de aves ameaçadas
+      e arquitetura de sistemas em Luau, unindo rigor acadêmico e entrega prática.
+    </p>
+    <p class="text-[13px] leading-normal font-mono text-text-secondary pt-1">
+      PUBLICAÇÃO CIENTÍFICA: {TBC} — ISSN: {TBC} — <span class="text-metric-accent">F1-WEIGHTED: {TBC}</span>
+    </p>
+  </div>
+
+  <!-- 3. Botões (via Button.astro) e 4. Badges (via Badge.astro) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 border-b border-border-subtle pb-8">
+    <div class="space-y-3">
+      <h4 class="text-[13px] leading-normal font-mono uppercase tracking-wider text-text-secondary">
+        Botões Compartilhados (Altura Mínima 44px / Contraste AA+)
+      </h4>
+      <div class="flex flex-wrap items-center gap-3">
+        <Button variant="primary">Explorar Projeto</Button>
+        <Button variant="secondary">Arquitetura</Button>
+        <Button variant="secondary" disabled>Repositório Privado</Button>
+      </div>
+    </div>
+
+    <div class="space-y-3">
+      <h4 class="text-[13px] leading-normal font-mono uppercase tracking-wider text-text-secondary">
+        Badges Semânticos e Indicadores
+      </h4>
+      <div class="flex flex-wrap items-center gap-2.5">
+        <Badge variant="success">EM PRODUÇÃO</Badge>
+        <Badge variant="accent">PESQUISA IA</Badge>
+        <Badge variant="neutral">Astro 7 + TypeScript</Badge>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Card de Projeto Editorial -->
+  <div class="space-y-3 border-b border-border-subtle pb-8">
+    <h4 class="text-[13px] leading-normal font-mono uppercase tracking-wider text-text-secondary">
+      Card de Projeto e Hierarquia de Superfície
+    </h4>
+    <article class="bg-bg-surface border border-border-subtle hover:border-accent-primary transition-colors p-6 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-2 text-[13px] leading-normal font-mono">
+        <span class="text-accent-primary">PESQUISA CIENTÍFICA / BIOACÚSTICA</span>
+        <span class="text-metric-accent">MÉTRICA CNN: {TBC}</span>
+      </div>
+      <h5 class="text-xl font-semibold text-text-primary">
+        Detecção Acústica de Aves Ameaçadas Utilizando Aprendizado de Máquina
+      </h5>
+      <p class="text-sm text-text-secondary leading-relaxed max-w-[65ch]">
+        Comparação experimental entre Cenário A (Controle) e Cenário B (Proposto) utilizando espectrogramas Mel,
+        MFCC e arquiteturas SVM, GMM-HMM e CNN.
+      </p>
+      <div class="pt-3 border-t border-border-subtle flex flex-wrap items-center justify-between gap-4">
+        <div class="flex flex-wrap gap-2 text-[13px] leading-normal font-mono text-text-secondary">
+          <span>Python</span>
+          <span aria-hidden="true">•</span>
+          <span>TensorFlow/Keras</span>
+          <span aria-hidden="true">•</span>
+          <span>Xeno-Canto</span>
+        </div>
+        <a
+          href="#showcase-violet"
+          class="min-h-[44px] inline-flex items-center text-sm font-mono text-accent-primary hover:underline"
+        >
+          Inspecionar Pipeline →
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- 6. Abas (via Tabs.astro) e 7. Controles Interativos (via ControlField.astro) -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 border-b border-border-subtle pb-8">
+    <div class="space-y-3">
+      <h4 class="text-[13px] leading-normal font-mono uppercase tracking-wider text-text-secondary">
+        Abas Técnicas (Navegação por Setas e Toque 44px)
+      </h4>
+      <Tabs
+        id="showcase-bioacustica"
+        ariaLabel="Comparativo experimental de bioacústica"
+        tabs={bioacusticaTabs}
+      />
+    </div>
+
+    <div class="space-y-3">
+      <h4 class="text-[13px] leading-normal font-mono uppercase tracking-wider text-text-secondary">
+        Controles de Simulação (ShapeMeApp PSE x Duração)
+      </h4>
+      <div class="border border-border-subtle bg-bg-surface p-5 space-y-4">
+        <ControlField
+          id="showcase-select-modulo"
+          label="MÓDULO DE ANÁLISE"
+          type="select"
+          options={[
+            { value: 'cit', label: 'Carga Interna de Treinamento (CIT)' },
+            { value: 'monotonia', label: 'Índice de Monotonia Semanal' },
+          ]}
+        />
+        <ControlField
+          id="showcase-range-pse"
+          label="INTENSIDADE (PSE) · 60 MIN"
+          type="range"
+          min={1}
+          max={10}
+          defaultValue={8}
+          unit="PSE"
+          multiplier={60}
+          computedUnit="UA"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Container de Laboratório (via LabContainer.astro) -->
+  <LabContainer
+    code="LAB-NUCLEO-01"
+    title="Bancada de Mutação — Núcleo Selvagem"
+    statusLabel="SIMULAÇÃO CLIENT-SIDE"
+    statusVariant="success"
+    disclaimer="Execução 100% local no navegador sem conexão com banco de dados de produção."
+  >
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-[13px] leading-normal font-mono">
+      <div class="p-3.5 bg-bg-canvas border border-border-subtle">
+        <div class="text-text-secondary">ESPÉCIME</div>
+        <div class="text-sm font-sans font-medium text-text-primary mt-1">Predador Abissal</div>
+      </div>
+      <div class="p-3.5 bg-bg-canvas border border-border-subtle">
+        <div class="text-text-secondary">MUTAÇÃO ATIVA</div>
+        <div class="text-sm font-sans font-medium text-accent-primary mt-1">Carapaça Reativa</div>
+      </div>
+      <div class="p-3.5 bg-bg-canvas border border-border-subtle">
+        <div class="text-text-secondary">SINERGIA BIOENERGIA</div>
+        <div class="text-sm font-mono font-semibold text-metric-accent mt-1">Regeneração: {TBC}</div>
+      </div>
+    </div>
+  </LabContainer>
+</section>

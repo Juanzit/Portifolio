@@ -1,0 +1,40 @@
+---
+import Badge from './Badge.astro';
+
+interface Props {
+  code: string;
+  title: string;
+  statusLabel: string;
+  statusVariant?: 'accent' | 'success' | 'warning';
+  disclaimer: string;
+}
+
+const {
+  code,
+  title,
+  statusLabel,
+  statusVariant = 'accent',
+  disclaimer,
+} = Astro.props;
+---
+
+<section class="border border-border-subtle bg-bg-surface">
+  <header class="px-5 py-3.5 bg-bg-canvas border-b border-border-subtle flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <span class="text-[13px] leading-normal font-mono text-accent-primary px-2 py-0.5 border border-border-subtle bg-bg-surface">
+        {code}
+      </span>
+      <h3 class="text-sm font-semibold text-text-primary tracking-tight">{title}</h3>
+    </div>
+    <Badge variant={statusVariant}>{statusLabel}</Badge>
+  </header>
+
+  <div class="p-6 bg-bg-surface">
+    <slot />
+  </div>
+
+  <footer class="px-5 py-2.5 bg-bg-canvas border-t border-border-subtle flex flex-wrap items-center justify-between gap-2 text-[13px] leading-normal font-mono text-text-secondary">
+    <span>NOTA DE AMBIENTE: {disclaimer}</span>
+    <span class="hidden sm:inline">CLIENT-SIDE ISLAND</span>
+  </footer>
+</section>

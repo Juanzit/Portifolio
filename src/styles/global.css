@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+/*
+ * Identidade Visual Oficial — Tema B: Violet Nature
+ * - Grafite mineral (#0B0A10 / #14121B / #1C1925) como superfície dominante.
+ * - Roxo de engenharia (#7C3AED / #A78BFA) para interação, foco e navegação.
+ * - Verde-limão técnico (#B6D63A) restrito a pequenos indicadores e métricas.
+ */
+:root {
+  --bg-canvas: #0B0A10;
+  --bg-surface: #14121B;
+  --bg-elevated: #1C1925;
+  --border-subtle: #302A3A;
+  /* Borda de controles e botões secundários: >= 3.57:1 (WCAG 1.4.11) sobre todas as superfícies */
+  --border-control: #756E88;
+  --text-primary: #F3F4F6;
+  --text-secondary: #AAA3B8;
+  --accent-primary: #7C3AED;
+  --accent-hover: #6D28D9;
+  --accent-active: #5B21B6;
+  --accent-text: #A78BFA;
+  --metric-accent: #B6D63A;
+  --status-warning: #F59E0B;
+}
+
+@theme inline {
+  --color-bg-canvas: var(--bg-canvas);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-control: var(--border-control);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-accent-primary: var(--accent-text);
+  --color-accent-solid: var(--accent-primary);
+  --color-accent-solid-hover: var(--accent-hover);
+  --color-accent-solid-active: var(--accent-active);
+  --color-metric-accent: var(--metric-accent);
+  --color-status-success: var(--metric-accent);
+  --color-status-warning: var(--status-warning);
+}
+
+@layer base {
+  html {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  *,
+  *::before,
+  *::after {
+    outline-color: var(--accent-text);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--accent-text);
+    outline-offset: 2px;
+  }
+
+  code, pre, kbd, samp {
+    font-family: var(--font-mono);
+  }
+}

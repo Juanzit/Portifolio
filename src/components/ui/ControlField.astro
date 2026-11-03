@@ -1,0 +1,123 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  unit?: string;
+  multiplier?: number;
+  computedUnit?: string;
+  type?: 'text' | 'range' | 'select';
+  disabled?: boolean;
+  defaultValue?: string | number;
+  min?: number;
+  max?: number;
+  options?: { value: string; label: string }[];
+}
+
+const {
+  id,
+  label,
+  unit,
+  multiplier,
+  computedUnit,
+  type = 'text',
+  disabled = false,
+  defaultValue = '',
+  min = 0,
+  max = 10,
+  options = [],
+} = Astro.props;
+
+const initialNumeric = Number(defaultValue);
+const initialDisplay =
+  unit && multiplier && computedUnit && !Number.isNaN(initialNumeric)
+    ? `${initialNumeric} ${unit} (${initialNumeric * multiplier} ${computedUnit})`
+    : unit
+      ? `${defaultValue} ${unit}`.trim()
+      : '';
+---
+
+<div class="space-y-2">
+  <div class="flex items-center justify-between gap-2">
+    <label for={id} class="text-[13px] leading-normal font-mono text-text-secondary uppercase tracking-wider">
+      {label}
+    </label>
+    {
+      unit && (
+        <span
+          class="text-[13px] leading-normal font-mono text-metric-accent font-semibold"
+          data-unit-display={id}
+        >
+          {initialDisplay}
+        </span>
+      )
+    }
+  </div>
+
+  {type === 'text' && (
+    <input
+      id={id}
+      name={id}
+      type="text"
+      value={String(defaultValue)}
+      disabled={disabled}
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      class="w-full min-h-[44px] px-3 py-2 text-base bg-bg-canvas border border-border-control text-text-primary placeholder:text-text-secondary/50 hover:border-text-secondary focus:border-accent-primary disabled:opacity-45 disabled:pointer-events-none transition-colors"
+    />
+  )}
+
+  {type === 'select' && (
+    <select
+      id={id}
+      name={id}
+      disabled={disabled}
+      class="w-full min-h-[44px] px-3 py-2 text-base bg-bg-canvas border border-border-control text-text-primary hover:border-text-secondary focus:border-accent-primary disabled:opacity-45 disabled:pointer-events-none transition-colors"
+    >
+      {options.map((opt) => (
+        <option value={opt.value}>{opt.label}</option>
+      ))}
+    </select>
+  )}
+
+  {type === 'range' && (
+    <div class="min-h-[44px] flex items-center">
+      <input
+        id={id}
+        name={id}
+        type="range"
+        min={min}
+        max={max}
+        value={String(defaultValue)}
+        disabled={disabled}
+        data-range-input={id}
+        data-range-unit={unit || ''}
+        data-range-multiplier={multiplier ? String(multiplier) : ''}
+        data-range-computed-unit={computedUnit || ''}
+        class="w-full h-6 accent-accent-solid cursor-pointer disabled:opacity-45 disabled:pointer-events-none"
+      />
+    </div>
+  )}
+</div>
+
+<script>
+  const ranges = document.querySelectorAll<HTMLInputElement>('[data-range-input]');
+  ranges.forEach((input) => {
+    const id = input.dataset.rangeInput;
+    const unit = input.dataset.rangeUnit || '';
+    const multiplierRaw = input.dataset.rangeMultiplier;
+    const computedUnit = input.dataset.rangeComputedUnit || '';
+    const multiplier = multiplierRaw ? Number(multiplierRaw) : 0;
+    const display = document.querySelector(`[data-unit-display="${id}"]`);
+
+    input.addEventListener('input', () => {
+      if (!display) return;
+      const val = Number(input.value);
+      if (multiplier && computedUnit && !Number.isNaN(val)) {
+        display.textContent = `${val} ${unit} (${val * multiplier} ${computedUnit})`;
+      } else {
+        display.textContent = `${input.value} ${unit}`.trim();
+      }
+    });
+  });
+</script>

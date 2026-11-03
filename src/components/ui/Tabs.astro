@@ -1,0 +1,114 @@
+---
+export interface TabItem {
+  id: string;
+  label: string;
+  code: string;
+  content: string;
+  metricLabel?: string;
+  metrics: string;
+  metricTone?: 'metric' | 'accent';
+}
+
+interface Props {
+  id: string;
+  ariaLabel?: string;
+  tabs: TabItem[];
+}
+
+const {
+  id,
+  ariaLabel = 'Demonstração de abas técnicas',
+  tabs,
+} = Astro.props;
+---
+
+<div class="border border-border-subtle bg-bg-surface" data-tabs-root={id}>
+  <div
+    role="tablist"
+    aria-label={ariaLabel}
+    class="flex flex-wrap border-b border-border-subtle bg-bg-canvas"
+  >
+    {
+      tabs.map((tab, index) => (
+        <button
+          role="tab"
+          type="button"
+          id={`tab-${id}-${tab.id}`}
+          aria-selected={index === 0 ? 'true' : 'false'}
+          aria-controls={`panel-${id}-${tab.id}`}
+          tabindex={index === 0 ? 0 : -1}
+          data-tab-trigger={tab.id}
+          class="min-h-[44px] px-4 py-2.5 text-[13px] leading-normal font-mono border-r border-border-subtle border-b-2 border-b-transparent transition-colors duration-150 cursor-pointer aria-selected:bg-bg-surface aria-selected:text-accent-primary aria-selected:border-b-accent-solid text-text-secondary hover:text-text-primary hover:bg-bg-elevated"
+        >
+          <span class="opacity-70 mr-1.5">{tab.code}</span>
+          {tab.label}
+        </button>
+      ))
+    }
+  </div>
+
+  {
+    tabs.map((tab, index) => (
+      <div
+        role="tabpanel"
+        id={`panel-${id}-${tab.id}`}
+        aria-labelledby={`tab-${id}-${tab.id}`}
+        hidden={index !== 0}
+        data-tab-panel={tab.id}
+        class="p-5 space-y-3"
+      >
+        <p class="text-sm text-text-primary leading-relaxed">{tab.content}</p>
+        <div class="pt-2 border-t border-border-subtle flex flex-wrap items-center justify-between gap-2 text-[13px] leading-normal font-mono text-text-secondary">
+          <span>{tab.metricLabel ?? 'PARÂMETRO TÉCNICO'}</span>
+          <span
+            class:list={[
+              tab.metricTone === 'accent' ? 'text-accent-primary' : 'text-metric-accent',
+            ]}
+          >
+            {tab.metrics}
+          </span>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  const roots = document.querySelectorAll<HTMLElement>('[data-tabs-root]');
+  roots.forEach((root) => {
+    const triggers = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-tab-trigger]'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-tab-panel]'));
+
+    function activateTab(targetTrigger: HTMLButtonElement) {
+      const targetId = targetTrigger.dataset.tabTrigger;
+      triggers.forEach((btn) => {
+        const isCurrent = btn === targetTrigger;
+        btn.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
+        btn.tabIndex = isCurrent ? 0 : -1;
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.tabPanel !== targetId;
+      });
+      targetTrigger.focus();
+    }
+
+    triggers.forEach((trigger, idx) => {
+      trigger.addEventListener('click', () => activateTab(trigger));
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          activateTab(triggers[(idx + 1) % triggers.length]);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          activateTab(triggers[(idx - 1 + triggers.length) % triggers.length]);
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          activateTab(triggers[0]);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          activateTab(triggers[triggers.length - 1]);
+        }
+      });
+    });
+  });
+</script>
