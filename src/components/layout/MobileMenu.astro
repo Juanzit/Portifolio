@@ -2,7 +2,6 @@
 interface NavItem {
   label: string;
   href: string;
-  code: string;
 }
 
 interface Props {
@@ -18,11 +17,11 @@ const { items } = Astro.props;
     id="mobile-menu-trigger"
     aria-expanded="false"
     aria-controls="mobile-menu-panel"
-    class="min-h-[44px] min-w-[44px] px-3 inline-flex items-center justify-center gap-2 border border-border-control bg-bg-surface text-text-primary hover:border-accent-primary transition-colors cursor-pointer font-mono text-[13px] leading-normal"
+    class="min-h-[44px] min-w-[44px] px-3.5 inline-flex items-center justify-center gap-2 border border-border-control bg-bg-surface text-text-primary hover:border-accent-primary transition-colors cursor-pointer text-[13px] leading-normal font-medium"
   >
-    <span data-menu-label>MENU</span>
+    <span data-menu-label>Menu</span>
     <span class="sr-only"> de navegação</span>
-    <span class="text-accent-text font-bold" data-menu-icon aria-hidden="true">+</span>
+    <span class="text-accent-text font-mono font-bold" data-menu-icon aria-hidden="true">+</span>
   </button>
 
   <div
@@ -30,28 +29,25 @@ const { items } = Astro.props;
     hidden
     class="fixed inset-x-0 top-16 border-b border-border-subtle bg-bg-canvas z-50 shadow-2xl max-h-[calc(100dvh-4rem)] overflow-y-auto"
   >
-    <nav aria-label="Navegação principal (mobile)" class="max-w-[1120px] mx-auto px-4 py-6 space-y-2">
+    <nav aria-label="Navegação principal (mobile)" class="max-w-[1120px] mx-auto px-4 py-5 space-y-2">
       {
         items.map((item) => (
           <a
             href={item.href}
             data-mobile-link
-            class="min-h-[44px] px-4 py-3 flex items-center justify-between border border-border-subtle bg-bg-surface hover:border-accent-primary text-sm font-mono text-text-primary transition-colors"
+            class="min-h-[44px] px-4 py-3 flex items-center justify-between border border-border-subtle bg-bg-surface hover:border-accent-primary text-sm text-text-primary transition-colors"
           >
-            <span>
-              <span class="text-accent-text mr-2">{item.code}.</span>
-              {item.label}
-            </span>
-            <span class="text-metric-accent text-[13px] leading-normal" aria-hidden="true">→</span>
+            <span>{item.label}</span>
+            <span class="text-accent-text text-sm" aria-hidden="true">→</span>
           </a>
         ))
       }
-      <div class="pt-4 mt-4 border-t border-border-subtle flex items-center justify-between text-[13px] leading-normal font-mono text-text-secondary">
-        <span>ROTA DE VALIDAÇÃO</span>
+      <div class="pt-3 mt-3 border-t border-border-subtle flex items-center justify-between text-[13px] leading-normal text-text-secondary">
+        <span>Identidade visual</span>
         <a
           href="/design-system/"
           data-mobile-link
-          class="min-h-[44px] inline-flex items-center text-accent-text hover:underline"
+          class="min-h-[44px] inline-flex items-center font-mono text-accent-text hover:underline"
         >
           /design-system
         </a>
@@ -74,7 +70,7 @@ const { items } = Astro.props;
       trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       panel.hidden = !isOpen;
       icon.textContent = isOpen ? '×' : '+';
-      label.textContent = isOpen ? 'FECHAR' : 'MENU';
+      label.textContent = isOpen ? 'Fechar' : 'Menu';
     };
 
     trigger?.addEventListener('click', () => {
