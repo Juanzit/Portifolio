@@ -7,102 +7,125 @@ import Badge from '../components/ui/Badge.astro';
 const projects = [
   {
     code: 'PRJ-01',
-    category: 'ENGENHARIA WEB & ARQUITETURA ESCALÁVEL',
+    category: 'PROJETO FREELANCE // ENGENHARIA WEB',
     status: 'EM PRODUÇÃO',
     statusVariant: 'success' as const,
-    title: 'Lundgren Atelier — Plataforma Digital Sob Medida',
+    title: 'Lundgren Atelier — Plataforma Digital em Produção',
     summary:
-      'Desenvolvimento completo e publicação em produção de plataforma web sob encomenda (Out 2025 – Jan 2026), com foco em arquitetura escalável, experiência do usuário responsiva, SEO técnico e entrega contínua.',
-    metrics: 'Deploy em Produção • Domínio Customizado',
-    stack: ['Arquitetura Escalável', 'Frontend Responsivo', 'SEO Técnico', 'Produção Real'],
-    links: [{ label: 'Visitar lundgrenatelier.com ↗', href: 'https://www.lundgrenatelier.com/', external: true }],
+      'Desenvolvimento completo e publicação de website comercial em produção, integrando Astro, Sanity.io (Headless CMS), estilização com Tailwind CSS, scripts automatizados em Node.js para migração de acervo e deploy contínuo via Cloudflare Pages.',
+    metrics: 'Em Produção • Astro + Sanity.io + Cloudflare Pages',
+    stack: ['Astro', 'Sanity.io (Headless CMS)', 'Tailwind CSS', 'Node.js (Scripts de Migração)', 'Cloudflare Pages'],
+    links: [{ label: 'Acessar Site Oficial ↗', href: 'https://lundgren-atelier.com/', external: true }],
   },
   {
     code: 'PRJ-02',
-    category: 'PESQUISA EM IA & PROCESSAMENTO DE SINAIS',
+    category: 'PESQUISA CIENTÍFICA // BIOACÚSTICA & IA',
     status: 'PUBLICADO (VII CoBICET)',
     statusVariant: 'accent' as const,
-    title: 'Detecção Acústica de Aves Ameaçadas com Machine Learning',
+    title: 'Detecção Acústica de Aves Ameaçadas Utilizando Aprendizado de Máquina',
     summary:
-      'Investigação experimental comparando Cenário A (Controle) e Cenário B (Proposto) sobre registros do repositório Xeno-Canto. Extração de espectrogramas Mel e coeficientes MFCC avaliados em arquiteturas SVM, GMM-HMM e Redes Neurais Convolucionais (CNN).',
+      'Trabalho Completo publicado nos Anais do VII CoBICET (05/08/2026, Editora Even3) e apresentado no XVIII EAMC (2026), em coautoria com Maurício Archanjo Nunes Coelho. Investigação sobre 136 espécies ameaçadas (Xeno-Canto) com Espectrogramas Mel e MFCC, comparando SVM (MVS), GMM-HMM (MOM) e CNN (RNC) entre o Cenário A (Controle) e o Cenário B (Proposto).',
     metrics: 'CNN F1-weighted: 0,82 (~82% Acurácia) • ISSN 2764-0582',
-    stack: ['Python', 'TensorFlow / Keras', 'Scikit-Learn', 'Librosa (MFCC / Mel)', 'Xeno-Canto'],
-    links: [{ label: 'Especificação do Estudo (Fase 4)', href: '#projetos', external: false }],
+    stack: ['Python', 'CNN (RNC)', 'SVM (MVS)', 'GMM-HMM (MOM)', 'Espectrogramas Mel & MFCC', 'Xeno-Canto (136 espécies)'],
+    links: [{ label: 'Ver Registro no Lattes ↗', href: 'http://lattes.cnpq.br/9434044887106048', external: true }],
   },
   {
     code: 'PRJ-03',
-    category: 'ENGENHARIA MOBILE & EXTENSÃO TECNOLÓGICA',
-    status: 'PROJETO INSTITUCIONAL',
+    category: 'PROJETO ACADÊMICO // EXTENSÃO & MOBILE',
+    status: 'CONCLUÍDO (2024–2026)',
     statusVariant: 'accent' as const,
-    title: 'ShapeMeApp — Monitoramento Esportivo e Prevenção de Lesões',
+    title: 'ShapeMeApp — Monitoramento de Carga e Evolução na Musculação',
     summary:
-      'Aplicativo multiplataforma desenvolvido no IF Sudeste MG (Mai 2024 – Set 2025) para cálculo automatizado da Carga Interna de Treinamento (CIT = PSE × Duração em minutos) e acompanhamento longitudinal de atletas e treinadores.',
-    metrics: 'Apresentado no SIMEPE 2025 • Persistência em Tempo Real',
-    stack: ['React Native', 'TypeScript', 'Firebase', 'Arquitetura Mobile', 'Ciências do Esporte'],
-    links: [{ label: 'Repositório GitHub ↗', href: 'https://github.com/Juan-Garcia01', external: true }],
+      'Aplicativo mobile Android desenvolvido no ciclo de extensão 2024–2026 (IF Sudeste MG — Campus Rio Pomba) para alunos, professores e coordenação, com cálculo de Carga Interna de Treinamento (CIT), Monotonia e Strain. Estudo apresentado no VII SIMEPE (2025) em coautoria com Gustavo Vaz Teixeira, Sérgio Muinhos Barroso Lima e João Batista Ferreira Júnior.',
+    metrics: 'Apresentado no VII SIMEPE (2025) • CIT, Monotonia & Strain',
+    stack: ['React Native', 'Expo SDK', 'Firebase Auth', 'Cloud Firestore', 'AsyncStorage', 'QA & Usabilidade'],
+    links: [{ label: 'Referência Acadêmica ↗', href: 'http://lattes.cnpq.br/9434044887106048', external: true }],
   },
   {
     code: 'PRJ-04',
-    category: 'GAME DEVELOPMENT & SISTEMAS INTERATIVOS',
+    category: 'PROJETO AUTORAL // GAME DEVELOPMENT LAB',
     status: 'EM DESENVOLVIMENTO',
     statusVariant: 'neutral' as const,
-    title: 'Núcleo Selvagem — Arquitetura Modular Client/Server',
+    title: 'Núcleo Selvagem — Roguelite de Criaturas Mutantes',
     summary:
-      'Projeto autoral de jogo digital focado em evolução biológica, combate tático e estados reativos. Estruturado com separação rigorosa entre simulação autoritativa no servidor e feedback visual responsivo no cliente.',
-    metrics: 'Arquitetura Modular • Estados e Mutações em Tempo Real',
-    stack: ['Luau', 'Roblox Studio', 'Client/Server Architecture', 'State Machines', 'Game Systems'],
-    links: [{ label: 'Explorar Game Lab ↓', href: '#game-lab', external: false }],
+      'Projeto autoral de jogo roguelite com sistema de expedições, evolução genética de criaturas mutantes e Base Pessoal 2.0, desenvolvido com arquitetura modular em Luau no Roblox Studio e modelagem 3D autoral no Blender.',
+    metrics: 'Expedições, Evolução Genética & Base Pessoal 2.0',
+    stack: ['Roblox Studio', 'Luau', 'Blender (Modelagem 3D)', 'Arquitetura Modular', 'Sistemas Roguelite'],
+    links: [{ label: 'Inspecionar no Game Lab ↓', href: '#game-lab', external: false }],
   },
 ];
 
 const experiences = [
   {
-    period: 'MAR 2026 — ATUAL',
-    role: 'Facilitador de Conversação em Inglês',
-    org: 'CNA Idiomas Digital',
-    tag: 'COMUNICAÇÃO INTERNACIONAL',
+    period: '04/2026 — ATUAL',
+    role: 'Professor Tutor',
+    org: 'CNA Digital',
+    tag: 'ENSINO DE PROGRAMAÇÃO, 3D, JOGOS & IA (15H/SEM)',
     description:
-      'Condução de sessões estruturadas de conversação em língua inglesa em ambiente digital, aprimorando fluência técnica, clareza expositiva e mediação em tempo real.',
+      'Atuação como professor de programação conduzindo trilhas técnicas de lógica, Scratch, Construct, modelagem 3D com Blender e SculptGL, Unity, Roblox Studio, React, Python, Ciência de Dados e Inteligência Artificial.',
   },
   {
-    period: 'NOV 2025 — ATUAL',
-    role: 'Professor Tutor de Programação (Python & Roblox Studio)',
+    period: '06/2025 — ATUAL',
+    role: 'Professor Tutor',
     org: 'Kodland',
-    tag: 'ENSINO INTERNACIONAL DE TECNOLOGIA',
+    tag: 'EDTECH INTERNACIONAL • PYTHON, LUA & SCRATCH (12H/SEM)',
     description:
-      'Ensino prático de lógica de programação, desenvolvimento de algoritmos em Python e engenharia de jogos em Luau/Roblox Studio para turmas jovens, traduzindo conceitos de arquitetura de software em projetos interativos.',
+      'Ensino de programação para alunos de 8 a 16 anos em Scratch, Python (incluindo Flask, POO e bancos de dados) e Roblox Studio/Lua, aplicando metodologia PBL (Project-Based Learning), Scrum e versionamento com Git/GitHub.',
   },
   {
-    period: 'OUT 2024 — SET 2025',
-    role: 'Pesquisador de Iniciação Científica — Bioacústica & IA',
+    period: '06/2025 — 06/2026',
+    role: 'Pesquisador em Inteligência Artificial',
     org: 'IF Sudeste MG — Campus Rio Pomba',
-    tag: 'PESQUISA CIENTÍFICA PUBLICADA',
+    tag: 'PESQUISA CIENTÍFICA PUBLICADA (VII CoBICET & XVIII EAMC)',
     description:
-      'Desenvolvimento de pipelines de pré-processamento acústico e modelos supervisionados (SVM, GMM-HMM e CNN) para classificação de espécies ameaçadas. Pesquisa publicada como capítulo nos Anais do VII CoBICET (2026) e apresentada no SIMEPE 2025.',
+      'Desenvolvimento de sistema e modelos de aprendizado de máquina para identificação automática de 136 espécies de aves ameaçadas de extinção, comparando RNC/CNN, MVS/SVM e MOM/HMM entre o Cenário A (Controle) e o Cenário B (Proposto).',
   },
   {
-    period: 'MAI 2024 — SET 2025',
-    role: 'Desenvolvedor Mobile — Projeto ShapeMeApp',
+    period: '09/2025 — 01/2026',
+    role: 'Desenvolvedor Java',
     org: 'IF Sudeste MG — Campus Rio Pomba',
-    tag: 'DESENVOLVIMENTO MOBILE & EXTENSÃO',
+    tag: 'ENGENHARIA DE SOFTWARE & PERSISTÊNCIA RELACIONAL',
     description:
-      'Implementação de interfaces reativas em React Native e integração com Firebase para coleta de Percepção Subjetiva de Esforço (PSE) e análise de cargas de treinamento esportivo.',
+      'Engenharia de software com levantamento de requisitos, modelagem em diagramas UML, Programação Orientada a Objetos em Java, persistência com JPA/PostgreSQL e autenticação segura com BCrypt.',
   },
   {
-    period: 'ABR 2024 — AGO 2024',
-    role: 'Instrutor de Programação Orientada a Objetos em Java',
-    org: 'IF Sudeste MG — Projeto de Extensão',
-    tag: 'DOCÊNCIA TÉCNICA',
+    period: '08/2024 — 01/2026',
+    role: 'Desenvolvedor Mobile Júnior — Projeto ShapeMeApp',
+    org: 'IF Sudeste MG — Campus Rio Pomba',
+    tag: 'EXTENSÃO TECNOLÓGICA • REACT NATIVE & FIREBASE',
     description:
-      'Formação técnica de estudantes em fundamentos de orientação a objetos, encapsulamento, herança, polimorfismo e boas práticas de projeto na linguagem Java.',
+      'Atuação no projeto de extensão "Emagreça na Musculação no IF Sudeste MG - Campus Rio Pomba" (ShapeMeApp), realizando QA, testes de usabilidade, evolução mobile em React Native/Expo, modelagem NoSQL no Firebase e gestão ágil com Jira e GitHub.',
   },
   {
-    period: 'SET 2023 — SET 2024',
-    role: 'Diretor de Marketing & Desenvolvedor Front-End',
+    period: '06/2022 — 11/2025',
+    role: 'Membro de Projetos / Validação e Prototipação',
     org: 'EmComp — Empresa Júnior de Computação (IF Sudeste MG)',
-    tag: 'LIDERANÇA & DESENVOLVIMENTO WEB',
+    tag: 'EMPRESA JÚNIOR • 100 HORAS CERTIFICADAS',
     description:
-      'Atuação dupla na gestão de comunicação institucional da empresa júnior e na implementação de interfaces web responsivas para clientes externos e projetos internos.',
+      'Atuação no desenvolvimento do site da Labclin, prototipação de sites e aplicativos, validação de UX/UI e organização de eventos técnicos junto ao Núcleo da Mata.',
+  },
+];
+
+const complementaryActivities = [
+  {
+    period: '03/2025 — 08/2025',
+    title: 'Monitor Voluntário de Linguagens Formais e Autômatos',
+    detail: 'IF Sudeste MG — Apoio acadêmico em autômatos, gramáticas e teoria da computação.',
+  },
+  {
+    period: '2025',
+    title: 'Ministrante de Minicurso Presencial: React com Firebase',
+    detail: 'IF Sudeste MG — Capacitação prática em interfaces reativas e integração em nuvem.',
+  },
+  {
+    period: '12/2023 — 08/2024',
+    title: 'Instrutor de Desenvolvimento Mobile (JavaScript & React Native)',
+    detail: 'IF Sudeste MG — Produção e gravação de 16 videoaulas técnicas sobre desenvolvimento mobile.',
+  },
+  {
+    period: '2020',
+    title: 'Voluntário no Curso "Python Básico pra Quem Tem Pressa"',
+    detail: 'IF Sudeste MG — Apoio na introdução prática à lógica e programação em Python.',
   },
 ];
 
@@ -110,80 +133,77 @@ const journalPreviews = [
   {
     code: 'CADERNO-01',
     category: 'PESQUISA EM IA & SINAIS',
-    title: 'Espectrogramas Mel e MFCC na Classificação de Aves Ameaçadas: Cenário A vs. Cenário B',
+    title: 'Espectrogramas Mel e MFCC na Classificação de 136 Espécies Ameaçadas: Cenário A vs. Cenário B',
     excerpt:
-      'Análise técnica de como a representação tempo-frequência e o balanceamento espectral impactaram a transição de modelos estatísticos clássicos (SVM e GMM-HMM) para Redes Neurais Convolucionais com F1-weighted de 0,82.',
-    meta: 'Baseado na publicação VII CoBICET (ISSN 2764-0582)',
+      'Análise técnica comparando SVM (MVS), GMM-HMM (MOM) e CNN (RNC) sobre áudios do Xeno-Canto entre o Cenário A (Controle) e o Cenário B (Proposto), no qual a CNN atingiu F1-weighted de 0,82 (~82% de acurácia).',
+    meta: 'Publicado nos Anais do VII CoBICET (ISSN 2764-0582) e XVIII EAMC (2026)',
   },
   {
     code: 'CADERNO-02',
-    category: 'ENGENHARIA MOBILE',
-    title: 'Modelagem de Carga Interna de Treinamento (PSE × Duração) com React Native e Firebase',
+    category: 'ENGENHARIA MOBILE & EXTENSÃO',
+    title: 'Evolução de Software em Ambientes Acadêmicos: ShapeMeApp, CIT, Monotonia e Strain',
     excerpt:
-      'Decisões arquiteturais do ShapeMeApp para transformar escalas clínicas de percepção de esforço em séries temporais acionáveis para prevenção de lesões no esporte.',
-    meta: 'Estudo de Caso Institucional — SIMEPE 2025',
+      'Arquitetura em React Native, Expo SDK, Firebase Auth, Cloud Firestore e AsyncStorage para acompanhamento de alunos, professores e coordenação a partir de feedbacks reais de usabilidade.',
+    meta: 'Apresentado no VII SIMEPE (2025) — IF Sudeste MG',
   },
   {
     code: 'CADERNO-03',
-    category: 'SISTEMAS DE JOGOS',
-    title: 'Desacoplamento Client/Server e Máquinas de Estado em Sistemas de Combate e Mutação',
+    category: 'ENGENHARIA WEB & GAME SYSTEMS',
+    title: 'Migração Headless com Astro + Sanity.io e Sistemas Roguelite em Luau/Blender',
     excerpt:
-      'Padrões de engenharia aplicados no projeto Núcleo Selvagem e no ensino de programação de jogos para garantir validação autoritativa e responsividade visual.',
-    meta: 'Notas de Arquitetura — Luau & Game Systems',
+      'Decisões práticas de engenharia na entrega comercial do Lundgren Atelier em Cloudflare Pages e na arquitetura de expedições, evolução genética e Base Pessoal 2.0 do Núcleo Selvagem.',
+    meta: 'Notas de Arquitetura — Produção Web & Game Dev Lab',
   },
 ];
 
 const skillGroups = [
   {
-    title: 'Linguagens & Fundamentos',
+    title: 'Linguagens & Backend',
     code: 'GRP-01',
     items: [
-      'Python',
-      'TypeScript',
-      'JavaScript (ES6+)',
-      'Java (POO)',
-      'C++',
-      'SQL',
-      'Luau',
-      'Estruturas de Dados & Algoritmos',
+      'Python (Flask / POO / Dados)',
+      'TypeScript & JavaScript',
+      'Java (POO / JPA / BCrypt)',
+      'Luau / Lua (Roblox Studio)',
+      'SQL & PostgreSQL',
+      'Modelagem UML & Requisitos',
     ],
   },
   {
     title: 'Engenharia Web & Mobile',
     code: 'GRP-02',
     items: [
-      'React Native',
+      'React Native & Expo SDK',
       'React',
-      'Astro',
+      'Astro & Tailwind CSS',
+      'Sanity.io (Headless CMS)',
       'Node.js',
-      'Tailwind CSS',
-      'HTML5 & CSS3 Semântico',
-      'Firebase (Auth / Firestore)',
-      'Arquitetura REST',
+      'Firebase (Auth / Firestore) & AsyncStorage',
+      'Cloudflare Pages',
     ],
   },
   {
     title: 'IA, Ciência de Dados & Bioacústica',
     code: 'GRP-03',
     items: [
-      'TensorFlow & Keras',
-      'Scikit-Learn (SVM / Métricas)',
-      'Redes Neurais Convolucionais (CNN)',
-      'GMM-HMM',
-      'Processamento Digital de Sinais (MFCC / Mel)',
-      'Pandas & NumPy',
+      'Redes Neurais Convolucionais (CNN / RNC)',
+      'Máquinas de Vetores de Suporte (SVM / MVS)',
+      'Modelos Ocultos de Markov (GMM-HMM / MOM)',
+      'Espectrogramas Mel & MFCC',
+      'Base Xeno-Canto (136 espécies)',
+      'Ciência de Dados & IA',
     ],
   },
   {
-    title: 'Game Dev, Ferramentas & Idiomas',
+    title: 'Game Dev, 3D & Metodologias',
     code: 'GRP-04',
     items: [
-      'Roblox Studio (Arquitetura Luau)',
-      'Sistemas Modulares Client/Server',
-      'Git & GitHub',
-      'Linux & Linha de Comando',
-      'Metodologias Ágeis (Scrum)',
-      'Inglês Avançado (Conversação & Docência)',
+      'Roblox Studio & Unity',
+      'Blender & SculptGL (Modelagem 3D)',
+      'Scratch & Construct',
+      'Git, GitHub & Jira',
+      'Scrum, QA & Testes de Usabilidade',
+      'Metodologia PBL (Ensino de Tecnologia)',
     ],
   },
 ];
@@ -191,7 +211,7 @@ const skillGroups = [
 
 <BaseLayout
   title="Juan Silva Garcia — Engenharia de Software, Pesquisa em IA & Sistemas Interativos"
-  description="Portfólio profissional e acadêmico de Juan Silva Garcia. Graduando em Ciência da Computação (IF Sudeste MG), desenvolvedor de software, pesquisador publicado em Inteligência Artificial aplicada à bioacústica e criador de sistemas interativos."
+  description="Portfólio profissional e acadêmico de Juan Silva Garcia (GARCIA, J. S.). Graduando em Ciência da Computação e Técnico em Informática (IF Sudeste MG), desenvolvedor Web/Mobile/Java, pesquisador publicado em IA aplicada à bioacústica (VII CoBICET, ISSN 2764-0582) e Professor Tutor na CNA Digital e Kodland."
 >
   <Header />
 
@@ -212,10 +232,10 @@ const skillGroups = [
       </h1>
 
       <p class="mt-6 text-base sm:text-lg text-text-secondary leading-[1.65] max-w-[65ch]">
-        Sou <strong class="text-text-primary font-semibold">Juan Silva Garcia</strong>, graduando no 7º período de
-        Ciência da Computação pelo IF Sudeste MG. Desenvolvo aplicações web e mobile em produção, pesquiso
-        aprendizado de máquina aplicado ao processamento de sinais bioacústicos e projeto arquiteturas modulares para
-        jogos digitais e ensino técnico.
+        Sou <strong class="text-text-primary font-semibold">Juan Silva Garcia</strong> (<code class="text-[13px] font-mono text-accent-text">GARCIA, J. S.</code>),
+        graduando em Ciência da Computação e Técnico em Informática pelo IF Sudeste MG — Campus Rio Pomba. Desenvolvo
+        sistemas web, mobile e Java, pesquiso aprendizado de máquina aplicado à bioacústica de espécies ameaçadas e
+        atuo como Professor Tutor de programação, jogos e IA na CNA Digital e na Kodland.
       </p>
 
       <div class="mt-8 flex flex-wrap items-center gap-3.5">
@@ -223,21 +243,19 @@ const skillGroups = [
           href="#projetos"
           class="min-h-[44px] px-6 py-2.5 inline-flex items-center justify-center bg-accent-solid hover:bg-accent-solid-hover text-white font-medium text-sm transition-colors"
         >
-          Explorar Projetos & Pesquisa
+          Explorar Projetos Selecionados
         </a>
         <a
           href="#experiencia"
           class="min-h-[44px] px-6 py-2.5 inline-flex items-center justify-center bg-bg-surface hover:bg-bg-elevated text-text-primary border border-border-control hover:border-accent-text font-medium text-sm transition-colors"
         >
-          Ver Trajetória Completa
+          Trajetória & Experiência
         </a>
         <a
-          href="http://lattes.cnpq.br/9434044887106048"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#contato"
           class="min-h-[44px] px-4 py-2.5 inline-flex items-center justify-center font-mono text-[13px] leading-normal text-accent-text hover:underline"
         >
-          Currículo Lattes (CNPq) ↗
+          Contato Direto →
         </a>
       </div>
 
@@ -246,34 +264,35 @@ const skillGroups = [
         <div class="border border-border-subtle bg-bg-surface p-5 space-y-1.5">
           <div class="flex items-center justify-between font-mono text-[13px] leading-normal text-text-secondary">
             <span>PUBLICAÇÃO CIENTÍFICA</span>
-            <span class="text-metric-accent">2026</span>
+            <span class="text-metric-accent">05/08/2026</span>
           </div>
           <p class="text-base font-semibold text-text-primary">Anais VII CoBICET (ISSN 2764-0582)</p>
           <p class="text-[13px] text-text-secondary leading-normal">
-            Classificação bioacústica de aves ameaçadas com CNN atingindo F1-weighted de 0,82 (~82% de acurácia).
+            Classificação acústica de 136 espécies de aves ameaçadas: CNN com F1-weighted de 0,82 (~82% de acurácia) no
+            Cenário B (Proposto).
           </p>
         </div>
 
         <div class="border border-border-subtle bg-bg-surface p-5 space-y-1.5">
           <div class="flex items-center justify-between font-mono text-[13px] leading-normal text-text-secondary">
-            <span>ENGENHARIA DE SOFTWARE</span>
+            <span>ENGENHARIA WEB, MOBILE & JAVA</span>
             <span class="text-metric-accent">PRODUÇÃO</span>
           </div>
-          <p class="text-base font-semibold text-text-primary">Web Freelance & Extensão Mobile</p>
+          <p class="text-base font-semibold text-text-primary">Lundgren Atelier & ShapeMeApp</p>
           <p class="text-[13px] text-text-secondary leading-normal">
-            Plataforma Lundgren Atelier em domínio próprio e aplicativo multiplataforma ShapeMeApp (React Native +
-            Firebase).
+            Website comercial em Astro + Sanity.io + Cloudflare Pages e app Android em React Native + Expo + Firebase
+            (VII SIMEPE 2025).
           </p>
         </div>
 
         <div class="border border-border-subtle bg-bg-surface p-5 space-y-1.5">
           <div class="flex items-center justify-between font-mono text-[13px] leading-normal text-text-secondary">
-            <span>DOCÊNCIA & COMUNICAÇÃO</span>
+            <span>DOCÊNCIA TECNOLÓGICA</span>
             <span class="text-metric-accent">ATIVO</span>
           </div>
-          <p class="text-base font-semibold text-text-primary">Professor Tutor (Kodland & CNA)</p>
+          <p class="text-base font-semibold text-text-primary">Professor Tutor (CNA Digital & Kodland)</p>
           <p class="text-[13px] text-text-secondary leading-normal">
-            Ensino de Python, arquitetura Luau/Roblox Studio e facilitação de conversação avançada em inglês.
+            Ensino prático de Python (Flask/POO), React, Roblox Studio/Luau, Unity, modelagem 3D no Blender e IA.
           </p>
         </div>
       </div>
@@ -290,44 +309,45 @@ const skillGroups = [
             Rigor científico aliado à entrega de software funcional.
           </h2>
           <p class="text-sm text-text-secondary leading-relaxed">
-            Minha formação no IF Sudeste MG combina base matemática sólida, experimentação controlada em Inteligência
-            Artificial e desenvolvimento de produtos reais para web, dispositivos móveis e ambientes interativos.
+            Minha trajetória no IF Sudeste MG — Campus Rio Pomba integra formação técnica em Informática, graduação em
+            Ciência da Computação, pesquisa experimental publicada em Inteligência Artificial e entrega de sistemas
+            web, mobile, Java e jogos autorais.
           </p>
         </div>
 
         <div class="lg:col-span-7 border border-border-subtle bg-bg-surface p-6 space-y-4">
           <div class="flex items-center justify-between border-b border-border-subtle pb-3 font-mono text-[13px] leading-normal">
-            <span class="text-accent-text">FORMAÇÃO & CREDENCIAIS COMPROVADAS</span>
+            <span class="text-accent-text">FORMAÇÃO & CREDENCIAIS COMPROVADAS (GARCIA, J. S.)</span>
             <span class="text-metric-accent">VERIFICADO</span>
           </div>
 
           <dl class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
             <div class="space-y-1">
-              <dt class="font-mono text-[13px] leading-normal text-text-secondary">GRADUAÇÃO PRINCIPAL</dt>
+              <dt class="font-mono text-[13px] leading-normal text-text-secondary">GRADUAÇÃO EM ANDAMENTO</dt>
               <dd class="font-medium text-text-primary">Bacharelado em Ciência da Computação (2022–2026)</dd>
               <dd class="text-[13px] leading-normal text-text-secondary">IF Sudeste MG — Campus Rio Pomba</dd>
             </div>
 
             <div class="space-y-1">
-              <dt class="font-mono text-[13px] leading-normal text-text-secondary">BASE TÉCNICA ANTERIOR</dt>
-              <dd class="font-medium text-text-primary">Técnico em Agroecologia (2019–2021)</dd>
+              <dt class="font-mono text-[13px] leading-normal text-text-secondary">FORMAÇÃO TÉCNICA</dt>
+              <dd class="font-medium text-text-primary">Técnico em Informática (2019–2021 / Lattes 2019–2022)</dd>
               <dd class="text-[13px] leading-normal text-text-secondary">
-                IF Sudeste MG — Base interdisciplinar para pesquisa ambiental e bioacústica
+                IF Sudeste MG — Campus Rio Pomba
               </dd>
             </div>
 
             <div class="space-y-1">
-              <dt class="font-mono text-[13px] leading-normal text-text-secondary">EVENTOS & SIMPÓSIOS</dt>
-              <dd class="font-medium text-text-primary">Expositor no SIMEPE 2025</dd>
+              <dt class="font-mono text-[13px] leading-normal text-text-secondary">PUBLICAÇÕES & EVENTOS</dt>
+              <dd class="font-medium text-text-primary">VII CoBICET (2026), XVIII EAMC (2026) & VII SIMEPE (2025)</dd>
               <dd class="text-[13px] leading-normal text-text-secondary">
-                Apresentação oral e técnica de pesquisas em IA e desenvolvimento mobile
+                Coautoria com Maurício A. N. Coelho (Bioacústica) e equipe ShapeMeApp
               </dd>
             </div>
 
             <div class="space-y-1">
-              <dt class="font-mono text-[13px] leading-normal text-text-secondary">REGISTRO CIENTÍFICO</dt>
-              <dd class="font-medium text-text-primary">Capítulo Publicado — VII CoBICET</dd>
-              <dd class="text-[13px] leading-normal font-mono text-metric-accent">ISSN: 2764-0582 (2026)</dd>
+              <dt class="font-mono text-[13px] leading-normal text-text-secondary">REGISTRO BIBLIOGRÁFICO</dt>
+              <dd class="font-medium text-text-primary">Trabalho Completo — Editora Even3 (05/08/2026)</dd>
+              <dd class="text-[13px] leading-normal font-mono text-metric-accent">ISSN: 2764-0582 • Lattes CNPq</dd>
             </div>
           </dl>
         </div>
@@ -342,7 +362,7 @@ const skillGroups = [
             01. Projetos Selecionados & Pesquisa Aplicada
           </span>
           <h2 id="projetos-heading" class="text-2xl sm:text-3xl font-semibold tracking-[-0.015em] text-text-primary">
-            Sistemas em Produção, Mobile e Inteligência Artificial
+            Sistemas em Produção, Mobile, IA e Jogos Autorais
           </h2>
         </div>
         <p class="font-mono text-[13px] leading-normal text-text-secondary">
@@ -400,20 +420,19 @@ const skillGroups = [
       </div>
     </section>
 
-    <!-- 4. GAME DEVELOPMENT LAB (SEÇÃO DEDICADA) -->
+    <!-- 4. GAME DEVELOPMENT LAB (SEÇÃO DEDICADA — NÚCLEO SELVAGEM) -->
     <section id="game-lab" aria-labelledby="gamelab-heading" class="py-16 border-b border-border-subtle space-y-8">
       <div class="space-y-2">
         <span class="font-mono text-[13px] leading-normal uppercase tracking-wider text-accent-text block">
           02. Game Development Lab — Núcleo Selvagem
         </span>
         <h2 id="gamelab-heading" class="text-2xl sm:text-3xl font-semibold tracking-[-0.015em] text-text-primary">
-          Engenharia de Sistemas Interativos e Arquitetura Luau
+          Roguelite Autoral em Luau, Roblox Studio e Modelagem 3D no Blender
         </h2>
         <p class="text-sm sm:text-base text-text-secondary max-w-[65ch] leading-relaxed">
-          Mais do que entretenimento, o desenvolvimento de jogos exige controle rigoroso de estado, sincronização em
-          rede e baixa latência. No projeto autoral <strong class="text-text-primary">Núcleo Selvagem</strong> e na
-          docência na <strong class="text-text-primary">Kodland</strong>, aplico padrões de engenharia de software para
-          construir mecânicas modulares e escaláveis.
+          Apresentado exclusivamente como projeto autoral deste laboratório, <strong class="text-text-primary">Núcleo Selvagem</strong> é um
+          roguelite de criaturas mutantes em desenvolvimento, combinando expedições procedurais, evolução genética e
+          sistema de Base Pessoal 2.0 com programação modular em Luau (Roblox Studio) e assets 3D modelados no Blender.
         </p>
       </div>
 
@@ -422,39 +441,51 @@ const skillGroups = [
           <div class="flex items-center gap-3">
             <span class="w-2.5 h-2.5 rounded-full bg-metric-accent" aria-hidden="true"></span>
             <span class="font-mono text-[13px] leading-normal font-medium text-text-primary">
-              ARQUITETURA DE SISTEMAS — NÚCLEO SELVAGEM (ROBLOX STUDIO / LUAU)
+              ARQUITETURA DE SISTEMAS — NÚCLEO SELVAGEM (ROBLOX STUDIO / LUAU / BLENDER)
             </span>
           </div>
-          <span class="font-mono text-[13px] leading-normal text-accent-text">CLIENT / SERVER SEPARATION</span>
+          <span class="font-mono text-[13px] leading-normal text-accent-text">EM DESENVOLVIMENTO</span>
         </div>
 
         <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="border border-border-subtle bg-bg-canvas p-5 space-y-2">
-            <div class="font-mono text-[13px] leading-normal text-accent-text">SYS-01 // COMBATE & FÍSICA</div>
-            <h3 class="text-base font-semibold text-text-primary">Validação Autoritativa no Servidor</h3>
+            <div class="font-mono text-[13px] leading-normal text-accent-text">SYS-01 // EXPEDIÇÕES ROGUELITE</div>
+            <h3 class="text-base font-semibold text-text-primary">Ciclo de Incursão & Progressão</h3>
             <p class="text-[13px] text-text-secondary leading-relaxed">
-              Separação entre predição visual no cliente e cálculo real de colisão, dano e tempo de recarga no
-              servidor para mitigar trapaças e manter fluidez.
+              Estrutura de partidas focada em expedições de risco e recompensa, coleta de recursos genéticos e retorno
+              estratégico para evolução contínua.
             </p>
           </div>
 
           <div class="border border-border-subtle bg-bg-canvas p-5 space-y-2">
-            <div class="font-mono text-[13px] leading-normal text-accent-text">SYS-02 // ÁRVORE DE MUTAÇÕES</div>
-            <h3 class="text-base font-semibold text-text-primary">Composição Modular de Atributos</h3>
+            <div class="font-mono text-[13px] leading-normal text-accent-text">SYS-02 // EVOLUÇÃO GENÉTICA</div>
+            <h3 class="text-base font-semibold text-text-primary">Criaturas Mutantes & Atributos</h3>
             <p class="text-[13px] text-text-secondary leading-relaxed">
-              Modelagem orientada a dados em Luau onde habilidades e adaptações biológicas alteram atributos base sem
-              acoplamento rígido entre classes de criaturas.
+              Sistema modular em Luau para combinação de mutações, adaptação morfológica e sinergias de combate com
+              modelos 3D autorais produzidos no Blender.
             </p>
           </div>
 
           <div class="border border-border-subtle bg-bg-canvas p-5 space-y-2">
-            <div class="font-mono text-[13px] leading-normal text-accent-text">SYS-03 // TELEMETRIA & ENSINO</div>
-            <h3 class="text-base font-semibold text-text-primary">Didática Aplicada em Engenharia</h3>
+            <div class="font-mono text-[13px] leading-normal text-accent-text">SYS-03 // BASE PESSOAL 2.0</div>
+            <h3 class="text-base font-semibold text-text-primary">Persistência & Gestão de Estado</h3>
             <p class="text-[13px] text-text-secondary leading-relaxed">
-              Experiência prática como tutor na Kodland decompondo máquinas de estado, eventos remotos e lógica em
-              Python/Luau para novos desenvolvedores.
+              Arquitetura da Base Pessoal 2.0 integrando gerenciamento de estruturas, incubação e estado persistente
+              entre sessões no Roblox Studio.
             </p>
           </div>
+        </div>
+
+        <div class="px-6 py-4 border-t border-border-subtle bg-bg-canvas/60 flex flex-wrap items-center justify-between gap-4">
+          <span class="font-mono text-[13px] leading-normal text-text-secondary">
+            STACK: ROBLOX STUDIO • LUAU • BLENDER 3D
+          </span>
+          <a
+            href="#contato"
+            class="min-h-[44px] inline-flex items-center font-mono text-[13px] leading-normal text-accent-text hover:underline"
+          >
+            Solicitar Demonstração Técnica →
+          </a>
         </div>
       </div>
     </section>
@@ -466,7 +497,7 @@ const skillGroups = [
           03. Experiência Profissional, Pesquisa & Ensino
         </span>
         <h2 id="experiencia-heading" class="text-2xl sm:text-3xl font-semibold tracking-[-0.015em] text-text-primary">
-          Trajetória Cronológica Verificada (2023 — 2026)
+          Trajetória Cronológica Comprovada (2022 — 2026)
         </h2>
       </div>
 
@@ -487,6 +518,25 @@ const skillGroups = [
             </article>
           ))
         }
+      </div>
+
+      <!-- Atuações Acadêmicas Complementares Comprovadas -->
+      <div class="border border-border-subtle bg-bg-surface p-6 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-border-subtle pb-3 font-mono text-[13px] leading-normal">
+          <span class="text-accent-text">ATUAÇÕES ACADÊMICAS & MONITORIAS COMPLEMENTARES (IF SUDESTE MG)</span>
+          <span class="text-metric-accent">LATTES VERIFICADO</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {
+            complementaryActivities.map((act) => (
+              <div class="border border-border-subtle bg-bg-canvas p-4 space-y-1">
+                <div class="font-mono text-[13px] leading-normal text-metric-accent">{act.period}</div>
+                <h3 class="text-sm font-semibold text-text-primary">{act.title}</h3>
+                <p class="text-[13px] leading-normal text-text-secondary">{act.detail}</p>
+              </div>
+            ))
+          }
+        </div>
       </div>
     </section>
 
@@ -573,37 +623,37 @@ const skillGroups = [
             Vamos conversar sobre engenharia de software, pesquisa ou novos projetos?
           </h2>
           <p class="text-sm sm:text-base text-text-secondary leading-relaxed max-w-[58ch]">
-            Estou disponível para oportunidades em desenvolvimento de software (Web/Mobile), projetos de pesquisa e
-            desenvolvimento em IA ou colaborações técnicas.
+            Estou disponível para oportunidades em desenvolvimento de software (Web, Mobile e Java), projetos de
+            pesquisa aplicada em IA ou docência e consultoria técnica.
           </p>
         </div>
 
         <div class="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-3">
           <a
-            href="mailto:juangarcia@ifsudestemg.edu.br"
+            href="mailto:juansilvagarcia11037@gmail.com"
             class="min-h-[44px] px-5 py-3 flex items-center justify-between bg-accent-solid hover:bg-accent-solid-hover text-white font-mono text-[13px] leading-normal transition-colors"
           >
-            <span>juangarcia@ifsudestemg.edu.br</span>
+            <span>E-MAIL DIRETO // juansilvagarcia11037@gmail.com</span>
             <span aria-hidden="true">↗</span>
           </a>
 
           <a
-            href="https://github.com/Juan-Garcia01"
+            href="https://github.com/Juanzit"
             target="_blank"
             rel="noopener noreferrer"
             class="min-h-[44px] px-5 py-3 flex items-center justify-between border border-border-control bg-bg-canvas hover:border-accent-text text-text-primary font-mono text-[13px] leading-normal transition-colors"
           >
-            <span>github.com/Juan-Garcia01</span>
+            <span>GITHUB // github.com/Juanzit</span>
             <span class="text-accent-text" aria-hidden="true">↗</span>
           </a>
 
           <a
-            href="https://www.linkedin.com/in/juan-silva-garcia/"
+            href="https://www.linkedin.com/in/juan-garcia--/"
             target="_blank"
             rel="noopener noreferrer"
             class="min-h-[44px] px-5 py-3 flex items-center justify-between border border-border-control bg-bg-canvas hover:border-accent-text text-text-primary font-mono text-[13px] leading-normal transition-colors"
           >
-            <span>linkedin.com/in/juan-silva-garcia</span>
+            <span>LINKEDIN // linkedin.com/in/juan-garcia--</span>
             <span class="text-accent-text" aria-hidden="true">↗</span>
           </a>
 
@@ -613,7 +663,7 @@ const skillGroups = [
             rel="noopener noreferrer"
             class="min-h-[44px] px-5 py-3 flex items-center justify-between border border-border-control bg-bg-canvas hover:border-accent-text text-text-primary font-mono text-[13px] leading-normal transition-colors"
           >
-            <span>Currículo Lattes (CNPq)</span>
+            <span>CURRÍCULO LATTES // lattes.cnpq.br/9434044887106048</span>
             <span class="text-metric-accent" aria-hidden="true">↗</span>
           </a>
         </div>
