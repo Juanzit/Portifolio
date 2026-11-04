@@ -9,7 +9,7 @@
 - **Separação Estruturada de Dados ([src/data/portfolio.ts](file:///c:/Projetos/Portifolio/src/data/portfolio.ts))**:
   - Os conjuntos completos de experiências, formação acadêmica, produção científica (diferenciando estritamente `Artigo Completo Publicado em Anais` de `Apresentação de Trabalho em Evento`), certificações/extensão e projetos secundários foram estruturados em módulo tipado próprio, preparando a separação para as páginas internas das próximas fases sem sobrecarregar a Home.
 - **Redução da Extensão da Home ([src/pages/index.astro](file:///c:/Projetos/Portifolio/src/pages/index.astro))**:
-  - Redução de `972` para `542` linhas de código (`-44,2%`), reduzindo a altura total renderizada no Desktop (`1440×900`) de `9.384 px` para `7.032 px` (`-25,1%`) e no Mobile (`390×844`) de `16.052 px` para `12.572 px` (`-21,7%`).
+  - Redução de `972` para `511` linhas de código (`-47,4%`), reduzindo a altura total renderizada no Desktop (`1440×900`) de `9.384 px` (~10,4 telas) para `5.752 px` (~6,4 telas, `-38,7%`) e no Mobile (`390×844`) de `16.052 px` (~19,0 telas) para `11.109 px` (~13,2 telas, `-30,8%`).
   - Estrutura enxuta em **5 seções**:
     1. **Hero Editorial**: texto pessoal aprovado + linha discreta de competências principais (`React Native · Python / Machine Learning · Java · JavaScript`).
     2. **Quatro Projetos em Destaque (`#projetos`)**: composições individualizadas preservadas (`Lundgren Atelier` com `fetchpriority="high"`, `Detecção Acústica de Aves Ameaçadas`, `ShapeMeApp` e `Núcleo Selvagem`).

@@ -1,7 +1,7 @@
 # Changelog
 
 ## 0.7.0 — Fase 2.3: Redução da Extensão da Home, Auditoria Factual, Correção de Imagens e Inclusão do LinkedIn
-- **Redução da Extensão da Home (`src/pages/index.astro`, `src/data/portfolio.ts`, `Header.astro`)**: enxugamento de `972` para `542` linhas (`-44,2%`) e redução de `-25,1%` na altura vertical desktop (`9.384 px` → `7.032 px`), preservando Hero, 4 projetos principais com composições próprias, seleção compacta de outros projetos, resumo breve da trajetória e contato.
+- **Redução da Extensão da Home (`src/pages/index.astro`, `src/data/portfolio.ts`, `Header.astro`)**: enxugamento de `972` para `511` linhas (`-47,4%`) e redução de `-38,7%` na altura vertical desktop (`9.384 px` → `5.752 px`), preservando Hero, 4 projetos principais com composições próprias, seleção compacta de outros projetos (`ArchFlow` e `Blade of Albaia` lado a lado + grade `2×2`), resumo breve da trajetória e contato.
 - **Separação Arquitetural de Dados (`src/data/portfolio.ts`)**: criação de módulo tipado centralizando os registros completos para uso futuro nas páginas internas sem sobrecarregar a Home.
 - **Correção e Ampliação das Imagens do `Blade of Albaia`**: identificação e recodificação de `albaiaquestmenu.png` (que possuía assinatura binária JPEG `FF D8 FF E0` com extensão `.png`) para PNG legítimo (`89 50 4E 47`), além da inclusão da captura oficial de gameplay `images/screenshot.png` (`799×578`).
 - **Linha de Tecnologias no Hero e Inclusão do LinkedIn**: adição da linha discreta `React Native · Python / Machine Learning · Java · JavaScript` no Hero e inclusão de `https://www.linkedin.com/in/juan-garcia--/` na seção de contato.
