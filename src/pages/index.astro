@@ -7,7 +7,7 @@ import {
   archFlowProject,
   bladeOfAlbaiaProject,
   compactOtherProjects,
-  experiences,
+  featuredExperiences,
   education,
   contactLinks,
 } from '../data/portfolio';
@@ -589,43 +589,43 @@ import {
       </div>
     </section>
 
-    <!-- 4. RESUMO BREVE DA TRAJETÓRIA (EXPERIÊNCIA, FORMAÇÃO & PRODUÇÃO CIENTÍFICA DISTINTA) -->
-    <section id="trajetoria" aria-labelledby="trajetoria-heading" class="py-12 sm:py-14 border-b border-border-subtle">
+    <!-- 4. RESUMO BREVE DA TRAJETÓRIA (SELEÇÃO DE 4 EXPERIÊNCIAS, FORMAÇÃO EM 2 LINHAS & PUBLICAÇÃO PRINCIPAL) -->
+    <section id="trajetoria" aria-labelledby="trajetoria-heading" class="py-10 sm:py-12 border-b border-border-subtle">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-        <!-- Coluna Esquerda (5 cols): Síntese de Formação, Publicação em Anais vs. Apresentações e Extensão -->
-        <div class="lg:col-span-5 space-y-6">
-          <div class="space-y-2">
+        <!-- Coluna Esquerda (5 cols): Formação em 2 linhas e Destaque da Publicação Principal -->
+        <div class="lg:col-span-5 space-y-5">
+          <div class="space-y-1.5">
             <p class="text-[13px] leading-normal font-mono text-accent-text">Resumo da Trajetória</p>
             <h2
               id="trajetoria-heading"
               class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.015em] text-text-primary leading-tight"
             >
-              Experiência, formação e produção acadêmica
+              Formação, publicação e experiências selecionadas
             </h2>
           </div>
 
-          <!-- Formação Acadêmica Compacta -->
-          <div id="formacao" class="space-y-2.5 border-t border-border-subtle pt-4">
+          <!-- Formação Acadêmica em Duas Linhas -->
+          <div id="formacao" class="space-y-2 border-t border-border-subtle pt-3.5">
             <h3 class="font-mono text-[13px] leading-normal text-accent-text uppercase tracking-wider">
-              Formação no IF Sudeste MG — Campus Rio Pomba
+              Formação · IF Sudeste MG (Campus Rio Pomba)
             </h3>
-            <div class="space-y-2.5">
+            <ul class="space-y-1.5 text-sm">
               {
                 education.map((edu) => (
-                  <div class="border-l-2 border-metric-accent pl-3.5">
-                    <div class="font-mono text-[13px] leading-normal text-metric-accent">{edu.period}</div>
-                    <div class="font-display text-base font-medium text-text-primary">{edu.degree}</div>
-                  </div>
+                  <li class="flex items-baseline justify-between gap-3">
+                    <span class="font-display text-base font-medium text-text-primary">{edu.degree}</span>
+                    <span class="font-mono text-[13px] leading-normal text-metric-accent shrink-0">{edu.period}</span>
+                  </li>
                 ))
               }
-            </div>
+            </ul>
           </div>
 
-          <!-- Produção Científica (Distinção estrita entre Publicação em Anais e Apresentação em Evento) -->
-          <div id="publicacoes" class="space-y-2.5 border-t border-border-subtle pt-4">
+          <!-- Destaque para a Publicação Principal (com menção factual ao XVIII EAMC) -->
+          <div id="publicacoes" class="space-y-2 border-t border-border-subtle pt-3.5">
             <div class="flex items-baseline justify-between gap-2">
               <h3 class="font-mono text-[13px] leading-normal text-accent-text uppercase tracking-wider">
-                Publicação & Apresentações
+                Publicação Principal
               </h3>
               <a
                 href={contactLinks.lattesUrl}
@@ -633,56 +633,48 @@ import {
                 rel="noopener noreferrer"
                 class="min-h-[44px] inline-flex items-center font-mono text-[13px] leading-normal text-metric-accent hover:underline"
               >
-                Lattes ↗
+                Currículo Lattes ↗
               </a>
             </div>
 
-            <div class="space-y-2 text-sm">
-              <div class="bg-bg-surface border border-border-subtle p-3 space-y-0.5">
-                <div class="font-mono text-[13px] leading-normal text-metric-accent font-medium">
-                  Artigo Completo em Anais · VII CoBICET (2026 · ISSN 2764-0582)
-                </div>
-                <p class="font-medium text-text-primary leading-snug">
-                  Detecção Acústica de Aves Ameaçadas Utilizando Aprendizado de Máquina
-                </p>
-                <p class="text-[13px] leading-normal text-text-secondary">GARCIA, J. S.; COELHO, M. A. N.</p>
+            <div class="bg-bg-surface border border-border-subtle p-3.5 space-y-1">
+              <div class="font-mono text-[13px] leading-normal text-metric-accent font-medium">
+                Artigo Completo nos Anais · VII CoBICET (2026 · ISSN 2764-0582)
               </div>
-
-              <div class="bg-bg-surface border border-border-subtle p-3 space-y-0.5">
-                <div class="font-mono text-[13px] leading-normal text-accent-text">
-                  Apresentações de Trabalhos em Eventos (2025 — 2026)
-                </div>
-                <p class="text-[13px] leading-relaxed text-text-secondary">
-                  Apresentação da pesquisa de bioacústica no <strong class="text-text-primary font-medium">XVIII EAMC (2026)</strong> e apresentação do estudo sobre evolução do <strong class="text-text-primary font-medium">ShapeMeApp no VII SIMEPE (2025)</strong>.
-                </p>
-              </div>
+              <p class="font-display text-base font-medium text-text-primary leading-snug">
+                Detecção Acústica de Aves Ameaçadas Utilizando Aprendizado de Máquina
+              </p>
+              <p class="text-[13px] leading-normal text-text-secondary">
+                GARCIA, J. S.; COELHO, M. A. N. · Editora Even3 (05/08/2026) · Apresentado no <strong class="text-text-primary font-medium">XVIII EAMC / LNCC (2026)</strong>.
+              </p>
             </div>
-          </div>
-
-          <!-- Nota Compacta de Extensão & Certificações -->
-          <div id="certificacoes" class="border-t border-border-subtle pt-4 text-[13px] leading-relaxed text-text-secondary">
-            <span class="font-mono text-text-primary font-medium">Extensão & Certificações:</span> Empresa Júnior <strong class="text-text-primary font-medium">EmComp (100h certificadas)</strong>, Monitoria Voluntária de <strong class="text-text-primary font-medium">LFA (2025)</strong>, Minicurso <strong class="text-text-primary font-medium">React com Firebase (2025)</strong> e Instrutor Mobile (<strong class="text-text-primary font-medium">16 videoaulas</strong>).
           </div>
         </div>
 
-        <!-- Coluna Direita (7 cols): Linha do Tempo Resumida de Experiências -->
-        <div class="lg:col-span-7 divide-y divide-border-subtle border-t border-b border-border-subtle">
-          {
-            experiences.map((exp) => (
-              <article class="py-3.5 grid grid-cols-1 sm:grid-cols-12 gap-2.5 items-baseline">
-                <div class="sm:col-span-4 space-y-0.5">
-                  <div class="font-mono text-[13px] leading-normal text-metric-accent font-medium">{exp.period}</div>
-                  <div class="font-medium text-sm text-text-primary">{exp.org}</div>
-                  <div class="text-[13px] leading-normal text-text-secondary">{exp.meta}</div>
-                </div>
+        <!-- Coluna Direita (7 cols): Seleção de 4 Experiências Relevantes (Formato Compacto de 2 Linhas) -->
+        <div class="lg:col-span-7 space-y-2">
+          <div class="flex items-baseline justify-between gap-2 pb-1">
+            <h3 class="font-mono text-[13px] leading-normal text-accent-text uppercase tracking-wider">
+              Experiências Relevantes Selecionadas
+            </h3>
+            <span class="font-mono text-[13px] leading-normal text-text-secondary">2024 — Atual</span>
+          </div>
 
-                <div class="sm:col-span-8 space-y-0.5">
-                  <h3 class="font-display text-lg font-medium text-text-primary leading-snug">{exp.role}</h3>
+          <div class="divide-y divide-border-subtle border-t border-b border-border-subtle">
+            {
+              featuredExperiences.map((exp) => (
+                <article class="py-2.5 space-y-0.5">
+                  <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
+                    <h4 class="font-display text-lg font-medium text-text-primary leading-snug">{exp.role}</h4>
+                    <span class="font-mono text-[13px] leading-normal text-metric-accent font-medium shrink-0">
+                      {exp.org} · {exp.period}
+                    </span>
+                  </div>
                   <p class="text-sm text-text-secondary leading-relaxed">{exp.shortSummary}</p>
-                </div>
-              </article>
-            ))
-          }
+                </article>
+              ))
+            }
+          </div>
         </div>
       </div>
     </section>

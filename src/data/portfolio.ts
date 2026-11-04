@@ -173,8 +173,7 @@ export const experiences: ExperienceItem[] = [
     role: 'Professor Tutor de Programação e Tecnologia',
     org: 'CNA Digital',
     meta: '15h semanais · Ensino de Programação',
-    shortSummary:
-      'Trilhas de lógica, Scratch, Construct, modelagem 3D (Blender/SculptGL), Unity, Roblox Studio, React, Python, Ciência de Dados e IA.',
+    shortSummary: 'Python, React, Roblox Studio, Blender 3D, Unity, Ciência de Dados e IA.',
     fullDescription:
       'Condução de trilhas de lógica de programação, Scratch, Construct, modelagem 3D com Blender e SculptGL, Unity, Roblox Studio, React, Python, Ciência de Dados e Inteligência Artificial.',
   },
@@ -183,35 +182,32 @@ export const experiences: ExperienceItem[] = [
     role: 'Professor Tutor de Programação (Python, Lua & Scratch)',
     org: 'Kodland',
     meta: '12h semanais · Ensino de Programação',
-    shortSummary:
-      'Ensino prático para alunos de 8 a 16 anos em Scratch, Python (Flask, POO e bancos de dados) e Roblox Studio/Lua com metodologia PBL e Git.',
+    shortSummary: 'Ensino baseado em projetos (PBL) com Python/Flask, POO, Roblox Studio/Lua e Git.',
     fullDescription:
       'Ensino prático para alunos de 8 a 16 anos em Scratch, Python (Flask, POO e bancos de dados) e Roblox Studio/Lua, aplicando aprendizagem baseada em projetos (PBL), Scrum e Git/GitHub.',
   },
   {
     period: '06/2025 — 06/2026',
-    role: 'Pesquisador em Inteligência Artificial',
-    org: 'IF Sudeste MG — Campus Rio Pomba',
-    meta: 'Iniciação Científica',
-    shortSummary:
-      'Pré-processamento bioacústico (Mel e MFCC) e avaliação comparativa de classificadores (CNN, SVM e GMM-HMM) sobre 136 espécies de aves ameaçadas.',
+    role: 'Pesquisador em Inteligência Artificial (IC)',
+    org: 'IF Sudeste MG',
+    meta: 'Iniciação Científica · Campus Rio Pomba',
+    shortSummary: 'Pipelines bioacústicos (Mel/MFCC) e avaliação de CNN, SVM e GMM-HMM (136 espécies).',
     fullDescription:
       'Desenvolvimento de pipelines de pré-processamento acústico e modelos supervisionados (CNN/RNC, SVM/MVS e GMM-HMM/MOM) para identificação automática de 136 espécies de aves ameaçadas de extinção.',
   },
   {
     period: '08/2024 — 01/2026',
-    role: 'Desenvolvedor Mobile Júnior — Projeto ShapeMeApp',
-    org: 'IF Sudeste MG — Campus Rio Pomba',
-    meta: 'Projeto de Extensão',
-    shortSummary:
-      'Evolução mobile em React Native/Expo, modelagem NoSQL no Firebase, testes de usabilidade com usuários reais e QA.',
+    role: 'Desenvolvedor Mobile Júnior — ShapeMeApp',
+    org: 'IF Sudeste MG',
+    meta: 'Projeto de Extensão · Campus Rio Pomba',
+    shortSummary: 'Evolução mobile em React Native/Expo, modelagem Firebase e testes de usabilidade.',
     fullDescription:
       'Atuação no projeto "Emagreça na Musculação no IF Sudeste MG — Campus Rio Pomba", realizando evolução mobile em React Native/Expo, modelagem NoSQL no Firebase, testes de usabilidade, QA e gestão com Jira e GitHub.',
   },
   {
     period: '06/2022 — 11/2025',
     role: 'Membro de Projetos, Validação e Prototipação',
-    org: 'EmComp — Empresa Júnior de Computação (IF Sudeste MG)',
+    org: 'EmComp — Empresa Júnior (IF Sudeste MG)',
     meta: '100 horas certificadas',
     shortSummary:
       'Desenvolvimento web institucional, prototipação de interfaces, validação de UX/UI e organização de eventos técnicos.',
@@ -220,20 +216,27 @@ export const experiences: ExperienceItem[] = [
   },
 ];
 
+/**
+ * Seleção enxuta das 4 experiências principais para exibição resumida na Home.
+ * O histórico completo (`experiences`, `certificationsAndExtension` e `scientificOutputs`)
+ * permanece preservado neste módulo para as páginas internas futuras.
+ */
+export const featuredExperiences: ExperienceItem[] = experiences.slice(0, 4);
+
 export const education: EducationItem[] = [
   {
-    period: '2022 — Em andamento',
+    period: '2022 — Atual',
     degree: 'Bacharelado em Ciência da Computação',
     institution: 'IF Sudeste MG — Campus Rio Pomba',
     detail:
-      'Pesquisa aplicada em Inteligência Artificial, engenharia de software, estruturas de dados, grafos e desenvolvimento mobile/web.',
+      'Em andamento. Pesquisa aplicada em Inteligência Artificial, engenharia de software, estruturas de dados, grafos e desenvolvimento mobile/web.',
   },
   {
-    period: '2019 — 2021 (Lattes: 2019 — 2022)',
+    period: '2019 — 2021',
     degree: 'Técnico em Informática',
     institution: 'IF Sudeste MG — Campus Rio Pomba',
     detail:
-      'Formação técnica em lógica de programação, redes, bancos de dados, manutenção e desenvolvimento de sistemas.',
+      'Formação técnica em lógica de programação, redes, bancos de dados, manutenção e desenvolvimento de sistemas (registro Lattes: 2019 — 2022).',
   },
 ];
 
@@ -242,7 +245,7 @@ export const scientificOutputs: ScientificOutputItem[] = [
     year: '2026',
     dateDetail: '05/08/2026',
     category: 'publicacao_anais',
-    categoryLabel: 'Artigo Completo Publicado em Anais',
+    categoryLabel: 'Artigo Completo Publicado nos Anais',
     title: 'Detecção Acústica de Aves Ameaçadas Utilizando Aprendizado de Máquina',
     venue: 'Anais do VII Congresso Brasileiro Interdisciplinar em Ciência e Tecnologia (VII CoBICET) — Editora Even3',
     authors: 'GARCIA, J. S.; COELHO, M. A. N.',
@@ -252,16 +255,16 @@ export const scientificOutputs: ScientificOutputItem[] = [
     year: '2026',
     dateDetail: '2026',
     category: 'apresentacao_evento',
-    categoryLabel: 'Apresentação de Trabalho em Evento',
+    categoryLabel: 'Trabalho Apresentado em Evento',
     title: 'Detecção Acústica de Aves Ameaçadas Utilizando Aprendizado de Máquina',
-    venue: 'XVIII Encontro Acadêmico de Modelagem Computacional (XVIII EAMC)',
+    venue: 'XVIII Encontro Acadêmico de Modelagem Computacional (XVIII EAMC — LNCC)',
     authors: 'Juan Silva Garcia e Maurício Archanjo Nunes Coelho',
   },
   {
     year: '2025',
     dateDetail: '2025',
     category: 'apresentacao_evento',
-    categoryLabel: 'Apresentação de Trabalho em Simpósio',
+    categoryLabel: 'Trabalho Apresentado em Simpósio',
     title: 'Evolução de Software em Ambientes Acadêmicos: O ShapeMeApp e a Integração de Feedbacks Reais no Campus Rio Pomba',
     venue: 'VII Simpósio de Ensino, Pesquisa e Extensão (VII SIMEPE) — IF Sudeste MG',
     authors: 'Juan Silva Garcia, Gustavo Vaz Teixeira, Sérgio Muinhos Barroso Lima e João Batista Ferreira Júnior',
@@ -303,8 +306,8 @@ export const certificationsAndExtension: CertificationItem[] = [
 
 export const contactLinks = {
   email: 'juansilvagarcia11037@gmail.com',
-  linkedinUrl: 'https://www.linkedin.com/in/juan-garcia--/',
-  linkedinLabel: 'LinkedIn · /in/juan-garcia--',
+  linkedinUrl: 'https://br.linkedin.com/in/juan-silva-garcia',
+  linkedinLabel: 'in/juan-silva-garcia',
   githubUrl: 'https://github.com/Juanzit',
   githubLabel: 'github.com/Juanzit',
   lattesUrl: 'http://lattes.cnpq.br/9434044887106048',

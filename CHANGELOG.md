@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.0 — Fase 2.4: Síntese Efetiva da Trajetória, Atualização do LinkedIn Verificado e Auditoria de Desempenho (Medido vs. Estimado)
+- **Redução da Seção de Trajetória (`src/pages/index.astro`, `src/data/portfolio.ts`)**: transformação de `#trajetoria` em um resumo breve com **formação em 2 linhas**, **destaque único para a publicação principal** (*Anais do VII CoBICET 2026*, `ISSN 2764-0582`, com nota de apresentação no *XVIII EAMC / LNCC 2026*) e **seleção de 4 experiências relevantes** (`featuredExperiences`), reservando o histórico completo (`experiences`, `scientificOutputs`, `certificationsAndExtension`) em `src/data/portfolio.ts` para as futuras páginas internas.
+- **Correção da URL do LinkedIn (`https://br.linkedin.com/in/juan-silva-garcia`)**: atualização de todos os links de LinkedIn na Home para o perfil público verificado de Juan Silva Garcia (associado ao CNA+ e ao IF Sudeste MG).
+- **Auditoria Final de Altura e Desempenho**: altura final medida em Desktop (`1440×900`) de `5.465 px` (`6,1 telas`, `#trajetoria` com `576 px`) e em Mobile (`390×844`) de `10.325 px` (`12,2 telas`, `#trajetoria` reduzida para `1.176 px`), com diferenciação explícita entre métricas medidas no navegador real e estimativas dependentes de ambiente de produção.
+
 ## 0.7.0 — Fase 2.3: Redução da Extensão da Home, Auditoria Factual, Correção de Imagens e Inclusão do LinkedIn
 - **Redução da Extensão da Home (`src/pages/index.astro`, `src/data/portfolio.ts`, `Header.astro`)**: enxugamento de `972` para `511` linhas (`-47,4%`) e redução de `-38,7%` na altura vertical desktop (`9.384 px` → `5.752 px`), preservando Hero, 4 projetos principais com composições próprias, seleção compacta de outros projetos (`ArchFlow` e `Blade of Albaia` lado a lado + grade `2×2`), resumo breve da trajetória e contato.
 - **Separação Arquitetural de Dados (`src/data/portfolio.ts`)**: criação de módulo tipado centralizando os registros completos para uso futuro nas páginas internas sem sobrecarregar a Home.
