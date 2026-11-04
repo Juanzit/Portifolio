@@ -1,12 +1,15 @@
 # Status do Projeto — Portfólio Juan Silva Garcia
 
-## Fase Atual: Fase 2.5 — Revisão Final de Encerramento da Fase 2 (Atribuição de Extensão, Redução de CLS por Fallback Tipográfico, Auditoria Mobile 390×844 e Prévia Comparativa Violet Nature)
+## Fase Atual: Fase 2 Concluída — Identidade Oficial "Editorial Violet Nature" Consolidada (Pronta para Fase 3)
 
-### 1. Implementado e Consolidado na Fase 2.5
-- **Conferência e Ajuste Factual das Experiências ([src/data/portfolio.ts](file:///c:/Projetos/Portifolio/src/data/portfolio.ts))**:
-  - A atuação no `ShapeMeApp` foi atualizada de `"Desenvolvedor Mobile Júnior — ShapeMeApp"` para **`"Desenvolvimento Mobile — ShapeMeApp"`** (`Projeto de Extensão · IF Sudeste MG · 08/2024 — 01/2026`), refletindo com precisão sua natureza comprovada de projeto de extensão sem inferir vínculo empregatício/CLT não confirmado.
-  - A iniciação científica também teve sua natureza explicitada na linha institucional (`Pesquisa em Inteligência Artificial (IC) · Iniciação Científica · IF Sudeste MG · 06/2025 — 06/2026`).
-  - O registro `"Desenvolvedor Java — IF Sudeste MG (09/2025 – 01/2026)"` permanece fora da seção de experiências profissionais até confirmação se corresponde ao projeto acadêmico `ArchFlow` ou a vínculo institucional distinto.
+### 1. Consolidado no Encerramento da Fase 2
+- **Identidade Visual Oficializada — Opção 2: Editorial Violet Nature ([src/styles/global.css](file:///c:/Projetos/Portifolio/src/styles/global.css), [src/components/layout/Header.astro](file:///c:/Projetos/Portifolio/src/components/layout/Header.astro), [src/components/layout/Footer.astro](file:///c:/Projetos/Portifolio/src/components/layout/Footer.astro), [src/components/layout/MobileMenu.astro](file:///c:/Projetos/Portifolio/src/components/layout/MobileMenu.astro), [public/favicon.svg](file:///c:/Projetos/Portifolio/public/favicon.svg))**:
+  - Superfície principal em grafite-violeta profundo (`#0B0A10`), superfícies secundárias em obsidiana (`#14121B` / `#1B1922`), palco elevado (`#1E192B` com borda `#3D3356`) para *Núcleo Selvagem* e visualização experimental da *Bioacústica*, divisórias em `#2D263B`, texto principal em `#F3F4F6` (`17.92:1` AAA), texto secundário em `#AAA3B8` (`8.11:1` AAA), ação e destaques em roxo (`#7C3AED` / `#A78BFA`) e indicadores, métricas (`F1-weighted = 0,82`, `● Em produção`) e ponto do monograma `JG.` em verde bio-tech vibrante (`#B6D63A`, `11.89:1` AAA).
+  - Tipografia editorial preservada (`Newsreader` + `Plus Jakarta Sans` + `IBM Plex Mono`) com `@font-face` fallbacks calibrados (`CLS = 0,0165` no carregamento frio e `0,0000` no carregamento aquecido).
+- **Vínculos Confirmados pelo Usuário ([src/data/portfolio.ts](file:///c:/Projetos/Portifolio/src/data/portfolio.ts))**:
+  - `ShapeMeApp` confirmado como **`Desenvolvimento Mobile — ShapeMeApp | Projeto de Extensão · IF Sudeste MG · 08/2024 — 01/2026`**.
+  - Pesquisa em bioacústica confirmada como **`Pesquisa em Inteligência Artificial (IC) | Iniciação Científica · IF Sudeste MG · 06/2025 — 06/2026`**.
+  - Registro de Java confirmado como referente ao projeto acadêmico colaborativo **`ArchFlow`**, mantido exclusivamente em *Outros Projetos & Colaborações*.
 - **Investigação e Redução de `-84,9%` no CLS de Carregamento Frio ([src/styles/global.css](file:///c:/Projetos/Portifolio/src/styles/global.css), [src/pages/index.astro](file:///c:/Projetos/Portifolio/src/pages/index.astro))**:
   - Identificados via `PerformanceObserver` (`LayoutShiftAttribution` / `entry.sources`) os elementos exatos que causavam o `CLS = 0,1095` no carregamento frio (`SECTION#projetos`, `<p>Estudo Ciência da Computação...</p>` e `<aside>`), provocados pela oscilação da unidade `ch` (`max-w-[34ch]` / `max-w-[60ch]`) durante a troca sequencial entre a fonte de sistema, `Newsreader` Roman e `Newsreader` Italic.
   - Adicionadas declarações `@font-face` de fallback calibradas (`Newsreader Fallback` com `size-adjust: 96.5%`, `ascent-override: 97%`, `descent-override: 24%` e `Plus Jakarta Sans Fallback` com `size-adjust: 101.5%`, `ascent-override: 98%`, `descent-override: 24%`) e substituídas as larguras máximas em `ch` por `rem` (`max-w-[36rem]` / `max-w-[42rem]`), reduzindo o CLS frio de **`0,1095` para `0,0165`** (Desktop) e **`0,0225`** (Mobile), e **`0,0000`** no carregamento aquecido (`N = 3` execuções).

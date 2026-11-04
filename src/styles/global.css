@@ -25,36 +25,37 @@
 }
 
 /*
- * Direção Artística Oficial — Direção 1: Caderno de Campo & Oficina Editorial
- * - Papel mineral quente (#F5F2EB / #ECE7DC) como superfície principal.
- * - Tinta carvão (#161514 / #524E48) para leitura de alto contraste (AAA).
- * - Terracota editorial (#B93815 / #9E2E0E) para assinatura e interação.
- * - Verde-mata profundo (#1F5137) para referências científicas e indicadores.
- * - Palco escuro pontual (#151413 / #F4EFE6 / #E5A93C) reservado para Núcleo Selvagem e visualizações científicas.
+ * Direção Artística Oficial — Opção 2: Editorial Violet Nature
+ * - Estrutura tipográfica e editorial preservada (Newsreader + Plus Jakarta Sans + IBM Plex Mono).
+ * - Superfície principal em grafite-violeta profundo (#0B0A10) e cards em obsidiana (#14121B).
+ * - Palco de destaque elevado (#1E192B) para Núcleo Selvagem e visualização experimental da Bioacústica.
+ * - Ação e destaques em roxo técnico (#7C3AED / #A78BFA / #C4B5FD).
+ * - Indicadores, métricas e ponto do monograma JG. em verde bio-tech vibrante (#B6D63A).
  */
 :root {
-  --bg-canvas: #F5F2EB;
-  --bg-surface: #ECE7DC;
-  --bg-elevated: #E2DDD0;
-  --border-subtle: #D5CEC0;
-  --border-control: #787064;
-  --text-primary: #161514;
-  --text-secondary: #524E48;
-  --accent-primary: #B93815;
-  --accent-hover: #992B0D;
-  --accent-active: #7C220A;
-  --accent-text: #9E2E0E;
-  --metric-accent: #1F5137;
-  --status-warning: #B45309;
+  color-scheme: dark;
+  --bg-canvas: #0B0A10;
+  --bg-surface: #14121B;
+  --bg-elevated: #1B1922;
+  --border-subtle: #2D263B;
+  --border-control: #756E88;
+  --text-primary: #F3F4F6;
+  --text-secondary: #AAA3B8;
+  --accent-primary: #7C3AED;
+  --accent-hover: #6D28D9;
+  --accent-active: #5B21B6;
+  --accent-text: #A78BFA;
+  --metric-accent: #B6D63A;
+  --status-warning: #FBBF24;
 
-  /* Palco Escuro Pontual (Direção 2 — Jogos e Visualização Científica) */
-  --stage-bg: #151413;
-  --stage-surface: #1F1D1B;
-  --stage-border: #33302C;
-  --stage-text: #F4EFE6;
-  --stage-muted: #B8B0A4;
-  --stage-amber: #E5A93C;
-  --stage-green: #74C69D;
+  /* Palco Escuro Elevado (Núcleo Selvagem e Visualização Científica da Bioacústica) */
+  --stage-bg: #1E192B;
+  --stage-surface: #14121B;
+  --stage-border: #3D3356;
+  --stage-text: #F3F4F6;
+  --stage-muted: #BDB6CC;
+  --stage-amber: #C4B5FD;
+  --stage-green: #B6D63A;
 }
 
 @theme inline {
