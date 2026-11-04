@@ -2,174 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-
-const academicAndCommunityProjects = [
-  {
-    category: 'Pesquisa & Algoritmos',
-    title: 'PCMRC — Caminho Mínimo com Restrição de Recursos',
-    stack: 'Java · Simulated Annealing · Pesquisa Operacional',
-    summary:
-      'Implementação da meta-heurística Simulated Annealing (Têmpera Simulada) com operador de vizinhança Cut-and-Reconnect e gerador automático de instâncias de benchmark para resolver o Problema do Caminho Mínimo com Restrição de Recursos em grafos.',
-    href: 'https://github.com/Juanzit/Problema-do-Caminho-M-nimo-com-Restri-es-de-Recursos-PCMRC-',
-    linkLabel: 'Repositório no GitHub ↗',
-  },
-  {
-    category: 'Engenharia de Software',
-    title: 'Viga-Mestre — Engenharia de Requisitos & Modelagem UML',
-    stack: 'Requisitos · Arquitetura · 16 Diagramas UML',
-    summary:
-      'Modelagem completa do ciclo de vida de empreendimentos imobiliários (da aquisição do terreno à execução e venda de unidades), composta por Documento de Requisitos e 16 diagramas UML (Classes, Caso de Uso, Sequência, Estado, Atividade, Implantação e Gantt).',
-    href: 'https://github.com/Juanzit/Viga-Mestre',
-    linkLabel: 'Diagramas e documentação ↗',
-  },
-  {
-    category: 'Teoria dos Grafos',
-    title: 'Emparelhamento Máximo em Grafos (Hopcroft-Karp)',
-    stack: 'Python · C++ · Grafos Bipartidos & Redes Complexas',
-    summary:
-      'Implementação do algoritmo de Hopcroft-Karp para correspondências máximas em grafos bipartidos e conversão de grafos direcionados para identificação de nós de controle em redes complexas.',
-    href: 'https://github.com/Juanzit/Trabalho-grafos',
-    linkLabel: 'Repositório no GitHub ↗',
-  },
-  {
-    category: 'Ensino & Comunidade',
-    title: 'Minicurso React Native — Do Zero ao APK',
-    stack: 'JavaScript · React Native · 16 Videoaulas Abertas',
-    summary:
-      'Série aberta de 16 videoaulas práticas ensinando desenvolvimento mobile com JavaScript e React Native desde a configuração do ambiente até a geração do APK, produzida em projeto de extensão no IF Sudeste MG.',
-    href: 'https://www.youtube.com/@CURSORNFIRP',
-    linkLabel: 'Canal no YouTube ↗',
-  },
-  {
-    category: 'Ensino & Comunidade',
-    title: 'Roadmap Python',
-    stack: 'Python · Comunidade Acadêmica & Materiais de Estudo',
-    summary:
-      'Iniciativa acadêmica voltada ao compartilhamento de trilhas de estudo, códigos comentados e aulas abertas sobre programação em Python.',
-    href: 'https://github.com/RoadMapPython',
-    linkLabel: 'Organização no GitHub ↗',
-  },
-];
-
-const experiences = [
-  {
-    period: '04/2026 — Atual',
-    role: 'Professor Tutor de Programação e Tecnologia',
-    org: 'CNA Digital',
-    meta: '15h semanais',
-    description:
-      'Condução de trilhas de lógica de programação, Scratch, Construct, modelagem 3D com Blender e SculptGL, Unity, Roblox Studio, React, Python, Ciência de Dados e Inteligência Artificial.',
-  },
-  {
-    period: '06/2025 — Atual',
-    role: 'Professor Tutor de Programação (Python, Lua & Scratch)',
-    org: 'Kodland',
-    meta: '12h semanais · EdTech Internacional',
-    description:
-      'Ensino prático para alunos de 8 a 16 anos em Scratch, Python (Flask, POO e bancos de dados) e Roblox Studio/Lua, aplicando aprendizagem baseada em projetos (PBL), Scrum e Git/GitHub.',
-  },
-  {
-    period: '06/2025 — 06/2026',
-    role: 'Pesquisador em Inteligência Artificial',
-    org: 'IF Sudeste MG — Campus Rio Pomba',
-    meta: 'Iniciação Científica',
-    description:
-      'Desenvolvimento de pipelines de pré-processamento acústico e modelos supervisionados (CNN/RNC, SVM/MVS e GMM-HMM/MOM) para identificação automática de 136 espécies de aves ameaçadas de extinção.',
-  },
-  {
-    period: '08/2024 — 01/2026',
-    role: 'Desenvolvedor Mobile Júnior — Projeto ShapeMeApp',
-    org: 'IF Sudeste MG — Campus Rio Pomba',
-    meta: 'Projeto de Extensão',
-    description:
-      'Atuação no projeto "Emagreça na Musculação no IF Sudeste MG — Campus Rio Pomba", realizando evolução mobile em React Native/Expo, modelagem NoSQL no Firebase, testes de usabilidade, QA e gestão com Jira e GitHub.',
-  },
-  {
-    period: '06/2022 — 11/2025',
-    role: 'Membro de Projetos, Validação e Prototipação',
-    org: 'EmComp — Empresa Júnior de Computação (IF Sudeste MG)',
-    meta: '100 horas certificadas',
-    description:
-      'Desenvolvimento web (incluindo o site institucional da Labclin), prototipação de sites e aplicativos, validação de UX/UI e organização de eventos técnicos junto ao Núcleo da Mata.',
-  },
-];
-
-const education = [
-  {
-    period: '2022 — Em andamento',
-    degree: 'Bacharelado em Ciência da Computação',
-    institution: 'Instituto Federal do Sudeste de Minas Gerais (IF Sudeste MG — Campus Rio Pomba)',
-    detail:
-      'Pesquisa aplicada em Inteligência Artificial, engenharia de software, estruturas de dados, grafos e desenvolvimento mobile/web.',
-  },
-  {
-    period: '2019 — 2021 (Registro Lattes: 2019 — 2022)',
-    degree: 'Técnico em Informática',
-    institution: 'Instituto Federal do Sudeste de Minas Gerais (IF Sudeste MG — Campus Rio Pomba)',
-    detail:
-      'Formação técnica de base em lógica de programação, redes, bancos de dados, manutenção e desenvolvimento de sistemas.',
-  },
-];
-
-const publications = [
-  {
-    year: '2026',
-    dateDetail: '05/08/2026',
-    type: 'Trabalho Completo em Anais · ISSN 2764-0582',
-    title: 'Detecção Acústica de Aves Ameaçadas Utilizando Aprendizado de Máquina',
-    venue: 'Anais do VII Congresso Brasileiro Interdisciplinar em Ciência e Tecnologia (VII CoBICET) — Editora Even3',
-    authors: 'GARCIA, J. S.; COELHO, M. A. N.',
-  },
-  {
-    year: '2026',
-    dateDetail: '2026',
-    type: 'Apresentação de Trabalho Científico',
-    title: 'Detecção Acústica de Aves Ameaçadas Utilizando Aprendizado de Máquina',
-    venue: 'XVIII Encontro Acadêmico de Modelagem Computacional (EAMC)',
-    authors: 'Juan Silva Garcia e Maurício Archanjo Nunes Coelho',
-  },
-  {
-    year: '2025',
-    dateDetail: '2025',
-    type: 'Trabalho Apresentado em Simpósio Institucional',
-    title: 'Evolução de Software em Ambientes Acadêmicos: O ShapeMeApp e a Integração de Feedbacks Reais no Campus Rio Pomba',
-    venue: 'VII Simpósio de Ensino, Pesquisa e Extensão (VII SIMEPE) — IF Sudeste MG',
-    authors: 'Juan Silva Garcia, Gustavo Vaz Teixeira, Sérgio Muinhos Barroso Lima e João Batista Ferreira Júnior',
-  },
-];
-
-const certificationsAndExtension = [
-  {
-    period: '2022 — 2025',
-    title: 'Certificação de Atuação em Empresa Júnior (EmComp)',
-    issuer: 'IF Sudeste MG — Campus Rio Pomba',
-    workload: '100 horas certificadas',
-  },
-  {
-    period: '03/2025 — 08/2025',
-    title: 'Monitoria Voluntária — Linguagens Formais e Autômatos',
-    issuer: 'IF Sudeste MG — Campus Rio Pomba',
-    workload: 'Ensino superior',
-  },
-  {
-    period: '2025',
-    title: 'Ministrante de Minicurso Presencial: React com Firebase',
-    issuer: 'IF Sudeste MG — Campus Rio Pomba',
-    workload: 'Formação prática',
-  },
-  {
-    period: '12/2023 — 08/2024',
-    title: 'Instrutor de Desenvolvimento Mobile (JavaScript & React Native)',
-    issuer: 'IF Sudeste MG — Projeto de Extensão',
-    workload: '16 videoaulas gravadas',
-  },
-  {
-    period: '2020',
-    title: 'Voluntário no Curso "Python Básico pra Quem Tem Pressa"',
-    issuer: 'IF Sudeste MG — Projeto de Extensão',
-    workload: 'Extensão comunitária',
-  },
-];
+import {
+  heroTechLine,
+  archFlowProject,
+  bladeOfAlbaiaProject,
+  compactOtherProjects,
+  experiences,
+  education,
+  scientificOutputs,
+  contactLinks,
+} from '../data/portfolio';
 ---
 
 <BaseLayout
@@ -179,10 +21,10 @@ const certificationsAndExtension = [
   <Header />
 
   <main id="main-content" tabindex="-1" class="max-w-[1120px] mx-auto px-4 sm:px-8">
-    <!-- 1. HERO EDITORIAL (ASSIMÉTRICO, HUMANO E DIRETO) -->
-    <section aria-labelledby="hero-heading" class="py-14 sm:py-24 border-b border-border-subtle">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-end">
-        <div class="lg:col-span-8 space-y-6">
+    <!-- 1. HERO EDITORIAL (APRESENTAÇÃO E TECNOLOGIAS PRINCIPAIS) -->
+    <section aria-labelledby="hero-heading" class="py-12 sm:py-20 border-b border-border-subtle">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+        <div class="lg:col-span-8 space-y-5">
           <p class="text-[13px] leading-normal font-mono text-accent-text tracking-wide">
             Cataguases, MG · IF Sudeste MG — Campus Rio Pomba
           </p>
@@ -198,9 +40,16 @@ const certificationsAndExtension = [
             Entre aplicativos, pesquisa, jogos e ensino, venho explorando diferentes possibilidades da computação.
           </p>
 
-          <p class="text-base sm:text-lg text-text-secondary leading-[1.7] max-w-[60ch]">
+          <p class="text-base sm:text-lg text-text-secondary leading-[1.68] max-w-[60ch]">
             Estudo Ciência da Computação no IF Sudeste MG. Neste portfólio, reúno projetos que desenvolvi e trabalhos
             em que colaborei, mostrando os problemas, as soluções e o que aprendi em cada experiência.
+          </p>
+
+          <p
+            aria-label="Tecnologias principais"
+            class="pt-1 font-mono text-[13px] leading-normal text-metric-accent font-medium tracking-wide"
+          >
+            {heroTechLine}
           </p>
 
           <div class="pt-2 flex flex-wrap items-center gap-3.5">
@@ -214,7 +63,7 @@ const certificationsAndExtension = [
               href="#github"
               class="min-h-[44px] px-6 py-2.5 inline-flex items-center justify-center bg-bg-surface hover:bg-bg-elevated text-text-primary border border-border-control hover:border-accent-solid font-medium text-sm transition-colors"
             >
-              Colaborações & GitHub
+              Outros projetos & GitHub
             </a>
             <a
               href="#contato"
@@ -225,8 +74,8 @@ const certificationsAndExtension = [
           </div>
         </div>
 
-        <!-- Coluna de Margem (Nota de Caderno de Campo, sem aspecto de dashboard) -->
-        <aside aria-label="Síntese de formação e atuação" class="lg:col-span-4 border-l-2 border-accent-solid pl-6 space-y-5">
+        <!-- Coluna de Margem (Nota de Caderno de Campo) -->
+        <aside aria-label="Síntese de formação e atuação" class="lg:col-span-4 border-l-2 border-accent-solid pl-6 space-y-4">
           <div class="space-y-1">
             <div class="text-[13px] leading-normal font-mono text-text-secondary">Formação no IF Sudeste MG</div>
             <p class="font-display text-lg font-medium text-text-primary leading-snug">
@@ -242,9 +91,17 @@ const certificationsAndExtension = [
             </p>
           </div>
 
-          <div class="pt-1">
+          <div class="pt-0.5 flex flex-wrap items-center gap-4">
             <a
-              href="http://lattes.cnpq.br/9434044887106048"
+              href={contactLinks.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="min-h-[44px] inline-flex items-center text-[13px] leading-normal font-mono text-accent-text hover:underline"
+            >
+              LinkedIn ↗
+            </a>
+            <a
+              href={contactLinks.lattesUrl}
               target="_blank"
               rel="noopener noreferrer"
               class="min-h-[44px] inline-flex items-center text-[13px] leading-normal font-mono text-metric-accent hover:underline"
@@ -257,8 +114,8 @@ const certificationsAndExtension = [
     </section>
 
     <!-- 2. QUATRO PROJETOS PRINCIPAIS (CADA UM COM COMPOSIÇÃO PRÓPRIA) -->
-    <section id="projetos" aria-labelledby="projetos-heading" class="py-16 sm:py-24 border-b border-border-subtle space-y-20">
-      <div class="max-w-[64ch] space-y-3">
+    <section id="projetos" aria-labelledby="projetos-heading" class="py-12 sm:py-16 border-b border-border-subtle space-y-14">
+      <div class="max-w-[64ch] space-y-2.5">
         <p class="text-[13px] leading-normal font-mono text-accent-text">Trabalhos Principais</p>
         <h2
           id="projetos-heading"
@@ -274,7 +131,7 @@ const certificationsAndExtension = [
 
       <!-- PROJETO I: LUNDGREN ATELIER (VITRINE EDITORIAL 12 COLUNAS COM CAPTURA REAL) -->
       <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center pt-4 border-t border-border-subtle">
-        <div class="lg:col-span-5 space-y-5">
+        <div class="lg:col-span-5 space-y-4">
           <div class="flex items-center justify-between gap-2 text-[13px] leading-normal font-mono">
             <span class="text-accent-text">Desenvolvimento Web · Produção</span>
             <span class="text-text-secondary">2025 — 2026</span>
@@ -292,7 +149,7 @@ const certificationsAndExtension = [
             e publicação contínua no <strong class="text-text-primary font-medium">Cloudflare Pages</strong>.
           </p>
 
-          <div class="pt-2 border-t border-border-subtle space-y-3">
+          <div class="pt-2 border-t border-border-subtle space-y-2.5">
             <div class="flex flex-wrap gap-2 text-[13px] leading-normal font-mono text-text-secondary">
               <span>Astro</span>
               <span aria-hidden="true">·</span>
@@ -332,9 +189,10 @@ const certificationsAndExtension = [
             <img
               src="/images/projetos/lundgren-atelier-home.png"
               alt="Captura real da página inicial do site Lundgren Atelier em produção"
-              width="1440"
-              height="900"
-              loading="eager"
+              width="2160"
+              height="1350"
+              fetchpriority="high"
+              decoding="async"
               class="w-full h-auto block"
             />
           </figure>
@@ -342,11 +200,11 @@ const certificationsAndExtension = [
       </article>
 
       <!-- PROJETO II: BIOACÚSTICA (LÂMINA DE PESQUISA CIENTÍFICA + PALCO ESCURO PONTUAL) -->
-      <article class="pt-12 border-t border-border-subtle space-y-8">
+      <article class="pt-10 border-t border-border-subtle">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div class="lg:col-span-6 space-y-4">
             <div class="flex flex-wrap items-center gap-3 text-[13px] leading-normal font-mono">
-              <span class="text-metric-accent font-medium">Pesquisa Científica em IA · VII CoBICET (2026)</span>
+              <span class="text-metric-accent font-medium">Artigo em Anais · VII CoBICET (2026)</span>
               <span class="text-text-secondary">ISSN 2764-0582</span>
             </div>
 
@@ -363,30 +221,30 @@ const certificationsAndExtension = [
               <strong class="text-text-primary font-medium">GMM-HMM (MOM)</strong> e <strong class="text-text-primary font-medium">Redes Neurais Convolucionais (CNN / RNC)</strong>.
             </p>
 
-            <div class="pt-2 flex flex-wrap items-center gap-6">
+            <div class="pt-1 flex flex-wrap items-center gap-5">
               <a
-                href="http://lattes.cnpq.br/9434044887106048"
+                href={contactLinks.lattesUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="min-h-[44px] inline-flex items-center text-sm font-medium text-accent-text hover:underline"
               >
-                Ver publicação no Currículo Lattes ↗
+                Ver registro no Currículo Lattes ↗
               </a>
               <span class="text-[13px] leading-normal font-mono text-text-secondary">
-                Código-fonte do TCC em organização para publicação
+                Código e figuras experimentais em organização para publicação
               </span>
             </div>
           </div>
 
           <!-- Palco Científico de Alto Contraste (Elemento Pontual da Direção 2) -->
-          <div class="lg:col-span-6 bg-stage-bg text-stage-text border border-stage-border p-6 sm:p-8 space-y-6">
+          <div class="lg:col-span-6 bg-stage-bg text-stage-text border border-stage-border p-6 sm:p-7 space-y-5">
             <div class="flex flex-wrap items-center justify-between gap-2 border-b border-stage-border pb-3 text-[13px] leading-normal font-mono">
               <span class="text-stage-amber">DESENHO EXPERIMENTAL · 136 ESPÉCIES</span>
               <span class="text-stage-muted">XENO-CANTO · MEL & MFCC</span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="border border-stage-border bg-stage-surface p-4 space-y-2">
+              <div class="border border-stage-border bg-stage-surface p-4 space-y-1.5">
                 <div class="text-[13px] leading-normal font-mono text-stage-muted">01 · LINHA DE BASE</div>
                 <h4 class="font-display text-lg font-medium text-stage-text">Cenário A (Controle)</h4>
                 <p class="text-[13px] leading-relaxed text-stage-muted">
@@ -395,7 +253,7 @@ const certificationsAndExtension = [
                 </p>
               </div>
 
-              <div class="border border-stage-amber/60 bg-stage-surface p-4 space-y-2">
+              <div class="border border-stage-amber/60 bg-stage-surface p-4 space-y-1.5">
                 <div class="text-[13px] leading-normal font-mono text-stage-amber">02 · CONFIGURAÇÃO REFINADA</div>
                 <h4 class="font-display text-lg font-medium text-stage-text">Cenário B (Proposto)</h4>
                 <p class="text-[13px] leading-relaxed text-stage-muted">
@@ -406,14 +264,14 @@ const certificationsAndExtension = [
 
             <div class="pt-2 border-t border-stage-border flex flex-wrap items-center justify-between gap-3 text-[13px] leading-normal font-mono">
               <span class="text-stage-green">Resultado CNN (Cenário B): F1-weighted = 0,82</span>
-              <span class="text-stage-muted">Anais VII CoBICET & XVIII EAMC</span>
+              <span class="text-stage-muted">Publicado no VII CoBICET · Apresentado no XVIII EAMC</span>
             </div>
           </div>
         </div>
       </article>
 
       <!-- PROJETO III: SHAPEMEAPP (ESTUDO DE CASO DE EXTENSÃO & ARQUITETURA MULTI-MÓDULO) -->
-      <article class="pt-12 border-t border-border-subtle grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+      <article class="pt-10 border-t border-border-subtle grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
         <div class="lg:col-span-6 space-y-4">
           <div class="flex flex-wrap items-center gap-3 text-[13px] leading-normal font-mono">
             <span class="text-accent-text">Desenvolvimento Mobile & Extensão · IF Sudeste MG</span>
@@ -426,19 +284,18 @@ const certificationsAndExtension = [
 
           <p class="text-sm sm:text-base text-text-secondary leading-relaxed">
             Ecossistema desenvolvido no projeto de extensão <em class="text-text-primary">"Emagreça na Musculação no IF Sudeste MG — Campus Rio Pomba"</em>.
-            O sistema resolve o acompanhamento diário de treinos e avaliações físicas por meio de três aplicações
+            O sistema organiza o acompanhamento diário de treinos e avaliações físicas por meio de três aplicações
             integradas (<strong class="text-text-primary font-medium">Aluno</strong>, <strong class="text-text-primary font-medium">Professor</strong> e <strong class="text-text-primary font-medium">Coordenador</strong>) e
             uma versão web responsiva com <strong class="text-text-primary font-medium">Expo Router</strong>.
           </p>
 
           <p class="text-sm text-text-secondary leading-relaxed">
             Atuei na evolução das interfaces em <strong class="text-text-primary font-medium">React Native</strong>, na
-            modelagem NoSQL no <strong class="text-text-primary font-medium">Firebase (Auth & Firestore)</strong>, na
-            implementação dos cálculos de carga de treinamento (<strong class="text-text-primary font-medium">CIT, Monotonia e Strain</strong>) e nos ciclos de
-            testes de usabilidade e QA com usuários reais — trabalho apresentado no <strong class="text-text-primary font-medium">VII SIMEPE (2025)</strong>.
+            modelagem NoSQL no <strong class="text-text-primary font-medium">Firebase (Auth & Firestore)</strong>, nos
+            cálculos de carga de treinamento (<strong class="text-text-primary font-medium">CIT, Monotonia e Strain</strong>) e nos testes de usabilidade e QA com usuários reais — trabalho apresentado no <strong class="text-text-primary font-medium">VII SIMEPE (2025)</strong>.
           </p>
 
-          <div class="pt-2 flex flex-wrap items-center gap-5">
+          <div class="pt-1 flex flex-wrap items-center gap-5">
             <a
               href="https://github.com/Juanzit/ShapeMeApp"
               target="_blank"
@@ -466,14 +323,14 @@ const certificationsAndExtension = [
           </div>
         </div>
 
-        <div class="lg:col-span-6 bg-bg-surface border border-border-subtle p-6 sm:p-7 space-y-5">
-          <div class="flex items-center justify-between border-b border-border-subtle pb-3 text-[13px] leading-normal font-mono">
+        <div class="lg:col-span-6 bg-bg-surface border border-border-subtle p-6 space-y-4">
+          <div class="flex items-center justify-between border-b border-border-subtle pb-2.5 text-[13px] leading-normal font-mono">
             <span class="text-text-primary font-medium">Arquitetura do Ecossistema Monorepo</span>
             <span class="text-metric-accent">React Native · Expo · Firebase</span>
           </div>
 
           <div class="divide-y divide-border-subtle">
-            <div class="py-3.5 first:pt-0 space-y-1">
+            <div class="py-3 first:pt-0 space-y-1">
               <div class="flex items-center justify-between text-[13px] leading-normal font-mono">
                 <span class="text-accent-text">Módulo 01 · Mobile & Web (Expo Router)</span>
                 <span class="text-text-secondary">SMA_Aluno / SmaAlunoWeb</span>
@@ -483,7 +340,7 @@ const certificationsAndExtension = [
               </p>
             </div>
 
-            <div class="py-3.5 space-y-1">
+            <div class="py-3 space-y-1">
               <div class="flex items-center justify-between text-[13px] leading-normal font-mono">
                 <span class="text-accent-text">Módulo 02 · Acompanhamento & Gráficos</span>
                 <span class="text-text-secondary">SMA_Professor</span>
@@ -494,7 +351,7 @@ const certificationsAndExtension = [
               </p>
             </div>
 
-            <div class="py-3.5 last:pb-0 space-y-1">
+            <div class="py-3 last:pb-0 space-y-1">
               <div class="flex items-center justify-between text-[13px] leading-normal font-mono">
                 <span class="text-accent-text">Módulo 03 · Gestão do Projeto</span>
                 <span class="text-text-secondary">SMACoordenador</span>
@@ -508,15 +365,15 @@ const certificationsAndExtension = [
       </article>
 
       <!-- PROJETO IV: NÚCLEO SELVAGEM (PALCO ESCURO IMERSIVO DE GAME DEV — DIREÇÃO 2 PONTUAL) -->
-      <article class="bg-stage-bg text-stage-text border border-stage-border p-6 sm:p-10 space-y-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end border-b border-stage-border pb-8">
-          <div class="lg:col-span-8 space-y-3">
+      <article class="bg-stage-bg text-stage-text border border-stage-border p-6 sm:p-8 space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end border-b border-stage-border pb-6">
+          <div class="lg:col-span-8 space-y-2.5">
             <div class="flex flex-wrap items-center gap-3 text-[13px] leading-normal font-mono">
               <span class="text-stage-amber">Game Development · Projeto Autoral</span>
               <span class="text-stage-muted">Roblox Studio · Luau · Blender 3D</span>
             </div>
 
-            <h3 class="font-display text-3xl sm:text-5xl font-medium text-stage-text leading-tight">
+            <h3 class="font-display text-3xl sm:text-4xl font-medium text-stage-text leading-tight">
               Núcleo Selvagem
             </h3>
 
@@ -537,8 +394,8 @@ const certificationsAndExtension = [
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="space-y-2">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="space-y-1.5">
             <div class="text-[13px] leading-normal font-mono text-stage-amber">I · Ciclo de Expedições</div>
             <h4 class="font-display text-xl font-medium text-stage-text">Incursões Roguelite</h4>
             <p class="text-sm text-stage-muted leading-relaxed">
@@ -547,7 +404,7 @@ const certificationsAndExtension = [
             </p>
           </div>
 
-          <div class="space-y-2">
+          <div class="space-y-1.5">
             <div class="text-[13px] leading-normal font-mono text-stage-amber">II · Criaturas & Mutações</div>
             <h4 class="font-display text-xl font-medium text-stage-text">Evolução Genética Modular</h4>
             <p class="text-sm text-stage-muted leading-relaxed">
@@ -556,7 +413,7 @@ const certificationsAndExtension = [
             </p>
           </div>
 
-          <div class="space-y-2">
+          <div class="space-y-1.5">
             <div class="text-[13px] leading-normal font-mono text-stage-amber">III · Persistência</div>
             <h4 class="font-display text-xl font-medium text-stage-text">Base Pessoal 2.0</h4>
             <p class="text-sm text-stage-muted leading-relaxed">
@@ -567,211 +424,185 @@ const certificationsAndExtension = [
       </article>
     </section>
 
-    <!-- 3. PROJETOS COLABORATIVOS, DESENVOLVIMENTO, PESQUISA ACADÊMICA & COMUNIDADE (#github) -->
-    <section id="github" aria-labelledby="github-heading" class="py-16 sm:py-24 border-b border-border-subtle space-y-16">
+    <!-- 3. SELEÇÃO COMPACTA DE OUTROS PROJETOS & COLABORAÇÕES (#github) -->
+    <section id="github" aria-labelledby="github-heading" class="py-12 sm:py-16 border-b border-border-subtle space-y-12">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-        <div class="space-y-3 max-w-[64ch]">
-          <p class="text-[13px] leading-normal font-mono text-accent-text">GitHub, Colaborações & Comunidade</p>
+        <div class="space-y-2 max-w-[62ch]">
+          <p class="text-[13px] leading-normal font-mono text-accent-text">Outros Projetos & GitHub</p>
           <h2
             id="github-heading"
             class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.015em] text-text-primary leading-tight"
           >
-            Projetos colaborativos, jogos em Python, algoritmos e ensino
+            Colaborações, jogos em Python, algoritmos e ensino
           </h2>
           <p class="text-base text-text-secondary leading-relaxed">
-            Trabalhos desenvolvidos em coautoria, projetos autorais de programação e iniciativas abertas de ensino na
+            Seleção de trabalhos desenvolvidos em coautoria, projetos autorais de programação e iniciativas abertas na
             universidade.
           </p>
         </div>
 
         <a
-          href="https://github.com/Juanzit"
+          href={contactLinks.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
           class="min-h-[44px] px-4 py-2 inline-flex items-center border border-border-control bg-bg-surface hover:border-accent-solid text-sm font-mono text-text-primary transition-colors shrink-0"
         >
-          github.com/Juanzit ↗
+          {contactLinks.githubLabel} ↗
         </a>
       </div>
 
-      <!-- A. DESTAQUE DE PROJETO COLABORATIVO: ARCHFLOW (COM CAPTURAS REAIS AUTORIZADAS) -->
-      <div class="space-y-6">
-        <div class="border-b border-border-subtle pb-2.5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-          <h3 class="font-display text-2xl font-medium text-text-primary">Projetos Colaborativos</h3>
-          <span class="text-[13px] leading-normal font-mono text-metric-accent">
-            Coautoria com atribuição explícita de responsabilidades
-          </span>
-        </div>
-
-        <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-2">
-          <div class="lg:col-span-6 space-y-4">
-            <div class="text-[13px] leading-normal font-mono text-accent-text">
-              Java 17 · Maven · Hibernate/JPA · MySQL · Swing/FlatLaf · JavaFX 3D
-            </div>
-
-            <h4 class="font-display text-2xl sm:text-3xl font-medium text-text-primary leading-snug">
-              ArchFlow — Sistema de Gerenciamento Arquitetônico
-            </h4>
-
-            <p class="text-[13px] leading-normal font-mono text-metric-accent bg-bg-surface px-3 py-2 border-l-2 border-metric-accent">
-              Colaboradores: Victor Emanuel (Victorlolmi, proprietário do repositório) e Juan Silva Garcia
-            </p>
-
-            <p class="text-sm sm:text-base text-text-secondary leading-relaxed">
-              Sistema desktop completo para gerenciamento de projetos arquitetônicos, cadastro de terrenos, controle de
-              despesas, upload de documentos, canal de feedback com clientes e visualização de modelos 3D (`.OBJ`).
-            </p>
-
-            <div class="space-y-1.5 text-sm text-text-secondary">
-              <p class="font-medium text-text-primary">Minha participação efetiva no desenvolvimento:</p>
-              <ul class="list-disc pl-5 space-y-1 leading-relaxed">
-                <li>Refatoração da arquitetura MVC, camada DAO genérica e otimização do banco de dados;</li>
-                <li>Controle de acesso e permissões entre as visões de gestores e clientes;</li>
-                <li>Implementação de validadores de regras de negócio e tratamento de exceções;</li>
-                <li>Fluxo de recuperação de senha com envio de código por e-mail;</li>
-                <li>Atualização e organização dos diagramas UML (Classes, Caso de Uso e Sequência) e documentação.</li>
-              </ul>
-            </div>
-
-            <div class="pt-2">
-              <a
-                href="https://github.com/Victorlolmi/LPS_Sistema_de_Gerenciamento_Arquitetonico"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="min-h-[44px] inline-flex items-center text-sm font-medium text-accent-text hover:underline"
-              >
-                Acessar repositório original (Victorlolmi/LPS) ↗
-              </a>
-            </div>
+      <!-- A. PROJETO COLABORATIVO: ARCHFLOW (ATRIBUIÇÃO DISTINTA E CAPTURA REAL) -->
+      <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-4 border-t border-border-subtle">
+        <div class="lg:col-span-6 space-y-3.5">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-[13px] leading-normal font-mono">
+            <span class="text-accent-text">Projeto Colaborativo · Engenharia de Software</span>
+            <span class="text-text-secondary">{archFlowProject.stack}</span>
           </div>
 
-          <div class="lg:col-span-6 space-y-4">
-            <figure class="border border-border-control/50 bg-bg-surface p-2 space-y-2">
-              <img
-                src="/images/projetos/archflow-projetos.png"
-                alt="Tela principal do sistema ArchFlow exibindo a listagem e busca de projetos arquitetônicos"
-                width="1377"
-                height="796"
-                loading="lazy"
-                class="w-full h-auto block border border-border-subtle"
-              />
-              <figcaption class="px-1 text-[13px] leading-normal font-mono text-text-secondary">
-                ArchFlow · Tela principal de gestão de projetos (Coautoria: Victor Emanuel & Juan Silva Garcia)
-              </figcaption>
-            </figure>
+          <h3 class="font-display text-2xl sm:text-3xl font-medium text-text-primary leading-snug">
+            {archFlowProject.title}
+          </h3>
 
-            <figure class="border border-border-control/50 bg-bg-surface p-2 space-y-2">
-              <img
-                src="/images/projetos/archflow-3d.png"
-                alt="Módulo de visualização 3D integrado ao sistema ArchFlow carregando um modelo arquitetônico"
-                width="1439"
-                height="836"
-                loading="lazy"
-                class="w-full h-auto block border border-border-subtle"
-              />
-              <figcaption class="px-1 text-[13px] leading-normal font-mono text-text-secondary">
-                ArchFlow · Visualizador 3D de modelos (.OBJ) integrado via JavaFX / FXyz3D
-              </figcaption>
-            </figure>
+          <p class="text-[13px] leading-normal font-mono text-metric-accent bg-bg-surface px-3 py-2 border-l-2 border-metric-accent">
+            {archFlowProject.coauthorshipNote}
+          </p>
+
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Sistema desktop para gerenciamento de projetos arquitetônicos, terrenos, despesas, documentos, feedback com
+            clientes e visualização 3D. {archFlowProject.partnerContributions}
+          </p>
+
+          <div class="space-y-1 text-sm text-text-secondary">
+            <p class="font-medium text-text-primary">Atividades que implementei no projeto:</p>
+            <ul class="list-disc pl-5 space-y-0.5 leading-relaxed">
+              {archFlowProject.juanContributions.map((item) => <li>{item}</li>)}
+            </ul>
           </div>
-        </article>
-      </div>
 
-      <!-- B. DESENVOLVIMENTO E PROGRAMAÇÃO: BLADE OF ALBAIA (COM IMAGEM REAL DO REPOSITÓRIO) -->
-      <div class="space-y-6">
-        <div class="border-b border-border-subtle pb-2.5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-          <h3 class="font-display text-2xl font-medium text-text-primary">Desenvolvimento e Programação</h3>
-          <span class="text-[13px] leading-normal font-mono text-text-secondary">
-            Projeto autoral em Python & Pygame Zero
-          </span>
+          <div class="pt-1">
+            <a
+              href={archFlowProject.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="min-h-[44px] inline-flex items-center text-sm font-medium text-accent-text hover:underline"
+            >
+              Acessar repositório (Victorlolmi/LPS) ↗
+            </a>
+          </div>
         </div>
 
-        <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2">
-          <div class="lg:col-span-7">
-            <figure class="border border-border-control/50 bg-stage-bg p-3 space-y-2.5">
-              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
-                <div class="sm:col-span-3 flex justify-center">
-                  <img
-                    src="/images/projetos/blade-of-albaia-menu.png"
-                    alt="Arte de abertura do jogo Blade of Albaia"
-                    width="300"
-                    height="300"
-                    loading="lazy"
-                    class="w-28 h-28 sm:w-full sm:h-auto object-cover border border-stage-border"
-                  />
-                </div>
-                <div class="sm:col-span-9">
-                  <img
-                    src="/images/projetos/blade-of-albaia-fase1.png"
-                    alt="Cenário da Fase 1 do jogo de plataforma 2D Blade of Albaia"
-                    width="900"
-                    height="300"
-                    loading="lazy"
-                    class="w-full h-auto block border border-stage-border"
-                  />
-                </div>
+        <div class="lg:col-span-6">
+          <figure class="border border-border-control/50 bg-bg-surface p-2.5 space-y-2">
+            <img
+              src={archFlowProject.screenshots.main.src}
+              alt={archFlowProject.screenshots.main.alt}
+              width={archFlowProject.screenshots.main.width}
+              height={archFlowProject.screenshots.main.height}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-auto block border border-border-subtle"
+            />
+            <figcaption class="px-1 text-[13px] leading-normal font-mono text-text-secondary">
+              {archFlowProject.screenshots.main.caption}
+            </figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- B. DESENVOLVIMENTO E PROGRAMAÇÃO: BLADE OF ALBAIA (CAPTURA REAL DE GAMEPLAY + ASSETS VERIFICADOS) -->
+      <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-8 border-t border-border-subtle">
+        <div class="lg:col-span-6">
+          <figure class="border border-border-control/50 bg-stage-bg p-3 space-y-2.5">
+            <div class="grid grid-cols-12 gap-2.5 items-stretch">
+              <div class="col-span-8">
+                <img
+                  src={bladeOfAlbaiaProject.images.screenshot.src}
+                  alt={bladeOfAlbaiaProject.images.screenshot.alt}
+                  width={bladeOfAlbaiaProject.images.screenshot.width}
+                  height={bladeOfAlbaiaProject.images.screenshot.height}
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover block border border-stage-border"
+                />
               </div>
-              <figcaption class="px-1 text-[13px] leading-normal font-mono text-stage-muted">
-                Blade of Albaia · Emblema do menu (`albaiaquestmenu.png`) e cenário da Fase 1 (`fase1.png`)
-              </figcaption>
-            </figure>
+              <div class="col-span-4 flex flex-col justify-between gap-2.5">
+                <img
+                  src={bladeOfAlbaiaProject.images.menu.src}
+                  alt={bladeOfAlbaiaProject.images.menu.alt}
+                  width={bladeOfAlbaiaProject.images.menu.width}
+                  height={bladeOfAlbaiaProject.images.menu.height}
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-auto block border border-stage-border"
+                />
+                <img
+                  src={bladeOfAlbaiaProject.images.fase1.src}
+                  alt={bladeOfAlbaiaProject.images.fase1.alt}
+                  width={bladeOfAlbaiaProject.images.fase1.width}
+                  height={bladeOfAlbaiaProject.images.fase1.height}
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-auto block border border-stage-border"
+                />
+              </div>
+            </div>
+            <figcaption class="px-1 text-[13px] leading-normal font-mono text-stage-muted">
+              Blade of Albaia · Captura de gameplay (`screenshot.png`), menu (`albaiaquestmenu.png`) e Fase 1 (`fase1.png`)
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="lg:col-span-6 space-y-3">
+          <div class="text-[13px] leading-normal font-mono text-accent-text">
+            Desenvolvimento & Programação · {bladeOfAlbaiaProject.stack}
           </div>
 
-          <div class="lg:col-span-5 space-y-3.5">
-            <div class="text-[13px] leading-normal font-mono text-accent-text">
-              Python · Pygame Zero · POO & Física Vetorial
-            </div>
+          <h3 class="font-display text-2xl sm:text-3xl font-medium text-text-primary leading-snug">
+            {bladeOfAlbaiaProject.title}
+          </h3>
 
-            <h4 class="font-display text-2xl sm:text-3xl font-medium text-text-primary leading-snug">
-              Blade of Albaia
-            </h4>
+          <p class="text-sm sm:text-base text-text-secondary leading-relaxed">
+            {bladeOfAlbaiaProject.summary}
+          </p>
 
-            <p class="text-sm sm:text-base text-text-secondary leading-relaxed">
-              Jogo de plataforma 2D autoral desenvolvido para o processo seletivo de tutor da Kodland. Implementa física
-              de pulo e movimentação com matemática vetorial, inimigos com padrões de patrulha, plataformas móveis,
-              coleta de fragmentos, gerenciamento de estados (menu, introdução, fases e game over) e trilha sonora.
-            </p>
-
-            <div class="pt-1">
-              <a
-                href="https://github.com/Juanzit/Blade_of_Albaia"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="min-h-[44px] inline-flex items-center text-sm font-medium text-accent-text hover:underline"
-              >
-                Ver código e assets no GitHub ↗
-              </a>
-            </div>
+          <div class="pt-1">
+            <a
+              href={bladeOfAlbaiaProject.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="min-h-[44px] inline-flex items-center text-sm font-medium text-accent-text hover:underline"
+            >
+              Ver código e assets no GitHub ↗
+            </a>
           </div>
-        </article>
-      </div>
+        </div>
+      </article>
 
-      <!-- C. ÍNDICE EDITORIAL ABERTO: PESQUISA ACADÊMICA & ENSINO/COMUNIDADE (SEM CAIXAS REPETIDAS) -->
-      <div class="space-y-4">
-        <div class="border-b border-border-subtle pb-2.5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+      <!-- C. ÍNDICE COMPACTO (2x2) DE PESQUISA ACADÊMICA, ALGORITMOS E ENSINO -->
+      <div class="pt-8 border-t border-border-subtle space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
           <h3 class="font-display text-2xl font-medium text-text-primary">
             Pesquisa Acadêmica, Algoritmos & Ensino Aberto
           </h3>
           <span class="text-[13px] leading-normal font-mono text-text-secondary">
-            Índice de repositórios e materiais didáticos
+            Seleção compacta de repositórios e materiais didáticos
           </span>
         </div>
 
-        <div class="divide-y divide-border-subtle border-b border-border-subtle">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 pt-2">
           {
-            academicAndCommunityProjects.map((item) => (
-              <article class="py-6 grid grid-cols-1 lg:grid-cols-12 gap-4 items-baseline">
-                <div class="lg:col-span-3 space-y-1">
-                  <div class="text-[13px] leading-normal font-mono text-accent-text">{item.category}</div>
-                  <div class="text-[13px] leading-normal font-mono text-text-secondary">{item.stack}</div>
-                </div>
-
-                <div class="lg:col-span-6 space-y-1.5">
+            compactOtherProjects.map((item) => (
+              <article class="border-t border-border-subtle pt-4 flex flex-col justify-between space-y-2">
+                <div class="space-y-1">
+                  <div class="flex items-center justify-between gap-2 text-[13px] leading-normal font-mono">
+                    <span class="text-accent-text">{item.category}</span>
+                    <span class="text-text-secondary">{item.stack}</span>
+                  </div>
                   <h4 class="font-display text-xl font-medium text-text-primary">{item.title}</h4>
-                  <p class="text-sm text-text-secondary leading-relaxed">{item.summary}</p>
+                  <p class="text-sm text-text-secondary leading-relaxed">{item.shortSummary}</p>
                 </div>
 
-                <div class="lg:col-span-3 lg:text-right">
+                <div>
                   <a
                     href={item.href}
                     target="_blank"
@@ -788,36 +619,107 @@ const certificationsAndExtension = [
       </div>
     </section>
 
-    <!-- 4. EXPERIÊNCIA PROFISSIONAL (LAYOUT ASSIMÉTRICO 4 + 8 COLUNAS COM FIOS ABERTOS) -->
-    <section id="trajetoria" aria-labelledby="trajetoria-heading" class="py-16 sm:py-24 border-b border-border-subtle">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-        <div class="lg:col-span-4 space-y-3">
-          <p class="text-[13px] leading-normal font-mono text-accent-text">Trajetória</p>
-          <h2
-            id="trajetoria-heading"
-            class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.015em] text-text-primary leading-tight"
-          >
-            Experiência profissional, pesquisa e docência
-          </h2>
-          <p class="text-sm text-text-secondary leading-relaxed">
-            Atuação prática entre ensino internacional de programação, iniciação científica em IA, extensão mobile e
-            empresa júnior.
-          </p>
+    <!-- 4. RESUMO BREVE DA TRAJETÓRIA (EXPERIÊNCIA, FORMAÇÃO & PRODUÇÃO CIENTÍFICA DISTINTA) -->
+    <section id="trajetoria" aria-labelledby="trajetoria-heading" class="py-12 sm:py-16 border-b border-border-subtle">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <!-- Coluna Esquerda: Síntese de Formação, Publicação em Anais vs. Apresentações e Extensão -->
+        <div class="lg:col-span-5 space-y-8">
+          <div class="space-y-2.5">
+            <p class="text-[13px] leading-normal font-mono text-accent-text">Resumo da Trajetória</p>
+            <h2
+              id="trajetoria-heading"
+              class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.015em] text-text-primary leading-tight"
+            >
+              Experiência, formação e produção acadêmica
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Síntese da atuação entre docência em programação, iniciação científica em IA, extensão universitária e
+              empresa júnior no IF Sudeste MG.
+            </p>
+          </div>
+
+          <!-- Formação Acadêmica Compacta -->
+          <div id="formacao" class="space-y-3 border-t border-border-subtle pt-5">
+            <h3 class="font-mono text-[13px] leading-normal text-accent-text uppercase tracking-wider">
+              Formação Acadêmica
+            </h3>
+            <div class="space-y-3">
+              {
+                education.map((edu) => (
+                  <div class="border-l-2 border-metric-accent pl-4 space-y-0.5">
+                    <div class="font-mono text-[13px] leading-normal text-metric-accent">{edu.period}</div>
+                    <div class="font-display text-lg font-medium text-text-primary">{edu.degree}</div>
+                    <div class="text-sm text-text-secondary">{edu.institution}</div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Produção Científica (Distinção estrita entre Publicação em Anais e Apresentação em Evento) -->
+          <div id="publicacoes" class="space-y-3 border-t border-border-subtle pt-5">
+            <div class="flex items-baseline justify-between gap-2">
+              <h3 class="font-mono text-[13px] leading-normal text-accent-text uppercase tracking-wider">
+                Publicação & Apresentações
+              </h3>
+              <a
+                href={contactLinks.lattesUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="min-h-[44px] inline-flex items-center font-mono text-[13px] leading-normal text-metric-accent hover:underline"
+              >
+                Currículo Lattes ↗
+              </a>
+            </div>
+
+            <div class="space-y-3">
+              {
+                scientificOutputs.map((pub) => (
+                  <div class="bg-bg-surface border border-border-subtle p-3.5 space-y-1">
+                    <div class="flex flex-wrap items-center justify-between gap-2 font-mono text-[13px] leading-normal">
+                      <span class={pub.category === 'publicacao_anais' ? 'text-metric-accent font-medium' : 'text-accent-text'}>
+                        {pub.categoryLabel}
+                      </span>
+                      <span class="text-text-secondary">
+                        {pub.year}{pub.identifier ? ` · ${pub.identifier}` : ''}
+                      </span>
+                    </div>
+                    <div class="font-display text-base font-medium text-text-primary leading-snug">{pub.title}</div>
+                    <div class="text-[13px] leading-normal text-text-secondary">{pub.venue}</div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Nota Compacta de Extensão & Certificações -->
+          <div id="certificacoes" class="border-t border-border-subtle pt-4 text-sm text-text-secondary space-y-1">
+            <div class="font-mono text-[13px] leading-normal text-text-primary font-medium">
+              Extensão & Certificações Comprovadas
+            </div>
+            <p class="leading-relaxed">
+              Empresa Júnior <strong class="text-text-primary font-medium">EmComp (100h certificadas)</strong>, Monitoria
+              Voluntária de <strong class="text-text-primary font-medium">Linguagens Formais e Autômatos (2025)</strong>,
+              Minicurso <strong class="text-text-primary font-medium">React com Firebase (2025)</strong> e Instrutor de
+              Desenvolvimento Mobile (<strong class="text-text-primary font-medium">16 videoaulas, 2023–2024</strong>).
+            </p>
+          </div>
         </div>
 
-        <div class="lg:col-span-8 divide-y divide-border-subtle border-t border-b border-border-subtle">
+        <!-- Coluna Direita: Linha do Tempo Resumida de Experiências -->
+        <div class="lg:col-span-7 divide-y divide-border-subtle border-t border-b border-border-subtle">
           {
             experiences.map((exp) => (
-              <article class="py-6 grid grid-cols-1 sm:grid-cols-12 gap-4 items-baseline">
-                <div class="sm:col-span-4 space-y-1">
+              <article class="py-4.5 grid grid-cols-1 sm:grid-cols-12 gap-3 items-baseline">
+                <div class="sm:col-span-4 space-y-0.5">
                   <div class="font-mono text-[13px] leading-normal text-metric-accent font-medium">{exp.period}</div>
-                  <div class="font-medium text-base text-text-primary">{exp.org}</div>
+                  <div class="font-medium text-sm text-text-primary">{exp.org}</div>
                   <div class="text-[13px] leading-normal text-text-secondary">{exp.meta}</div>
                 </div>
 
-                <div class="sm:col-span-8 space-y-1.5">
-                  <h3 class="font-display text-xl font-medium text-text-primary">{exp.role}</h3>
-                  <p class="text-sm text-text-secondary leading-relaxed">{exp.description}</p>
+                <div class="sm:col-span-8 space-y-1">
+                  <h3 class="font-display text-xl font-medium text-text-primary leading-snug">{exp.role}</h3>
+                  <p class="text-sm text-text-secondary leading-relaxed">{exp.shortSummary}</p>
                 </div>
               </article>
             ))
@@ -826,102 +728,10 @@ const certificationsAndExtension = [
       </div>
     </section>
 
-    <!-- 5. FORMAÇÃO ACADÊMICA, PUBLICAÇÕES CIENTÍFICAS E CERTIFICAÇÕES (SEPARADOS E SEM CAIXAS REPETIDAS) -->
-    <section id="credenciais" aria-labelledby="credenciais-heading" class="py-16 sm:py-24 border-b border-border-subtle space-y-16">
-      <div class="max-w-[64ch] space-y-3">
-        <p class="text-[13px] leading-normal font-mono text-accent-text">Base Acadêmica & Produção</p>
-        <h2
-          id="credenciais-heading"
-          class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.015em] text-text-primary leading-tight"
-        >
-          Formação acadêmica, publicações científicas e certificações
-        </h2>
-      </div>
-
-      <!-- Bloco A: Formação Acadêmica (2 Colunas com Traço Lateral) -->
-      <div id="formacao" class="space-y-6">
-        <h3 class="font-display text-2xl font-medium text-text-primary border-b border-border-subtle pb-2.5">
-          Formação Acadêmica
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {
-            education.map((edu) => (
-              <article class="border-l-2 border-metric-accent pl-5 space-y-1.5">
-                <div class="font-mono text-[13px] leading-normal text-metric-accent">{edu.period}</div>
-                <h4 class="font-display text-xl font-medium text-text-primary">{edu.degree}</h4>
-                <p class="text-sm font-medium text-text-primary/90">{edu.institution}</p>
-                <p class="text-sm text-text-secondary leading-relaxed">{edu.detail}</p>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-
-      <!-- Bloco B: Publicações e Produção Científica (Diagramação de Citações Bibliográficas) -->
-      <div id="publicacoes" class="space-y-6">
-        <div class="border-b border-border-subtle pb-2.5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-          <h3 class="font-display text-2xl font-medium text-text-primary">Publicações e Produção Científica</h3>
-          <a
-            href="http://lattes.cnpq.br/9434044887106048"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="min-h-[44px] inline-flex items-center text-[13px] leading-normal font-mono text-accent-text hover:underline"
-          >
-            Verificar no Currículo Lattes (CNPq) ↗
-          </a>
-        </div>
-
-        <div class="divide-y divide-border-subtle border-b border-border-subtle">
-          {
-            publications.map((pub) => (
-              <article class="py-5 grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline">
-                <div class="md:col-span-3 space-y-0.5">
-                  <div class="font-display text-2xl font-medium text-metric-accent">{pub.year}</div>
-                  <div class="font-mono text-[13px] leading-normal text-text-secondary">{pub.type}</div>
-                </div>
-                <div class="md:col-span-9 space-y-1">
-                  <h4 class="font-display text-xl font-medium text-text-primary leading-snug">{pub.title}</h4>
-                  <p class="text-sm text-text-primary/90">{pub.venue}</p>
-                  <p class="text-[13px] leading-normal font-mono text-text-secondary">{pub.authors}</p>
-                </div>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-
-      <!-- Bloco C: Cursos, Certificações e Extensão Universitária (Índice Tabular Limpo) -->
-      <div id="certificacoes" class="space-y-4">
-        <div class="border-b border-border-subtle pb-2.5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-          <h3 class="font-display text-2xl font-medium text-text-primary">
-            Cursos, Certificações e Extensão Universitária
-          </h3>
-          <span class="text-[13px] leading-normal font-mono text-text-secondary">
-            Registros institucionais comprovados
-          </span>
-        </div>
-
-        <div class="divide-y divide-border-subtle border-b border-border-subtle">
-          {
-            certificationsAndExtension.map((cert) => (
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 items-baseline text-sm">
-                <div class="sm:col-span-3 font-mono text-[13px] leading-normal text-accent-text">{cert.period}</div>
-                <div class="sm:col-span-5 font-medium text-text-primary">{cert.title}</div>
-                <div class="sm:col-span-2 text-text-secondary text-[13px] leading-normal">{cert.issuer}</div>
-                <div class="sm:col-span-2 sm:text-right font-mono text-[13px] leading-normal text-metric-accent">
-                  {cert.workload}
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. CONTATO DIRETO -->
-    <section id="contato" aria-labelledby="contato-heading" class="py-16 sm:py-20">
+    <!-- 5. CONTATO DIRETO (COM LINKEDIN, E-MAIL, GITHUB E LATTES) -->
+    <section id="contato" aria-labelledby="contato-heading" class="py-12 sm:py-16">
       <div class="bg-bg-surface border border-border-subtle p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7 space-y-3">
+        <div class="lg:col-span-6 space-y-3">
           <p class="text-[13px] leading-normal font-mono text-accent-text">Contato Direto</p>
           <h2
             id="contato-heading"
@@ -929,38 +739,48 @@ const certificationsAndExtension = [
           >
             Vamos conversar sobre desenvolvimento, pesquisa ou novos projetos?
           </h2>
-          <p class="text-sm sm:text-base text-text-secondary leading-relaxed max-w-[56ch]">
+          <p class="text-sm sm:text-base text-text-secondary leading-relaxed max-w-[54ch]">
             Estou disponível para oportunidades em desenvolvimento de software, projetos de pesquisa aplicada em IA,
             colaborações técnicas ou ensino de programação.
           </p>
         </div>
 
-        <div class="lg:col-span-5 flex flex-col gap-3">
+        <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
           <a
-            href="mailto:juansilvagarcia11037@gmail.com"
-            class="min-h-[44px] px-5 py-3 flex items-center justify-between bg-accent-solid hover:bg-accent-solid-hover text-white font-mono text-[13px] leading-normal transition-colors"
+            href={`mailto:${contactLinks.email}`}
+            class="sm:col-span-2 min-h-[44px] px-5 py-3 flex items-center justify-between bg-accent-solid hover:bg-accent-solid-hover text-white font-mono text-[13px] leading-normal transition-colors"
           >
-            <span>juansilvagarcia11037@gmail.com</span>
+            <span>{contactLinks.email}</span>
             <span aria-hidden="true">↗</span>
           </a>
 
           <a
-            href="https://github.com/Juanzit"
+            href={contactLinks.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="min-h-[44px] px-5 py-3 flex items-center justify-between border border-border-control bg-bg-canvas hover:border-accent-solid text-text-primary font-mono text-[13px] leading-normal transition-colors"
+            class="min-h-[44px] px-4 py-3 flex items-center justify-between gap-2 border border-border-control bg-bg-canvas hover:border-accent-solid text-text-primary font-mono text-[13px] leading-normal whitespace-nowrap transition-colors"
           >
-            <span>github.com/Juanzit</span>
+            <span>{contactLinks.linkedinLabel}</span>
             <span class="text-accent-text" aria-hidden="true">↗</span>
           </a>
 
           <a
-            href="http://lattes.cnpq.br/9434044887106048"
+            href={contactLinks.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="min-h-[44px] px-5 py-3 flex items-center justify-between border border-border-control bg-bg-canvas hover:border-accent-solid text-text-primary font-mono text-[13px] leading-normal transition-colors"
+            class="min-h-[44px] px-4 py-3 flex items-center justify-between gap-2 border border-border-control bg-bg-canvas hover:border-accent-solid text-text-primary font-mono text-[13px] leading-normal whitespace-nowrap transition-colors"
           >
-            <span>Currículo Lattes (CNPq)</span>
+            <span>{contactLinks.githubLabel}</span>
+            <span class="text-accent-text" aria-hidden="true">↗</span>
+          </a>
+
+          <a
+            href={contactLinks.lattesUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sm:col-span-2 min-h-[44px] px-4 py-3 flex items-center justify-between border border-border-control bg-bg-canvas hover:border-accent-solid text-text-primary font-mono text-[13px] leading-normal transition-colors"
+          >
+            <span>{contactLinks.lattesLabel} — lattes.cnpq.br/9434044887106048</span>
             <span class="text-metric-accent" aria-hidden="true">↗</span>
           </a>
         </div>

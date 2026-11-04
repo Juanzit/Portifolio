@@ -1,32 +1,32 @@
 # Status do Projeto — Portfólio Juan Silva Garcia
 
-## Fase Atual: Fase 2.2 — Direção 1 (Caderno de Campo & Oficina Editorial) Aplicada na Home (aguardando revisão e aprovação)
+## Fase Atual: Fase 2.3 — Refinamento de UX, Arquitetura da Informação e Auditoria Factual da Home (aguardando revisão e aprovação)
 
-### 1. Implementado e Consolidado na Fase 2.2
-- **Nova Identidade Visual Autoral — Direção 1: Caderno de Campo & Oficina Editorial ([src/styles/global.css](file:///c:/Projetos/Portifolio/src/styles/global.css), [src/layouts/BaseLayout.astro](file:///c:/Projetos/Portifolio/src/layouts/BaseLayout.astro))**:
-  - **Superfícies**: Papel Mineral Quente (`#F5F2EB`) e Papel Secundário (`#ECE7DC`), substituindo o padrão de site escuro com neon como identidade global.
-  - **Tintas e Acentos**: Tinta Carvão (`#161514`), Grafite Editorial (`#524E48`), Terracota Editorial (`#B93815` / `#9E2E0E`) e Verde-Mata Profundo (`#1F5137`).
-  - **Palco Escuro Pontual (elementos da Direção 2)**: Palco Obsidiana Quente (`#151413`), Marfim (`#F4EFE6`), Âmbar Quente (`#E5A93C`) e Verde Espectral (`#74C69D`), utilizados pontualmente na vitrine do **Núcleo Selvagem** e no painel comparativo experimental da pesquisa de **Bioacústica**.
-  - **Tipografia**: `Newsreader` (serifada editorial para títulos, citações e métricas), `Plus Jakarta Sans` (corpo de texto e navegação) e `IBM Plex Mono` (metadados técnicos pontuais).
-- **Hero Pessoal e Humano ([src/pages/index.astro](file:///c:/Projetos/Portifolio/src/pages/index.astro))**:
-  - Texto principal aprovado: *"Olá, eu sou o Juan."* / *"Entre aplicativos, pesquisa, jogos e ensino, venho explorando diferentes possibilidades da computação."* / *"Estudo Ciência da Computação no IF Sudeste MG. Neste portfólio, reúno projetos que desenvolvi e trabalhos em que colaborei, mostrando os problemas, as soluções e o que aprendi em cada experiência."*
-  - Ficha de Campo Lateral em formato de índice editorial aberto (Localização em `Cataguases, MG`, Formação em `IF Sudeste MG — Campus Rio Pomba`, Docência Atual na `CNA Digital & Kodland` e Foco de Pesquisa em `Bioacústica & Aprendizado de Máquina`).
-- **Composições Visuais Distintas para os 4 Projetos Principais (`#projetos`)**:
-  1. **Lundgren Atelier** (*Vitrine Editorial Split 7/5*): acompanhado de captura real da plataforma em produção (`https://lundgren-atelier.com/`, `/images/projetos/lundgren-atelier-home.png`).
-  2. **Detecção Acústica de Aves Ameaçadas Utilizando Aprendizado de Máquina** (*Artigo Científico & Caderno Experimental*): comparação estruturada entre **Cenário A (Controle)** e **Cenário B (Proposto)** sobre 136 espécies do Xeno-Canto, destacando **`F1-weighted = 0,82` obtido pela CNN no Cenário B (Proposto)** sem equivaler `F1-weighted` à acurácia e sem expor o link do repositório ainda em organização.
-  3. **ShapeMeApp** (*Estudo de Arquitetura de Ecossistema*): diagrama arquitetural aberto das 3 frentes conectadas ao Firebase (`Aluno Mobile & Web`, `Professor Mobile`, `Coordenador Mobile`), sem simulação artificial de tela.
-  4. **Núcleo Selvagem** (*Palco Escuro Pontual — Direção 2*): composição imersiva em `#151413` com acentos em âmbar (`#E5A93C`) e verde espectral (`#74C69D`), destacando os 3 pilares de engenharia e design de sistemas (*Expedições Roguelite*, *Evolução Genética* e *Base Pessoal 2.0*).
-- **Projetos com Imagens Reais Autorizadas & Índices Editoriais Abertos (`#github`)**:
-  - **Projetos Colaborativos (`ArchFlow — Sistema de Gerenciamento Arquitetônico`)**: vitrine com 2 capturas reais extraídas do repositório `Victorlolmi/LPS_Sistema_de_Gerenciamento_Arquitetonico` (`/images/projetos/archflow-projetos.png` e `/images/projetos/archflow-3d.png`), com atribuição explícita de coautoria a **Victor Emanuel (`Victorlolmi`, proprietário do repositório) e Juan Silva Garcia** e detalhamento das 5 frentes técnicas confirmadas.
-  - **Desenvolvimento e Programação (`Blade of Albaia`)**: vitrine com 2 imagens originais do repositório `Juanzit/Blade_of_Albaia` (`/images/projetos/blade-of-albaia-menu.png` e `/images/projetos/blade-of-albaia-fase1.png`).
-  - **Pesquisa e Projetos Acadêmicos (`PCMRC`, `Viga-Mestre`, `Hopcroft-Karp`)** e **Ensino e Comunidade (`Minicurso React Native`, `Roadmap Python`)**: apresentados em linhas editoriais abertas (`border-top`) sem repetição de caixas fechadas.
-- **Trajetória, Publicações e Credenciais (`#trajetoria` e `#credenciais`)**:
-  - **Experiência Profissional** e **Formação Acadêmica** em linhas do tempo abertas.
-  - **Publicações Científicas** em formato de citação bibliográfica acadêmica (*Anais do VII CoBICET*, `ISSN 2764-0582`; *XVIII EAMC*; *VII SIMEPE*).
-  - **Cursos, Certificações e Extensão** em tabela de registro com carga horária destacada em `Newsreader`.
+### 1. Implementado e Consolidado na Fase 2.3
+- **Identidade Visual & Assinatura Gráfica Oficializadas ([src/styles/global.css](file:///c:/Projetos/Portifolio/src/styles/global.css), [src/components/layout/Header.astro](file:///c:/Projetos/Portifolio/src/components/layout/Header.astro), [public/favicon.svg](file:///c:/Projetos/Portifolio/public/favicon.svg))**:
+  - **Direção 1 — Caderno de Campo & Oficina Editorial** preservada (`#F5F2EB`, `#ECE7DC`, `#161514`, `#524E48`, `#B93815`, `#1F5137`) com `Newsreader`, `Plus Jakarta Sans` e `IBM Plex Mono`, além do palco escuro pontual (`#151413`) no *Núcleo Selvagem* e na visualização experimental da *Bioacústica*.
+  - **Opção 1 Aprovada**: monograma editorial `JG.` em `Newsreader` itálico com ponto terracota no cabeçalho e no `favicon.svg`.
+- **Separação Estruturada de Dados ([src/data/portfolio.ts](file:///c:/Projetos/Portifolio/src/data/portfolio.ts))**:
+  - Os conjuntos completos de experiências, formação acadêmica, produção científica (diferenciando estritamente `Artigo Completo Publicado em Anais` de `Apresentação de Trabalho em Evento`), certificações/extensão e projetos secundários foram estruturados em módulo tipado próprio, preparando a separação para as páginas internas das próximas fases sem sobrecarregar a Home.
+- **Redução da Extensão da Home ([src/pages/index.astro](file:///c:/Projetos/Portifolio/src/pages/index.astro))**:
+  - Redução de `972` para `542` linhas de código (`-44,2%`), reduzindo a altura total renderizada no Desktop (`1440×900`) de `9.384 px` para `7.032 px` (`-25,1%`) e no Mobile (`390×844`) de `16.052 px` para `12.572 px` (`-21,7%`).
+  - Estrutura enxuta em **5 seções**:
+    1. **Hero Editorial**: texto pessoal aprovado + linha discreta de competências principais (`React Native · Python / Machine Learning · Java · JavaScript`).
+    2. **Quatro Projetos em Destaque (`#projetos`)**: composições individualizadas preservadas (`Lundgren Atelier` com `fetchpriority="high"`, `Detecção Acústica de Aves Ameaçadas`, `ShapeMeApp` e `Núcleo Selvagem`).
+    3. **Seleção Compacta de Outros Projetos (`#github`)**: destaque colaborativo do `ArchFlow` com atribuição distinta entre Victor Emanuel (`Victorlolmi`) e Juan Silva Garcia (sem menção a DAO); destaque autoral de `Blade of Albaia` com captura real de gameplay (`screenshot.png`) e assets re-encodados com cabeçalho PNG legítimo (`89 50 4E 47`); e grade compacta `2×2` para `PCMRC`, `Viga-Mestre`, `Hopcroft-Karp` e `Minicurso React Native / Roadmap Python`.
+    4. **Resumo Breve da Trajetória (`#trajetoria`)**: síntese de 2 colunas reunindo formação acadêmica, distinção explícita entre artigo publicado nos *Anais do VII CoBICET* (`ISSN 2764-0582`) e apresentações no *XVIII EAMC* e *VII SIMEPE*, resumo de extensão/certificações e linha do tempo enxuta das 5 experiências verificadas (sem o qualificativo "internacional" na Kodland).
+    5. **Contato Direto (`#contato`)**: inclui E-mail (`juansilvagarcia11037@gmail.com`), LinkedIn (`https://www.linkedin.com/in/juan-garcia--/`), GitHub (`https://github.com/Juanzit`) e Currículo Lattes (`http://lattes.cnpq.br/9434044887106048`).
 
-### 2. Pendências e Decisões em Aberto
-- Escolha final entre o emblema conceitual **"Onda, Vértice & Origem"**, o **Monograma Editorial `JG.`** (atualmente aplicado no cabeçalho) ou a **Assinatura Tipográfica Pura**.
-- Confirmação da URL definitiva do **LinkedIn** (mantido oculto).
-- Confirmação da natureza do registro **"Desenvolvedor Java — IF Sudeste MG (09/2025 – 01/2026)"** (mantido fora de Experiência Profissional).
-- Organização futura do código público no repositório `Juanzit/Deteccao_acustica_aves` e envio futuro das capturas reais de `ShapeMeApp` e `Núcleo Selvagem`.
+### 2. Evidências Visuais e Pendências Mapeadas
+- **Corrigidas e Incorporadas**:
+  - `Lundgren Atelier`: `/images/projetos/lundgren-atelier-home.png` (`2160×1350`, PNG).
+  - `ArchFlow`: `/images/projetos/archflow-projetos.png` (`1377×796`, PNG) exibida na Home; `/images/projetos/archflow-visao-geral.png` (`1436×831`) e `/images/projetos/archflow-3d.png` (`1439×836`) catalogadas em `src/data/portfolio.ts`.
+  - `Blade of Albaia`: `/images/projetos/blade-of-albaia-screenshot.png` (`799×578`, PNG real de gameplay), `/images/projetos/blade-of-albaia-menu.png` (`308×308`, re-encodado de JPEG-in-PNG para PNG legítimo `89 50 4E 47`) e `/images/projetos/blade-of-albaia-fase1.png` (`681×159`, PNG).
+- **Pendentes (Aguardando Fornecimento pelo Usuário)**:
+  - **Bioacústica**: espectrogramas Mel/MFCC ou gráficos comparativos reais entre **Cenário A (Controle)** e **Cenário B (Proposto)**, além da organização do código público em `Juanzit/Deteccao_acustica_aves`.
+  - **Núcleo Selvagem**: capturas reais do jogo no Roblox Studio, criaturas, laboratório/Base Pessoal 2.0 ou modelos 3D no Blender.
+  - **ShapeMeApp**: capturas reais das telas do aplicativo mobile/web.
+  - **Confirmações de Conteúdo**:
+    - Confirmar se a URL customizada `https://www.linkedin.com/in/juan-garcia--/` (já incluída na seção de contato) é a definitiva (no README do perfil `Juanzit/Juanzit` ainda consta o slug antigo `juan-garcia-1507b0234`).
+    - Confirmar a natureza do registro *"Desenvolvedor Java — IF Sudeste MG (09/2025 – 01/2026)"* (mantido fora da lista de experiências até confirmação).
+    - Confirmar se o trabalho apresentado no *XVIII EAMC (2026)* também possui publicação em anais/resumo expandido ou apenas apresentação oral/pôster.
