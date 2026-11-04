@@ -1,39 +1,95 @@
 ---
 import MobileMenu from './MobileMenu.astro';
+import ArcadeButton from '../ui/ArcadeButton.astro';
 
 const navItems = [
-  { label: 'Projetos', href: '/#projetos' },
-  { label: 'Outros Projetos', href: '/#github' },
-  { label: 'Trajetória', href: '/#trajetoria' },
-  { label: 'Contato', href: '/#contato' },
+  { label: 'Projetos', code: '01', href: '/#projetos' },
+  { label: 'Colaborações', code: '02', href: '/#github' },
+  { label: 'Trajetória', code: '03', href: '/#trajetoria' },
 ];
 ---
 
-<header class="sticky top-0 z-40 border-b border-border-subtle bg-bg-canvas/95 backdrop-blur-sm">
-  <div class="max-w-[1120px] mx-auto px-4 sm:px-8 h-16 flex items-center justify-between gap-4">
-    <a href="/" class="min-h-[44px] inline-flex items-center gap-3 shrink-0 whitespace-nowrap group">
+<header
+  data-site-header
+  class="sticky top-0 z-50 border-b-2 border-border-subtle bg-bg-surface/95 backdrop-blur-md transition-all"
+>
+  <div class="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
+    <!-- Logotipo Monograma JG. com estética Mecha EVA-01 (Sem truncamento no mobile) -->
+    <a
+      href="/"
+      aria-label="Juan Silva Garcia — Página Inicial"
+      class="min-h-[44px] inline-flex items-center gap-2.5 shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-volt"
+    >
       <span
-        class="inline-flex items-baseline justify-center px-2 py-0.5 border border-border-control bg-bg-surface font-display italic font-semibold text-base tracking-tight text-text-primary group-hover:border-accent-primary transition-colors"
+        class="inline-flex items-baseline justify-center px-2.5 py-1 bg-eva-purple text-text-primary font-display font-black text-sm sm:text-base tracking-wider border-2 border-border-hard shadow-hard-solid group-hover:bg-accent-volt group-hover:text-text-on-volt transition-colors manga-tag-chamfer shrink-0"
         aria-hidden="true"
       >
-        JG<span class="text-metric-accent not-italic font-bold">.</span>
+        JG<span class="text-accent-volt group-hover:text-text-on-volt">.</span>
       </span>
-      <span class="font-display font-medium text-lg tracking-tight text-text-primary">Juan Silva Garcia</span>
+      <div class="flex flex-col shrink-0">
+        <span class="font-display font-black text-sm sm:text-lg tracking-tight text-text-primary group-hover:text-eva-purple-light transition-colors uppercase leading-none whitespace-nowrap">
+          Juan Garcia
+        </span>
+        <span class="text-[9px] sm:text-[10px] font-mono text-eva-purple-light tracking-wider leading-tight uppercase font-semibold hidden sm:block">
+          // SYS.DEV & AI RES
+        </span>
+      </div>
     </a>
 
-    <nav aria-label="Navegação principal" class="hidden md:flex items-center gap-1 shrink-0">
+    <!-- Menu Desktop estilo seletor de missão de videogame -->
+    <nav aria-label="Principal" class="hidden md:flex items-center gap-2 shrink-0 font-mono text-xs font-bold uppercase tracking-wider">
       {
         navItems.map((item) => (
           <a
             href={item.href}
-            class="min-h-[44px] px-3 inline-flex items-center whitespace-nowrap text-sm text-text-secondary hover:text-text-primary hover:bg-bg-surface/70 transition-colors"
+            class="min-h-[44px] px-3 inline-flex items-center gap-1.5 text-text-primary hover:text-accent-volt hover:bg-bg-panel border border-transparent hover:border-eva-purple transition-all shadow-none hover:shadow-hard-solid group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-volt"
           >
-            {item.label}
+            <span class="text-eva-purple-light group-hover:text-accent-volt font-mono text-[11px] font-extrabold" aria-hidden="true">
+              {item.code}.
+            </span>
+            <span>{item.label}</span>
           </a>
         ))
       }
+
+      <!-- Alternador de Tema Integrado no Header Desktop -->
+      <button
+        type="button"
+        data-theme-toggle
+        aria-label="Alternar paleta entre EVA-01 Dark e Cyber Light"
+        class="arcade-btn-interactive min-h-[44px] px-3 py-1.5 flex items-center gap-2 bg-bg-panel border border-border-subtle hover:border-eva-purple text-text-primary text-xs font-mono font-bold tracking-wider uppercase shadow-hard-solid cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-volt"
+      >
+        <span class="w-2 h-2 bg-eva-purple inline-block" aria-hidden="true"></span>
+        <span data-theme-label>EVA-01</span>
+        <span class="text-accent-volt text-xs" aria-hidden="true">⇄</span>
+      </button>
+
+      <!-- Botão CTA Principal de Contato (Elimina redundância do link 04. Contato) -->
+      <div class="ml-1 pl-2 border-l border-border-subtle">
+        <ArcadeButton href="#contato" size="sm" variant="volt" class="text-xs">
+          Contato ↗
+        </ArcadeButton>
+      </div>
     </nav>
 
-    <MobileMenu items={navItems} />
+    <!-- Controles Mobile: Theme Switcher + Menu Button -->
+    <div class="md:hidden flex items-center gap-2 shrink-0">
+      <button
+        type="button"
+        data-theme-toggle
+        aria-label="Alternar tema entre EVA-01 Dark e Cyber Light"
+        class="arcade-btn-interactive min-h-[44px] min-w-[44px] px-2.5 py-1.5 flex items-center justify-center gap-1.5 bg-bg-panel border border-border-subtle text-text-primary text-[11px] font-mono font-bold uppercase shadow-hard-solid focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-volt"
+      >
+        <span class="w-2 h-2 bg-eva-purple inline-block" aria-hidden="true"></span>
+        <span class="text-accent-volt font-bold text-xs" aria-hidden="true">⇄</span>
+      </button>
+
+      <MobileMenu
+        items={[
+          ...navItems,
+          { label: 'Contato', code: '04', href: '/#contato' },
+        ]}
+      />
+    </div>
   </div>
 </header>

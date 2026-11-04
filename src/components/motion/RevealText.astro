@@ -1,0 +1,88 @@
+---
+import { MOTION_TOKENS } from '../../lib/motion/tokens';
+
+/**
+ * RevealText — Revelação tipográfica acessível para títulos e subtítulos.
+ *
+ * Modos suportados:
+ * - 'mask' (padrão): Máscara vertical com movimento ascendente sutil e texto contíguo.
+ * - 'words': Revelação progressiva palavra por palavra preservando espaços reais no DOM
+ *            para não prejudicar leitores de tela, seleção de texto ou SEO.
+ * - 'lines': Revelação progressiva por linhas explícitas (`lines` array).
+ */
+interface Props {
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span' | 'div';
+  text?: string;
+  lines?: string[];
+  mode?: 'mask' | 'words' | 'lines';
+  delay?: number;
+  duration?: number;
+  stagger?: number;
+  distance?: number;
+  scrollLinked?: boolean;
+  id?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as: Tag = 'div',
+  text,
+  lines,
+  mode = 'mask',
+  delay = 0,
+  duration = MOTION_TOKENS.duration.editorial,
+  stagger = 38,
+  distance = 18,
+  scrollLinked = false,
+  id,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const words = mode === 'words' && text ? text.trim().split(/\s+/) : [];
+const lineItems = mode === 'lines' && lines ? lines : [];
+
+const styleVars = [
+  `--reveal-delay: ${delay}ms`,
+  `--reveal-duration: ${duration}ms`,
+  `--reveal-y: ${distance}px`,
+].join('; ');
+---
+
+<Tag
+  id={id}
+  data-reveal-text={mode}
+  data-scroll-linked={scrollLinked ? 'true' : undefined}
+  style={styleVars}
+  class:list={[mode === 'mask' && 'overflow-clip', className]}
+  {...rest}
+>
+  {
+    mode === 'words' && words.length > 0 ? (
+      words.map((word, idx) => (
+        <>
+          <span
+            data-reveal-unit
+            style={`--unit-delay: ${delay + idx * stagger}ms`}
+          >{word}</span>{idx < words.length - 1 ? ' ' : ''}
+        </>
+      ))
+    ) : mode === 'lines' && lineItems.length > 0 ? (
+      lineItems.map((line, idx) => (
+        <span class="block overflow-clip">
+          <span
+            data-reveal-unit
+            style={`--unit-delay: ${delay + idx * (stagger * 2)}ms`}
+          >
+            {line}
+          </span>
+        </span>
+      ))
+    ) : text ? (
+      text
+    ) : (
+      <slot />
+    )
+  }
+</Tag>

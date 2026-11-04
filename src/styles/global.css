@@ -1,89 +1,160 @@
 @import "tailwindcss";
-
-@font-face {
-  font-family: 'Newsreader Fallback';
-  src: local('Georgia'), local('Times New Roman');
-  size-adjust: 96.5%;
-  ascent-override: 97%;
-  descent-override: 24%;
-  line-gap-override: 0%;
-}
-
-@font-face {
-  font-family: 'Plus Jakarta Sans Fallback';
-  src: local('Segoe UI'), local('Arial');
-  size-adjust: 101.5%;
-  ascent-override: 98%;
-  descent-override: 24%;
-  line-gap-override: 0%;
-}
+@import "./motion.css";
 
 @theme {
-  --font-display: 'Newsreader', 'Newsreader Fallback', Georgia, Cambria, 'Times New Roman', serif;
-  --font-sans: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Syne', 'Unbounded', system-ui, sans-serif;
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
 /*
- * Direção Artística Oficial — Opção 2: Editorial Violet Nature
- * - Estrutura tipográfica e editorial preservada (Newsreader + Plus Jakarta Sans + IBM Plex Mono).
- * - Superfície principal em grafite-violeta profundo (#0B0A10) e cards em obsidiana (#14121B).
- * - Palco de destaque elevado (#1E192B) para Núcleo Selvagem e visualização experimental da Bioacústica.
- * - Ação e destaques em roxo técnico (#7C3AED / #A78BFA / #C4B5FD).
- * - Indicadores, métricas e ponto do monograma JG. em verde bio-tech vibrante (#B6D63A).
+ * ==========================================================================
+ * SISTEMA VISUAL: NEON GENESIS EVANGELION / EVA-01 TACTICAL INTERFACE
+ * ==========================================================================
+ * - Roxo dominante: Armadura mecha do EVA-01 (superfícies e estruturas)
+ * - Verde fluorescente (Acid Volt): Energia, telemetria viva e ações principais
+ * - Laranja (NERV Alert): Alertas e marcadores especiais (MAGI Supercomputer)
+ * - Texto: Branco LCL e violeta suave com contraste WCAG 2.1 AA/AAA
  */
 :root {
   color-scheme: dark;
-  --bg-canvas: #0B0A10;
-  --bg-surface: #14121B;
-  --bg-elevated: #1B1922;
-  --border-subtle: #2D263B;
-  --border-control: #756E88;
-  --text-primary: #F3F4F6;
-  --text-secondary: #AAA3B8;
-  --accent-primary: #7C3AED;
-  --accent-hover: #6D28D9;
-  --accent-active: #5B21B6;
-  --accent-text: #A78BFA;
-  --metric-accent: #B6D63A;
-  --status-warning: #FBBF24;
 
-  /* Palco Escuro Elevado (Núcleo Selvagem e Visualização Científica da Bioacústica) */
-  --stage-bg: #1E192B;
-  --stage-surface: #14121B;
-  --stage-border: #3D3356;
-  --stage-text: #F3F4F6;
-  --stage-muted: #BDB6CC;
-  --stage-amber: #C4B5FD;
-  --stage-green: #B6D63A;
+  /* PALETA BASE: EVA-01 TACTICAL VIOLET (DARK MODE DEFAULT) */
+  --bg-canvas: #0A0812;          /* Void Black — Fundo principal mineral */
+  --bg-surface: #15111F;         /* Deep Unit — Superfícies, Header e Cards */
+  --bg-panel: #211A2B;           /* Mecha Panel — Containers internos e painéis */
+  --bg-panel-raised: #2D203B;    /* Card selecionado / estado de hover */
+  --bg-elevated: #211A2B;
+
+  /* EVA-01 PURPLE */
+  --eva-purple: #7047A3;         /* Roxo dominante da armadura do EVA-01 */
+  --eva-purple-light: #B99BE8;   /* Violet Energy — Detalhes e destaques tipográficos */
+  --eva-purple-glow: rgba(185, 155, 232, 0.14);
+
+  /* ENERGY / ACID VOLT */
+  --accent-volt: #C6F542;        /* Acid Volt — CTAs principais, status ATIVO, telemetria */
+  --accent-volt-bg: #C6F542;     /* Preenchimento fluorescente de botões primários */
+  --accent-volt-glow: rgba(198, 245, 66, 0.16);
+
+  /* NERV ALERTS */
+  --accent-alert: #FF9B54;       /* NERV Alert — Alertas operacionais e advertências */
+  --accent-alert-glow: rgba(255, 155, 84, 0.2);
+
+  /* TEXTOS (LCL WHITE & MUTED MECHA) */
+  --text-primary: #F4F1F7;       /* LCL White — Título e leitura principal (17.77:1 AAA) */
+  --text-secondary: #B9B2C5;     /* Descrições e metadados técnicos (7.88:1 AAA) */
+  --text-inverse: #17131F;       /* Texto escuro de alto contraste sobre Acid Volt */
+  --text-on-volt: #17131F;
+
+  /* BORDAS & ESTRUTURA MECHA */
+  --border-subtle: #41364F;      /* Grade mecha e divisórias internas de 1px */
+  --border-control: #80708E;     /* Bordas de controles, inputs e botões secundários */
+  --border-hard: #7047A3;        /* Borda de armadura mecha estrutural de 2px */
+  --border-tech: rgba(185, 155, 232, 0.35);
+
+  /* GRID & TEXTURAS TÁTEIS */
+  --grid-color: rgba(185, 155, 232, 0.045);
+  --hud-line: rgba(185, 155, 232, 0.12);
+
+  /* SOMBRAS SÓLIDAS EXTRUDADAS */
+  --shadow-color: #000000;
+  --shadow-hard: 4px 4px 0px var(--shadow-color);
+  --shadow-hard-lg: 6px 6px 0px var(--shadow-color);
+  --shadow-hard-purple: 4px 4px 0px var(--eva-purple);
+  --shadow-hard-volt: 4px 4px 0px var(--accent-volt);
+
+  /* COMPATIBILIDADE SEMÂNTICA */
+  --accent-primary: var(--eva-purple-light);
+  --accent-secondary: var(--eva-purple);
+  --accent-hover: #8B5CF6;
+  --accent-active: #5B21B6;
+}
+
+/*
+ * ==========================================================================
+ * CYBER LIGHT MODE: EVA-01 LIGHT EDITORIAL
+ * ==========================================================================
+ * Versão editorial clara com identidade mecha autêntica:
+ * - Verde escuro #496500 para textos e ícones sobre branco (5.2:1 WCAG AAA)
+ * - Verde fluorescente #C6F542 restrito ao preenchimento de botões com texto escuro #17131F (14.2:1)
+ * - Laranja adaptado #A4460B para alertas sobre fundo claro (5.1:1 WCAG AA)
+ */
+[data-theme="light"],
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-canvas: #F2EFF6;          /* Canvas editorial mineral claro */
+  --bg-surface: #FFFFFF;         /* Superfície branca pura */
+  --bg-panel: #E9E3F0;           /* Painéis mecha claros */
+  --bg-panel-raised: #DED5E9;    /* Hover de painel */
+  --bg-elevated: #E9E3F0;
+
+  --eva-purple: #62408E;         /* Roxo mecha profundo (7.8:1 vs #FFFFFF) */
+  --eva-purple-light: #62408E;
+  --eva-purple-glow: rgba(98, 64, 142, 0.08);
+
+  /* No tema claro: texto em volt usa verde escuro para contraste pleno */
+  --accent-volt: #496500;
+  /* Preenchimento de botões mantém volt fluorescente com texto escuro */
+  --accent-volt-bg: #C6F542;
+  --accent-volt-glow: rgba(73, 101, 0, 0.12);
+
+  /* Laranja NERV adaptado para fundo claro */
+  --accent-alert: #A4460B;
+  --accent-alert-glow: rgba(164, 70, 11, 0.15);
+
+  --text-primary: #191321;       /* Texto escuro (17.5:1 vs #FFFFFF AAA) */
+  --text-secondary: #564B62;     /* Texto secundário (6.8:1 vs #FFFFFF AAA) */
+  --text-inverse: #FFFFFF;
+  --text-on-volt: #17131F;
+
+  --border-subtle: #D0C7D9;
+  --border-control: #746A80;
+  --border-hard: #62408E;
+  --border-tech: rgba(98, 64, 142, 0.35);
+
+  --grid-color: rgba(98, 64, 142, 0.055);
+  --hud-line: rgba(98, 64, 142, 0.12);
+
+  --shadow-color: rgba(25, 19, 33, 0.25);
+  --shadow-hard: 4px 4px 0px #62408E;
+  --shadow-hard-lg: 6px 6px 0px #62408E;
+  --shadow-hard-purple: 4px 4px 0px #62408E;
+  --shadow-hard-volt: 4px 4px 0px #496500;
+
+  --accent-primary: var(--eva-purple);
+  --accent-secondary: var(--eva-purple-light);
+  --accent-hover: #4C2F70;
+  --accent-active: #382054;
 }
 
 @theme inline {
   --color-bg-canvas: var(--bg-canvas);
   --color-bg-surface: var(--bg-surface);
+  --color-bg-panel: var(--bg-panel);
+  --color-bg-panel-raised: var(--bg-panel-raised);
   --color-bg-elevated: var(--bg-elevated);
+
+  --color-eva-purple: var(--eva-purple);
+  --color-eva-purple-light: var(--eva-purple-light);
+  --color-accent-volt: var(--accent-volt);
+  --color-accent-volt-bg: var(--accent-volt-bg);
+  --color-accent-alert: var(--accent-alert);
+
+  --color-border-hard: var(--border-hard);
   --color-border-subtle: var(--border-subtle);
   --color-border-control: var(--border-control);
+
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
-  --color-accent-primary: var(--accent-text);
-  --color-accent-solid: var(--accent-primary);
-  --color-accent-solid-hover: var(--accent-hover);
-  --color-accent-solid-active: var(--accent-active);
-  --color-accent-text: var(--accent-text);
+  --color-text-inverse: var(--text-inverse);
+  --color-text-on-volt: var(--text-on-volt);
+
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
   --color-accent-hover: var(--accent-hover);
   --color-accent-active: var(--accent-active);
-  --color-metric-accent: var(--metric-accent);
-  --color-status-success: var(--metric-accent);
-  --color-status-warning: var(--status-warning);
-
-  --color-stage-bg: var(--stage-bg);
-  --color-stage-surface: var(--stage-surface);
-  --color-stage-border: var(--stage-border);
-  --color-stage-text: var(--stage-text);
-  --color-stage-muted: var(--stage-muted);
-  --color-stage-amber: var(--stage-amber);
-  --color-stage-green: var(--stage-green);
+  --color-shadow-hard: var(--shadow-color);
 }
 
 @layer base {
@@ -93,30 +164,23 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
+    transition: background-color 200ms ease, color 200ms ease;
   }
 
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
     }
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
   }
 
   *,
   *::before,
   *::after {
-    outline-color: var(--accent-primary);
+    outline-color: var(--accent-volt);
   }
 
   *:focus-visible {
-    outline: 2px solid var(--accent-primary);
+    outline: 2px solid var(--accent-volt);
     outline-offset: 2px;
   }
 
@@ -125,6 +189,110 @@
   }
 }
 
-.font-display {
-  font-family: var(--font-display);
+/* ==========================================================================
+   UTILITÁRIOS GRÁFICOS: EVA-01 & NERV INTERFACE
+   ========================================================================== */
+
+/* 1. Grade mecha discreta de 40px com violeta suave */
+.arcade-grid {
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* 2. Retícula halftone opcional */
+.halftone-pattern {
+  background-image: radial-gradient(var(--hud-line) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+/* 3. Chanfro angular mecha (45 graus) restrito a botões e tags selecionadas */
+.manga-panel-chamfer {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.manga-tag-chamfer {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+/* 4. Sombras sólidas extrudadas */
+.shadow-hard-solid {
+  box-shadow: var(--shadow-hard);
+}
+
+.shadow-hard-solid-lg {
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.shadow-hard-purple {
+  box-shadow: var(--shadow-hard-purple);
+}
+
+.shadow-hard-volt {
+  box-shadow: var(--shadow-hard-volt);
+}
+
+/* 5. Tipografia Pseudo-3D com camadas deslocadas em Roxo EVA-01 */
+.text-shadow-3d {
+  text-shadow: 
+    2px 2px 0px var(--shadow-color),
+    4px 4px 0px var(--eva-purple),
+    6px 6px 0px var(--shadow-color);
+}
+
+.text-stroke-title {
+  -webkit-text-stroke: 2px var(--border-hard);
+  color: transparent;
+}
+
+.text-stroke-subtle {
+  -webkit-text-stroke: 1px var(--border-subtle);
+  color: transparent;
+}
+
+/* 6. Fita Ticker Contínua */
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 34s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-track {
+    animation: none !important;
+    transform: none !important;
+    width: 100% !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    white-space: normal !important;
+    row-gap: 0.5rem !important;
+  }
+}
+
+/* 7. Hover Tátil dos Botões de Fliperama / Mecha */
+.arcade-btn-interactive {
+  transition: transform var(--motion-fast) var(--ease-out-expo),
+              box-shadow var(--motion-fast) var(--ease-out-expo),
+              background-color var(--motion-fast) var(--ease-out-expo),
+              border-color var(--motion-fast) var(--ease-out-expo);
+}
+
+.arcade-btn-interactive:hover {
+  transform: translate3d(-2px, -2px, 0);
+  box-shadow: 6px 6px 0px var(--shadow-color);
+}
+
+.arcade-btn-interactive:active {
+  transform: translate3d(2px, 2px, 0);
+  box-shadow: 1px 1px 0px var(--shadow-color);
 }

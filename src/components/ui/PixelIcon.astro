@@ -1,0 +1,167 @@
+---
+interface Props {
+  name: 'cpu' | 'display' | 'neural' | 'wrench';
+  size?: number;
+  class?: string;
+  glow?: boolean;
+}
+
+const { name, size = 24, class: className = '', glow = false } = Astro.props;
+---
+
+<div
+  class:list={[
+    'inline-flex items-center justify-center shrink-0 select-none pixel-icon-container',
+    glow && 'pixel-icon-glow',
+    className,
+  ]}
+  style={`width: ${size}px; height: ${size}px;`}
+  aria-hidden="true"
+>
+  {
+    name === 'cpu' && (
+      <svg
+        viewBox="0 0 24 24"
+        width={size}
+        height={size}
+        shape-rendering="crispEdges"
+        class="w-full h-full block"
+      >
+        <!-- Outer Frame -->
+        <rect x="5" y="5" width="14" height="14" fill="#211A2B" stroke="#7047A3" stroke-width="1" />
+        <!-- Pins Top / Bottom -->
+        <rect x="7" y="1" width="2" height="4" fill="#B99BE8" />
+        <rect x="11" y="1" width="2" height="4" fill="#B99BE8" />
+        <rect x="15" y="1" width="2" height="4" fill="#B99BE8" />
+        <rect x="7" y="19" width="2" height="4" fill="#B99BE8" />
+        <rect x="11" y="19" width="2" height="4" fill="#B99BE8" />
+        <rect x="15" y="19" width="2" height="4" fill="#B99BE8" />
+        <!-- Pins Left / Right -->
+        <rect x="1" y="7" width="4" height="2" fill="#B99BE8" />
+        <rect x="1" y="11" width="4" height="2" fill="#B99BE8" />
+        <rect x="1" y="15" width="4" height="2" fill="#B99BE8" />
+        <rect x="19" y="7" width="4" height="2" fill="#B99BE8" />
+        <rect x="19" y="11" width="4" height="2" fill="#B99BE8" />
+        <rect x="19" y="15" width="4" height="2" fill="#B99BE8" />
+        <!-- Core Center with Glow -->
+        <rect x="8" y="8" width="8" height="8" fill="#15111F" />
+        <rect x="9" y="9" width="6" height="6" fill="#C6F542" class="pixel-pulse-node" />
+        <rect x="11" y="11" width="2" height="2" fill="#0A0812" />
+      </svg>
+    )
+  }
+
+  {
+    name === 'display' && (
+      <svg
+        viewBox="0 0 24 24"
+        width={size}
+        height={size}
+        shape-rendering="crispEdges"
+        class="w-full h-full block"
+      >
+        <!-- CRT Monitor Bezel -->
+        <rect x="3" y="2" width="18" height="15" fill="#211A2B" stroke="#7047A3" stroke-width="1" />
+        <!-- CRT Screen -->
+        <rect x="5" y="4" width="14" height="11" fill="#0A0812" />
+        <!-- Screen Scanlines Effect -->
+        <line x1="5" y1="7" x2="19" y2="7" stroke="#15111F" stroke-width="1" />
+        <line x1="5" y1="11" x2="19" y2="11" stroke="#15111F" stroke-width="1" />
+        <!-- Pixel Brackets < > -->
+        <rect x="7" y="7" width="2" height="5" fill="#C6F542" />
+        <rect x="9" y="6" width="2" height="2" fill="#C6F542" />
+        <rect x="9" y="11" width="2" height="2" fill="#C6F542" />
+        <rect x="15" y="7" width="2" height="5" fill="#C6F542" />
+        <rect x="13" y="6" width="2" height="2" fill="#C6F542" />
+        <rect x="13" y="11" width="2" height="2" fill="#C6F542" />
+        <!-- Base Stand -->
+        <rect x="10" y="17" width="4" height="2" fill="#7047A3" />
+        <rect x="6" y="19" width="12" height="3" fill="#B99BE8" />
+      </svg>
+    )
+  }
+
+  {
+    name === 'neural' && (
+      <svg
+        viewBox="0 0 24 24"
+        width={size}
+        height={size}
+        shape-rendering="crispEdges"
+        class="w-full h-full block"
+      >
+        <!-- Peripheral Satellite Nodes -->
+        <rect x="3" y="4" width="4" height="4" fill="#B99BE8" />
+        <rect x="17" y="4" width="4" height="4" fill="#B99BE8" />
+        <rect x="3" y="16" width="4" height="4" fill="#B99BE8" />
+        <rect x="17" y="16" width="4" height="4" fill="#B99BE8" />
+        <!-- Connecting Signal Buses -->
+        <rect x="7" y="6" width="3" height="2" fill="#7047A3" />
+        <rect x="9" y="8" width="2" height="2" fill="#7047A3" />
+        <rect x="14" y="6" width="3" height="2" fill="#7047A3" />
+        <rect x="13" y="8" width="2" height="2" fill="#7047A3" />
+        <rect x="7" y="16" width="3" height="2" fill="#7047A3" />
+        <rect x="9" y="14" width="2" height="2" fill="#7047A3" />
+        <rect x="14" y="16" width="3" height="2" fill="#7047A3" />
+        <rect x="13" y="14" width="2" height="2" fill="#7047A3" />
+        <!-- Central Neural Core -->
+        <rect x="9" y="9" width="6" height="6" fill="#211A2B" stroke="#7047A3" stroke-width="1" />
+        <rect x="10" y="10" width="4" height="4" fill="#C6F542" class="pixel-pulse-node" />
+      </svg>
+    )
+  }
+
+  {
+    name === 'wrench' && (
+      <svg
+        viewBox="0 0 24 24"
+        width={size}
+        height={size}
+        shape-rendering="crispEdges"
+        class="w-full h-full block"
+      >
+        <!-- Wrench Head -->
+        <rect x="4" y="3" width="8" height="3" fill="#B99BE8" />
+        <rect x="3" y="6" width="4" height="4" fill="#B99BE8" />
+        <rect x="9" y="6" width="3" height="3" fill="#B99BE8" />
+        <!-- Empty Jaw Opening -->
+        <rect x="6" y="3" width="3" height="4" fill="#0A0812" />
+        <!-- Shaft Diagonal -->
+        <rect x="7" y="10" width="3" height="3" fill="#7047A3" />
+        <rect x="10" y="12" width="3" height="3" fill="#7047A3" />
+        <rect x="12" y="14" width="3" height="3" fill="#C6F542" />
+        <!-- Mecha Base & Gear Teeth -->
+        <rect x="15" y="15" width="6" height="6" fill="#B99BE8" />
+        <rect x="17" y="17" width="2" height="2" fill="#0A0812" />
+        <rect x="17" y="13" width="2" height="2" fill="#C6F542" />
+        <rect x="21" y="17" width="2" height="2" fill="#C6F542" />
+        <rect x="13" y="17" width="2" height="2" fill="#7047A3" />
+        <rect x="17" y="21" width="2" height="2" fill="#7047A3" />
+      </svg>
+    )
+  }
+</div>
+
+<style>
+  .pixel-icon-container {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .pixel-pulse-node {
+    transition: transform 0.2s ease, fill 0.2s ease;
+  }
+
+  :global(.group:hover) .pixel-pulse-node,
+  :global([data-active='true']) .pixel-pulse-node {
+    fill: #C6F542;
+    filter: drop-shadow(0 0 4px #C6F542);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pixel-pulse-node {
+      transition: none;
+      filter: none;
+    }
+  }
+</style>

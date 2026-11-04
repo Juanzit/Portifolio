@@ -1,34 +1,51 @@
 ---
+import GraphicMarquee from '../ui/GraphicMarquee.astro';
+import ArcadeButton from '../ui/ArcadeButton.astro';
+
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-border-subtle bg-bg-canvas mt-16">
-  <div class="max-w-[1120px] mx-auto px-4 sm:px-8 py-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 text-[13px] leading-normal text-text-secondary">
-    <div class="space-y-1">
-      <p class="font-display text-base font-medium text-text-primary">
-        <span class="italic font-semibold mr-1.5">JG<span class="text-metric-accent not-italic font-bold">.</span></span>
-        Juan Silva Garcia <span class="text-accent-text">·</span> Cataguases, MG
+<footer class="mt-20 border-t-2 border-border-subtle bg-bg-surface relative overflow-hidden">
+  <GraphicMarquee variant="dark" />
+
+  <div class="max-w-[1200px] mx-auto px-4 sm:px-8 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 relative z-10">
+    <div class="space-y-2 max-w-[36rem]">
+      <div class="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-eva-purple-light">
+        <span class="w-2 h-2 bg-eva-purple inline-block" aria-hidden="true"></span>
+        <span>// EVA-01 TACTICAL INTERFACE · TERMINAL_END</span>
+      </div>
+
+      <p class="font-display font-black text-2xl tracking-tight text-text-primary uppercase">
+        Juan Silva Garcia
       </p>
-      <p>
-        Graduando em Ciência da Computação e Técnico em Informática — IF Sudeste MG (Campus Rio Pomba)
+      <p class="text-xs sm:text-sm text-text-secondary leading-relaxed font-mono">
+        Graduando em Ciência da Computação e Técnico em Informática — IF Sudeste MG (Campus Rio Pomba).
+        Pesquisa em Inteligência Artificial, Bioacústica e Sistemas de Software.
       </p>
     </div>
 
-    <div class="flex flex-wrap items-center gap-x-4">
-      <a
+    <div class="flex flex-wrap items-center gap-3">
+      <ArcadeButton
         href="https://github.com/Juanzit/Portifolio"
         target="_blank"
         rel="noopener noreferrer"
-        class="min-h-[44px] inline-flex items-center text-text-secondary hover:text-text-primary transition-colors"
+        size="sm"
+        variant="surface"
       >
-        Repositório deste portfólio ↗
-      </a>
-      <span aria-hidden="true">·</span>
-      <a href="/design-system/" class="min-h-[44px] inline-flex items-center font-mono text-accent-text hover:underline">
-        /design-system
-      </a>
-      <span aria-hidden="true">·</span>
-      <span>© {currentYear}</span>
+        Repo Portfólio ↗
+      </ArcadeButton>
+
+      <ArcadeButton
+        href="/design-system/"
+        size="sm"
+        variant="purple"
+      >
+        /design-system ↗
+      </ArcadeButton>
+
+      <div class="font-mono text-xs text-text-secondary px-2">
+        © {currentYear} GARCIA_JS
+      </div>
     </div>
   </div>
 </footer>

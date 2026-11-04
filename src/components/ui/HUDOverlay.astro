@@ -1,0 +1,41 @@
+---
+/**
+ * HUDOverlay — Marcações de enquadramento mecha puramente visuais nos cantos da tela.
+ * - 100% pointer-events-none (nunca bloqueia cliques em botões, links ou cards)
+ * - aria-hidden="true" (ignorado por tecnologias assistivas)
+ * - Identificação contextual institucional (IF Sudeste MG / Campus Rio Pomba)
+ * - Sem coordenadas de GPS precisas
+ */
+---
+
+<div
+  aria-hidden="true"
+  class="pointer-events-none fixed inset-0 z-30 flex flex-col justify-between p-3 sm:p-5 select-none text-[10px] font-mono leading-none tracking-widest text-text-secondary/60"
+>
+  <!-- Cantos Superiores: Miras cosméticas mecha -->
+  <div class="flex items-center justify-between w-full">
+    <!-- Canto Superior Esquerdo: Contexto Institucional -->
+    <div class="hidden lg:flex items-center gap-2 bg-bg-surface/80 border border-border-subtle px-2.5 py-1 shadow-hard-solid">
+      <span class="w-1.5 h-1.5 rounded-full bg-accent-volt animate-pulse"></span>
+      <span class="text-text-primary font-bold">EVA-01 // READY</span>
+      <span class="text-border-subtle">|</span>
+      <span class="text-text-secondary">IF SUDESTE MG · CAMPUS RIO POMBA</span>
+    </div>
+
+    <!-- Canto Superior Direito: Mira decorativa sem interferência -->
+    <div class="hidden lg:flex items-center gap-1.5 text-text-secondary/40 text-[9px] ml-auto">
+      <span>[ HUD_FRAME // 01 ]</span>
+    </div>
+  </div>
+
+  <!-- Cantos Inferiores: Miras cosméticas mecha discretas (Apenas em telas grandes) -->
+  <div class="hidden xl:flex items-end justify-between w-full">
+    <div class="bg-bg-surface/70 border border-border-subtle px-2 py-0.5 text-[9px] text-text-secondary/60">
+      CORE: ASTRO 7 + TAILWIND V4
+    </div>
+
+    <div class="bg-bg-surface/70 border border-border-subtle px-2 py-0.5 text-[9px] text-text-secondary/60">
+      SYSTEM: STABLE // 60FPS
+    </div>
+  </div>
+</div>

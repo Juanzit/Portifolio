@@ -1,0 +1,76 @@
+---
+import AnimateOnScroll from './AnimateOnScroll.astro';
+import RevealText from './RevealText.astro';
+
+/**
+ * AnimatedSectionHeading — Cabeçalho padronizado de seção com hierarquia e tempos coordenados:
+ * 1. Kicker / Eyebrow em monospace (0 ms)
+ * 2. Título H2 com revelação tipográfica (70 ms)
+ * 3. Subtítulo / Descrição (150 ms)
+ * 4. Ação complementar opcional à direita (190 ms)
+ */
+interface Props {
+  kicker: string;
+  title: string;
+  titleId?: string;
+  description?: string;
+  maxWidthClass?: string;
+  class?: string;
+}
+
+const {
+  kicker,
+  title,
+  titleId,
+  description,
+  maxWidthClass = 'max-w-[44rem]',
+  class: className = '',
+} = Astro.props;
+
+const hasAction = Astro.slots.has('action');
+---
+
+<div
+  class:list={[
+    hasAction
+      ? 'flex flex-col sm:flex-row sm:items-end justify-between gap-4'
+      : maxWidthClass,
+    className,
+  ]}
+>
+  <div class:list={['space-y-2', hasAction && maxWidthClass]}>
+    <AnimateOnScroll preset="fade-up" translateY={12} duration={480} delay={0}>
+      <p class="text-[13px] leading-normal font-mono text-accent-text flex items-center gap-2">
+        <span class="w-4 h-[1px] bg-accent-solid inline-block" aria-hidden="true"></span>
+        <span>{kicker}</span>
+      </p>
+    </AnimateOnScroll>
+
+    <RevealText
+      as="h2"
+      id={titleId}
+      text={title}
+      mode="mask"
+      delay={70}
+      duration={660}
+      distance={20}
+      class="font-display text-3xl sm:text-4xl font-medium tracking-[-0.015em] text-text-primary leading-tight"
+    />
+
+    {
+      description && (
+        <AnimateOnScroll preset="fade-up" translateY={16} duration={580} delay={145}>
+          <p class="text-base text-text-secondary leading-relaxed">{description}</p>
+        </AnimateOnScroll>
+      )
+    }
+  </div>
+
+  {
+    hasAction && (
+      <AnimateOnScroll preset="fade-up" translateY={14} duration={540} delay={190} class="shrink-0">
+        <slot name="action" />
+      </AnimateOnScroll>
+    )
+  }
+</div>

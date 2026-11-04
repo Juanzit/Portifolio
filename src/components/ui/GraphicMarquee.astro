@@ -1,0 +1,51 @@
+---
+/**
+ * GraphicMarquee — Fita gráfica contínua de telemetria mecha e tecnologia.
+ * Animação contínua em compositor, interrompida automaticamente se prefers-reduced-motion estiver ativo.
+ */
+interface Props {
+  text?: string;
+  items?: string[];
+  variant?: 'purple' | 'volt' | 'alert' | 'dark' | 'vermilion' | 'cyan';
+  speed?: 'normal' | 'fast';
+  class?: string;
+}
+
+const {
+  items = [
+    'EVA-01 TACTICAL SYSTEM // STATUS: DISPATCH_READY',
+    'IF SUDESTE MG // CAMPUS RIO POMBA',
+    'CIÊNCIA DA COMPUTAÇÃO // ENGENHARIA & IA',
+    'NEURAL SYNC: 99.8% // AUTONOMOUS RUNTIMES',
+    'HIGH PERFORMANCE WEB & APPLIED RESEARCH',
+  ],
+  variant = 'purple',
+  class: className = '',
+} = Astro.props;
+
+const variantStyles = {
+  purple: 'bg-bg-panel text-eva-purple-light border-y border-border-subtle',
+  volt: 'bg-accent-volt-bg text-text-on-volt border-y-2 border-border-hard',
+  alert: 'bg-accent-alert text-text-on-volt border-y-2 border-border-hard',
+  dark: 'bg-bg-surface text-text-secondary border-y border-border-subtle',
+  // Aliases de compatibilidade anterior:
+  vermilion: 'bg-bg-panel text-eva-purple-light border-y border-border-subtle',
+  cyan: 'bg-bg-surface text-eva-purple-light border-y border-border-subtle',
+}[variant];
+
+// Duplica a lista de itens para criar a ilusão de fita infinita sem pulos
+const repeatedItems = [...items, ...items, ...items, ...items];
+---
+
+<div aria-hidden="true" class:list={['overflow-hidden select-none py-2 font-mono font-bold text-xs uppercase tracking-widest', variantStyles, className]}>
+  <div class="animate-marquee-track flex items-center gap-6 whitespace-nowrap">
+    {
+      repeatedItems.map((item) => (
+        <span class="inline-flex items-center gap-3">
+          <span>{item}</span>
+          <span class="text-xs text-accent-volt opacity-70" aria-hidden="true">★</span>
+        </span>
+      ))
+    }
+  </div>
+</div>

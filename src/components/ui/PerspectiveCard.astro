@@ -1,0 +1,45 @@
+---
+/**
+ * PerspectiveCard — Card tridimensional mecha interativo inspirado em
+ * decks de seleção e HUDs do EVA-01:
+ * - Rotação 3D suave orientada à posição do cursor (tilt até 6-8deg)
+ * - Retorno amortecido via CSS transform e transição de sombra sólida
+ * - Superfície em Mecha Panel com borda de 2px
+ * - Desativado automaticamente em telas touch e quando prefers-reduced-motion está ativo
+ */
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  maxTilt?: number;
+  chamfer?: boolean;
+  class?: string;
+  innerClass?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as: Tag = 'div',
+  maxTilt = 6,
+  chamfer = false,
+  class: className = '',
+  innerClass = '',
+  ...rest
+} = Astro.props;
+---
+
+<Tag
+  data-perspective-card
+  data-max-tilt={String(maxTilt)}
+  class:list={['relative block select-none', className]}
+  {...rest}
+>
+  <div
+    data-perspective-inner
+    class:list={[
+      'w-full h-full border-2 border-border-subtle hover:border-eva-purple bg-bg-surface hover:bg-bg-panel-raised p-5 sm:p-6 shadow-hard-solid transition-all',
+      chamfer && 'manga-panel-chamfer',
+      innerClass,
+    ]}
+  >
+    <slot />
+  </div>
+</Tag>

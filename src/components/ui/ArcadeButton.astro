@@ -1,0 +1,85 @@
+---
+/**
+ * ArcadeButton — Botão tátil inspirado em interfaces mecha do EVA-01 e arcades:
+ * - Chanfro angular geométrico a 45 graus
+ * - Deslocamento físico no hover (-2px) e active (+2px) com sombra sólida extrudada
+ * - 3 níveis hierárquicos:
+ *   1. volt: Primary CTA (Acid Volt fluorescente com texto escuro)
+ *   2. purple: Secondary CTA (Superfície escura com contorno violeta mecha)
+ *   3. alert: NERV Alert / Ação especial (Laranja NERV)
+ * - Totalmente acessível por teclado com :focus-visible em Acid Volt e alvos mínimos de 44x44px
+ */
+interface Props {
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  variant?: 'volt' | 'purple' | 'alert' | 'surface' | 'ghost' | 'vermilion' | 'cyan';
+  size?: 'sm' | 'md' | 'lg';
+  chamfer?: boolean;
+  disabled?: boolean;
+  target?: string;
+  rel?: string;
+  id?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  href,
+  type = 'button',
+  variant = 'volt',
+  size = 'md',
+  chamfer = true,
+  disabled = false,
+  target,
+  rel,
+  id,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+
+const sizeClasses = {
+  sm: 'px-3.5 py-2 text-xs font-mono',
+  md: 'px-5 py-3 text-sm font-sans font-bold',
+  lg: 'px-7 py-3.5 text-base font-sans font-extrabold',
+}[size];
+
+const variantClasses = {
+  volt:
+    'bg-accent-volt-bg text-text-on-volt border-2 border-border-hard hover:brightness-110 active:brightness-95 shadow-hard-solid',
+  purple:
+    'bg-bg-surface text-text-primary border-2 border-eva-purple hover:border-eva-purple-light hover:bg-bg-panel-raised active:bg-bg-panel shadow-hard-solid',
+  alert:
+    'bg-accent-alert text-text-on-volt border-2 border-border-hard hover:brightness-110 active:brightness-95 shadow-hard-solid',
+  surface:
+    'bg-bg-surface text-text-primary border-2 border-border-subtle hover:border-eva-purple hover:bg-bg-panel-raised shadow-hard-solid',
+  ghost:
+    'bg-transparent text-text-primary border-2 border-border-subtle hover:border-eva-purple-light hover:bg-bg-surface/50 shadow-none hover:shadow-hard-solid',
+  // Aliases de compatibilidade anterior:
+  vermilion:
+    'bg-accent-alert text-text-on-volt border-2 border-border-hard hover:brightness-110 active:brightness-95 shadow-hard-solid',
+  cyan:
+    'bg-bg-surface text-text-primary border-2 border-eva-purple hover:border-eva-purple-light hover:bg-bg-panel-raised shadow-hard-solid',
+}[variant];
+---
+
+<Tag
+  id={id}
+  href={href}
+  type={!href ? type : undefined}
+  target={href ? target : undefined}
+  rel={href ? rel : undefined}
+  disabled={!href ? disabled : undefined}
+  aria-disabled={disabled ? 'true' : undefined}
+  class:list={[
+    'arcade-btn-interactive min-h-[44px] min-w-[44px] inline-flex items-center justify-center gap-2.5 font-bold uppercase tracking-wider select-none cursor-pointer transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-volt focus-visible:ring-offset-2 focus-visible:ring-offset-bg-canvas',
+    chamfer && 'manga-tag-chamfer',
+    sizeClasses,
+    variantClasses,
+    className,
+  ]}
+  {...rest}
+>
+  <slot />
+</Tag>

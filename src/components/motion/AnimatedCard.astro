@@ -1,0 +1,58 @@
+---
+import { MOTION_PRESETS, type MotionPresetName } from '../../lib/motion/tokens';
+
+/**
+ * AnimatedCard — Card com entrada progressiva e microinterações de superfície/borda.
+ * - Suporta elevação vertical sutil (-3px em dispositivos com ponteiro preciso),
+ *   iluminação radial discreta e zoom suave de imagens internas.
+ * - Não utiliza tilt 3D. Compatível com teclado (:focus-within) e dispositivos touch.
+ */
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  preset?: MotionPresetName;
+  delay?: number;
+  duration?: number;
+  lift?: boolean;
+  staggerItem?: boolean;
+  staggerIndex?: number;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as: Tag = 'article',
+  preset = 'fade-up',
+  delay = 0,
+  duration,
+  lift = true,
+  staggerItem = false,
+  staggerIndex,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const baseConfig = MOTION_PRESETS[preset];
+const d = duration ?? baseConfig.duration;
+
+const styleVars = [
+  `--motion-x: ${baseConfig.translateX}px`,
+  `--motion-y: ${baseConfig.translateY}px`,
+  `--motion-scale: ${baseConfig.scale}`,
+  `--motion-duration: ${d}ms`,
+  `--motion-delay: ${delay}ms`,
+  `--motion-easing: ${baseConfig.easing}`,
+].join('; ');
+---
+
+<Tag
+  data-animated-card
+  data-card-lift={lift ? 'true' : 'false'}
+  data-motion={!staggerItem ? preset : undefined}
+  data-stagger-item={staggerItem ? '' : undefined}
+  data-stagger-index={staggerIndex !== undefined ? String(staggerIndex) : undefined}
+  style={styleVars}
+  class={className}
+  {...rest}
+>
+  <slot />
+</Tag>

@@ -1,0 +1,57 @@
+---
+import { MOTION_PRESETS, type MotionPresetName } from '../../lib/motion/tokens';
+
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  preset?: MotionPresetName;
+  index?: number;
+  translateX?: number;
+  translateY?: number;
+  scale?: number;
+  duration?: number;
+  easing?: string;
+  id?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as: Tag = 'div',
+  preset = 'fade-up',
+  index,
+  translateX,
+  translateY,
+  scale,
+  duration,
+  easing,
+  id,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const baseConfig = MOTION_PRESETS[preset];
+const x = translateX ?? baseConfig.translateX;
+const y = translateY ?? baseConfig.translateY;
+const s = scale ?? baseConfig.scale;
+const d = duration ?? baseConfig.duration;
+const e = easing ?? baseConfig.easing;
+
+const styleVars = [
+  `--motion-x: ${x}px`,
+  `--motion-y: ${y}px`,
+  `--motion-scale: ${s}`,
+  `--motion-duration: ${d}ms`,
+  `--motion-easing: ${e}`,
+].join('; ');
+---
+
+<Tag
+  id={id}
+  data-stagger-item
+  data-stagger-index={index !== undefined ? String(index) : undefined}
+  style={styleVars}
+  class={className}
+  {...rest}
+>
+  <slot />
+</Tag>

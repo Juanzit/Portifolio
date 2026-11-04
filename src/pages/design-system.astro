@@ -1,465 +1,399 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Button from '../components/ui/Button.astro';
+import KineticHeading from '../components/ui/KineticHeading.astro';
+import ArcadeButton from '../components/ui/ArcadeButton.astro';
+import MangaPanel from '../components/ui/MangaPanel.astro';
+import PerspectiveCard from '../components/ui/PerspectiveCard.astro';
+import GraphicMarquee from '../components/ui/GraphicMarquee.astro';
 import Badge from '../components/ui/Badge.astro';
 import Tabs, { type TabItem } from '../components/ui/Tabs.astro';
-import ControlField from '../components/ui/ControlField.astro';
-import LabContainer from '../components/ui/LabContainer.astro';
-import ThemeShowcase from '../components/ui/ThemeShowcase.astro';
 
-// Auditoria matemática real de contraste (WCAG 2.1) para a identidade oficial Tema B — Violet Nature
-const violetTokens = [
+// Auditoria cromática do sistema NEON GENESIS EVANGELION // EVA-01 TACTICAL INTERFACE
+const eva01Tokens = [
   {
     name: 'bg-canvas',
     cssVar: '--bg-canvas',
-    hex: '#0B0A10',
-    role: 'Superfície dominante (grafite mineral)',
-    contrast: '17.92:1 vs #F3F4F6 (AAA)',
+    hexDark: '#0A0812',
+    hexLight: '#F2EFF6',
+    role: 'Void Black — Fundo principal mineral / Canvas editorial claro',
+    contrastDark: '17.77:1 vs #F4F1F7 (AAA)',
     sampleClass: 'bg-bg-canvas',
   },
   {
     name: 'bg-surface',
     cssVar: '--bg-surface',
-    hex: '#14121B',
-    role: 'Cards, painéis e containers modulares',
-    contrast: '16.86:1 vs #F3F4F6 (AAA)',
+    hexDark: '#15111F',
+    hexLight: '#FFFFFF',
+    role: 'Deep Unit — Superfícies, Header e Cards estruturais',
+    contrastDark: '16.12:1 vs #F4F1F7 (AAA)',
     sampleClass: 'bg-bg-surface',
   },
   {
-    name: 'bg-elevated',
-    cssVar: '--bg-elevated',
-    hex: '#1C1925',
-    role: 'Estados de hover em superfícies e barras',
-    contrast: '15.70:1 vs #F3F4F6 (AAA)',
-    sampleClass: 'bg-bg-elevated',
+    name: 'bg-panel',
+    cssVar: '--bg-panel',
+    hexDark: '#211A2B',
+    hexLight: '#E9E3F0',
+    role: 'Mecha Panel — Painéis de dados, caixas de código e sub-containers',
+    contrastDark: '14.50:1 vs #F4F1F7 (AAA)',
+    sampleClass: 'bg-bg-panel',
   },
   {
-    name: 'border-subtle',
-    cssVar: '--border-subtle',
-    hex: '#302A3A',
-    role: 'Grade editorial e divisórias estruturais de 1px',
-    contrast: '1.43:1 vs #0B0A10 (Decorativo)',
-    sampleClass: 'bg-border-subtle',
+    name: 'eva-purple',
+    cssVar: '--eva-purple',
+    hexDark: '#7047A3',
+    hexLight: '#62408E',
+    role: 'Eva Purple — Roxo dominante da armadura do EVA-01',
+    contrastDark: '6.73:1 vs #FFFFFF (AA)',
+    sampleClass: 'bg-eva-purple',
   },
   {
-    name: 'border-control',
-    cssVar: '--border-control',
-    hex: '#756E88',
-    role: 'Bordas de inputs, selects e botões secundários',
-    contrast: '3.84:1 vs #14121B (WCAG 1.4.11 AA)',
-    sampleClass: 'bg-border-control',
+    name: 'eva-purple-light',
+    cssVar: '--eva-purple-light',
+    hexDark: '#B99BE8',
+    hexLight: '#62408E',
+    role: 'Violet Energy — Detalhes, palavras destacadas e numerações',
+    contrastDark: '7.88:1 vs #211A2B (AAA)',
+    sampleClass: 'bg-eva-purple-light',
+  },
+  {
+    name: 'accent-volt',
+    cssVar: '--accent-volt',
+    hexDark: '#C6F542',
+    hexLight: '#496500',
+    role: 'Acid Volt — CTAs principais, status ATIVO e telemetria viva',
+    contrastDark: '15.66:1 vs #0A0812 (AAA)',
+    sampleClass: 'bg-accent-volt',
+  },
+  {
+    name: 'accent-alert',
+    cssVar: '--accent-alert',
+    hexDark: '#FF9B54',
+    hexLight: '#A4460B',
+    role: 'NERV Alert — Avisos operacionais, advertências e destaques especiais',
+    contrastDark: '9.53:1 vs #0A0812 (AAA)',
+    sampleClass: 'bg-accent-alert',
   },
   {
     name: 'text-primary',
     cssVar: '--text-primary',
-    hex: '#F3F4F6',
-    role: 'Títulos e leitura principal de alto contraste',
-    contrast: '17.92:1 vs #0B0A10 (AAA)',
+    hexDark: '#F4F1F7',
+    hexLight: '#191321',
+    role: 'LCL White — Leitura principal e títulos de alta clareza',
+    contrastDark: '17.77:1 vs #0A0812 (AAA)',
     sampleClass: 'bg-text-primary',
-  },
-  {
-    name: 'text-secondary',
-    cssVar: '--text-secondary',
-    hex: '#AAA3B8',
-    role: 'Descrições, legendas e metadados técnicos',
-    contrast: '7.63:1 vs #14121B (AAA)',
-    sampleClass: 'bg-text-secondary',
-  },
-  {
-    name: 'accent-solid',
-    cssVar: '--accent-primary',
-    hex: '#7C3AED',
-    role: 'Preenchimento de botão primário (interação principal)',
-    contrast: '5.70:1 vs #FFFFFF (AA)',
-    sampleClass: 'bg-accent-solid',
-  },
-  {
-    name: 'accent-solid-hover',
-    cssVar: '--accent-hover',
-    hex: '#6D28D9',
-    role: 'Hover de botão primário com ganho de contraste',
-    contrast: '7.10:1 vs #FFFFFF (AAA)',
-    sampleClass: 'bg-accent-solid-hover',
-  },
-  {
-    name: 'accent-primary',
-    cssVar: '--accent-text',
-    hex: '#A78BFA',
-    role: 'Links, anel de foco de 2px e rótulos ativos',
-    contrast: '6.82:1 vs #14121B (AA / AAA Grande)',
-    sampleClass: 'bg-accent-primary',
-  },
-  {
-    name: 'metric-accent',
-    cssVar: '--metric-accent',
-    hex: '#B6D63A',
-    role: 'Restrito a pequenos indicadores, status e telemetria',
-    contrast: '11.19:1 vs #14121B (AAA)',
-    sampleClass: 'bg-metric-accent',
   },
 ];
 
-const specTabs: TabItem[] = [
+const evaSpecs: TabItem[] = [
   {
-    id: 'spec-01',
+    id: 'spec-eva-01',
     code: '01.',
-    label: 'Arquitetura Estática',
+    label: 'Hierarquia Cromática',
     content:
-      'Compilação HTML/CSS pura por padrão no Astro 7 + Vite 8, reservando JavaScript apenas para ilhas de simulação.',
-    metricLabel: 'BASELINE DE EXECUÇÃO',
-    metrics: 'Zero-JS por Padrão',
+      'Roxo como identidade estrutural da armadura do EVA-01, verde fluorescente contido em ações e status importantes, e laranja restrito a alertas operacionais da NERV.',
+    metricLabel: 'DESIGN LANGUAGE',
+    metrics: 'EVA-01 Tactical Violet',
     metricTone: 'metric',
   },
   {
-    id: 'spec-02',
+    id: 'spec-eva-02',
     code: '02.',
-    label: 'Acessibilidade WCAG 2.1',
+    label: 'Regra de Ouro UX',
     content:
-      'Navegação completa por teclado (Tab, Shift+Tab, setas direcionais, Home/End) com anel de foco de 2px em #A78BFA e alvos mínimos de 44×44px.',
-    metricLabel: 'AUDITORIA DE CONTRASTE',
-    metrics: 'Conformidade AA / AAA',
+      'Cada componente possui um elemento visual dominante e no máximo dois decorativos secundários, eliminando a poluição visual.',
+    metricLabel: 'CONTROLE DE RUÍDO',
+    metrics: '1 Dominante + 2 Secundários',
     metricTone: 'accent',
   },
   {
-    id: 'spec-03',
+    id: 'spec-eva-03',
     code: '03.',
-    label: 'Hierarquia Cromática',
+    label: 'Cyber Light Seguro',
     content:
-      'Grafite mineral dominante (#0B0A10), roxo para elementos interativos (#7C3AED / #A78BFA) e verde-limão (#B6D63A) contido em métricas.',
-    metricLabel: 'IDENTIDADE OFICIAL',
-    metrics: 'Tema B — Violet Nature',
+      'Adaptação semântica com #496500 para textos verdes (5.2:1 AAA) e verde fluorescente #C6F542 para preenchimento de botões com texto escuro.',
+    metricLabel: 'ACSIBILIDADE WCAG',
+    metrics: 'Conformidade 2.1 AA / AAA',
     metricTone: 'metric',
   },
 ];
 ---
 
-<BaseLayout title="Design System — Tema B: Violet Nature | Juan Silva Garcia">
-  <header class="border-b border-border-subtle bg-bg-canvas sticky top-0 z-40">
-    <div class="max-w-[1120px] mx-auto px-4 sm:px-8 min-h-16 py-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-      <div class="flex items-center gap-3">
-        <span class="font-mono text-[13px] leading-normal px-2.5 py-1 bg-bg-surface border border-border-subtle text-accent-primary">
-          FASE 01 / VIOLET NATURE
-        </span>
-        <span class="font-semibold text-sm tracking-tight hidden sm:inline text-text-primary">
-          JUAN SILVA GARCIA
-        </span>
+<BaseLayout
+  title="Design System — EVA-01 Tactical Interface | Juan Silva Garcia"
+  description="Especificação visual e sistema de componentes EVA-01 Tactical Violet do portfólio de engenharia de software de Juan Silva Garcia."
+>
+  <div class="min-h-screen">
+    <!-- Header do Design System -->
+    <header class="border-b-2 border-border-subtle bg-bg-surface/90 backdrop-blur-md sticky top-0 z-40">
+      <div class="max-w-[1200px] mx-auto px-4 sm:px-8 min-h-16 py-2 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="font-mono text-xs px-2.5 py-1 bg-eva-purple text-text-primary font-bold uppercase tracking-wider manga-tag-chamfer shadow-hard-solid">
+            SYS.DS // EVA-01
+          </span>
+          <span class="font-display font-black text-sm tracking-tight text-text-primary">
+            JUAN SILVA GARCIA
+          </span>
+        </div>
+        <nav aria-label="Seções do Design System" class="flex flex-wrap items-center gap-3 text-xs font-mono">
+          <a href="#tokens" class="min-h-[44px] px-2 inline-flex items-center text-text-secondary hover:text-accent-volt transition-colors font-bold">
+            01. TOKENS
+          </a>
+          <a href="#tipografia" class="min-h-[44px] px-2 inline-flex items-center text-text-secondary hover:text-accent-volt transition-colors font-bold">
+            02. TIPOGRAFIA
+          </a>
+          <a href="#componentes" class="min-h-[44px] px-2 inline-flex items-center text-text-secondary hover:text-accent-volt transition-colors font-bold">
+            03. BOTÕES HIERÁRQUICOS
+          </a>
+          <a href="#cards-3d" class="min-h-[44px] px-2 inline-flex items-center text-text-secondary hover:text-accent-volt transition-colors font-bold">
+            04. DECK MECHA
+          </a>
+        </nav>
       </div>
-      <nav aria-label="Seções do Design System" class="flex flex-wrap items-center gap-2 sm:gap-5 text-[13px] leading-normal font-mono">
-        <a href="#tokens" class="min-h-[44px] px-2 inline-flex items-center text-text-secondary hover:text-text-primary transition-colors">
-          01. TOKENS
-        </a>
-        <a href="#tipografia" class="min-h-[44px] px-2 inline-flex items-center text-text-secondary hover:text-text-primary transition-colors">
-          02. TIPOGRAFIA
-        </a>
-        <a href="#componentes" class="min-h-[44px] px-2 inline-flex items-center text-text-secondary hover:text-text-primary transition-colors">
-          03. COMPONENTES
-        </a>
-        <a href="#showcase" class="min-h-[44px] px-2 inline-flex items-center text-accent-primary hover:underline">
-          04. SHOWCASE
-        </a>
-      </nav>
-    </div>
-  </header>
+    </header>
 
-  <main id="main-content" tabindex="-1" class="max-w-[1120px] mx-auto px-4 sm:px-8 py-10 space-y-14 focus:outline-none">
-    <!-- Cabeçalho Editorial -->
-    <section class="border border-border-subtle bg-bg-surface p-6 sm:p-8 space-y-4">
-      <div class="flex flex-wrap items-center gap-2.5">
-        <Badge variant="accent">IDENTIDADE OFICIAL: VIOLET NATURE</Badge>
-        <Badge variant="success">ASTRO 7 + VITE 8 + TAILWIND V4</Badge>
-        <Badge variant="neutral">CHECKPOINT FASE 01</Badge>
-      </div>
-      <h1 class="text-2xl sm:text-4xl font-bold tracking-[-0.02em] text-text-primary">
-        Fundação Visual & Sistema de Componentes Compartilhados
-      </h1>
-      <p class="text-base text-text-secondary max-w-[65ch] leading-[1.65]">
-        Especificação consolidada do portfólio de engenharia de software de Juan Silva Garcia.
-        Superfície dominante em grafite mineral, interação em roxo técnico e indicadores pontuais em verde-limão,
-        com container de 1120px, metadados em 13px–14px e alvos de toque mínimos de 44×44px.
-      </p>
-    </section>
+    <main id="main-content" tabindex="-1" class="max-w-[1200px] mx-auto px-4 sm:px-8 py-12 space-y-16 focus:outline-none">
+      <!-- Banner Hero do Design System -->
+      <section class="border-2 border-border-subtle bg-bg-panel p-6 sm:p-10 relative overflow-hidden shadow-hard-solid">
+        <div class="relative z-10 space-y-5">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-0.5 text-xs font-mono font-bold bg-eva-purple text-text-primary uppercase manga-tag-chamfer">
+              PALETA OFICIAL: EVA-01 TACTICAL VIOLET
+            </span>
+            <span class="px-2.5 py-0.5 text-xs font-mono font-bold bg-accent-volt text-text-on-volt uppercase manga-tag-chamfer">
+              NERV ENGINEERING // HUD
+            </span>
+            <span class="px-2.5 py-0.5 text-xs font-mono font-bold bg-bg-surface border border-border-subtle text-text-secondary uppercase">
+              WCAG 2.1 AA / AAA CERTIFIED
+            </span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-display font-black tracking-tight text-text-primary uppercase leading-tight">
+            Design System // EVA-01 Tactical Interface
+          </h1>
+          <p class="text-base text-text-secondary max-w-[70ch] leading-relaxed font-sans font-medium">
+            Sistema visual autoral inspirado na armadura mecha do Evangelion Unit-01, nas interfaces operacionais dos supercomputadores MAGI da NERV e no rigor editorial de engenharia de software. Roxo mineral dominante, acentos fluorescentes Acid Volt e alertas NERV dedicados.
+          </p>
+        </div>
+      </section>
 
-    <!-- 01. Tokens Cromáticos e Auditoria WCAG 2.1 -->
-    <section id="tokens" class="space-y-6 scroll-mt-24">
-      <div class="flex flex-wrap items-baseline justify-between gap-2 border-b border-border-subtle pb-3">
-        <h2 class="text-xl font-semibold tracking-tight text-text-primary">
-          <span class="font-mono text-[13px] text-accent-primary mr-2">01.</span>
-          Tokens Cromáticos & Auditoria WCAG 2.1 (Tema B — Violet Nature)
-        </h2>
-        <span class="text-[13px] leading-normal font-mono text-text-secondary">
-          {violetTokens.length} TOKENS OFICIAIS
-        </span>
-      </div>
+      <!-- Fita Ticker Contínua Discreta -->
+      <GraphicMarquee
+        items={[
+          'EVA-01 TACTICAL VIOLET',
+          'NERV ENGINEERING HUD',
+          'ACID VOLT HIGH CONTRAST',
+          'MAGI ALERT SYSTEM',
+          'WCAG 2.1 AA / AAA COMPLIANT',
+          'ZERO EXPENSIVE COMPOSITING',
+        ]}
+        variant="purple"
+      />
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {
-          violetTokens.map((token) => (
-            <article class="border border-border-subtle bg-bg-surface p-4 flex flex-col justify-between space-y-4">
-              <div class="flex items-center justify-between gap-3">
-                <div class:list={['w-12 h-12 border border-border-subtle shrink-0', token.sampleClass]} />
-                <div class="text-right font-mono">
-                  <div class="text-sm font-semibold text-text-primary">{token.hex}</div>
-                  <div class="text-[13px] leading-normal text-accent-primary">{token.cssVar}</div>
+      <!-- 01. TOKENS CROMÁTICOS -->
+      <section id="tokens" class="space-y-6 scroll-mt-24">
+        <KineticHeading
+          index="01"
+          tag="HUD // 01"
+          title="Tokens Cromáticos & Paleta EVA-01"
+          description="Roxo como armadura dominante, verde fluorescente contido em ações principais e laranja restrito a alertas operacionais"
+          accent="purple"
+        />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {
+            eva01Tokens.map((token) => (
+              <article class="border-2 border-border-subtle hover:border-eva-purple bg-bg-panel p-4 flex flex-col justify-between space-y-4 shadow-hard-solid transition-colors">
+                <div class="flex items-center justify-between gap-3">
+                  <div class:list={['w-12 h-12 border-2 border-border-subtle shrink-0 shadow-hard-solid', token.sampleClass]} />
+                  <div class="text-right font-mono">
+                    <div class="text-xs font-bold text-accent-volt">{token.cssVar}</div>
+                    <div class="text-[11px] text-text-secondary mt-0.5">Dark: {token.hexDark}</div>
+                    <div class="text-[11px] text-text-secondary">Light: {token.hexLight}</div>
+                  </div>
                 </div>
-              </div>
-              <div class="space-y-1 pt-2 border-t border-border-subtle">
-                <p class="text-[13px] leading-normal text-text-primary font-medium">{token.role}</p>
-                <p class="text-[13px] leading-normal font-mono text-text-secondary">WCAG: {token.contrast}</p>
-              </div>
-            </article>
-          ))
-        }
-      </div>
-    </section>
-
-    <!-- 02. Escala Tipográfica -->
-    <section id="tipografia" class="space-y-6 scroll-mt-24">
-      <div class="flex flex-wrap items-baseline justify-between gap-2 border-b border-border-subtle pb-3">
-        <h2 class="text-xl font-semibold tracking-tight text-text-primary">
-          <span class="font-mono text-[13px] text-accent-primary mr-2">02.</span>
-          Escala Tipográfica Editorial (H1–H4, Corpo, Metadados e Código)
-        </h2>
-        <span class="text-[13px] leading-normal font-mono text-text-secondary">INTER + JETBRAINS MONO</span>
-      </div>
-
-      <div class="border border-border-subtle bg-bg-surface divide-y divide-border-subtle">
-        <div class="p-6 space-y-2">
-          <span class="text-[13px] leading-normal font-mono text-accent-primary">
-            H1 / 36px–40px / Bold / Tracking -0.02em
-          </span>
-          <p class="text-2xl sm:text-4xl font-bold tracking-[-0.02em] text-text-primary">
-            Engenharia de Software, Pesquisa em IA e Desenvolvimento Mobile
-          </p>
+                <div class="pt-2 border-t border-border-subtle space-y-1">
+                  <div class="text-xs font-bold font-mono text-text-primary uppercase">{token.name}</div>
+                  <p class="text-xs text-text-secondary leading-snug">{token.role}</p>
+                  <p class="text-[11px] font-mono text-eva-purple-light">{token.contrastDark}</p>
+                </div>
+              </article>
+            ))
+          }
         </div>
+      </section>
 
-        <div class="p-6 space-y-2">
-          <span class="text-[13px] leading-normal font-mono text-accent-primary">
-            H2 / 24px–28px / Semibold / Tracking -0.015em
-          </span>
-          <p class="text-xl sm:text-2xl font-semibold tracking-[-0.015em] text-text-primary">
-            Arquitetura de Sistemas e Experimentos Técnicos
-          </p>
-        </div>
+      <!-- 02. ESCALA TIPOGRÁFICA -->
+      <section id="tipografia" class="space-y-6 scroll-mt-24">
+        <KineticHeading
+          index="02"
+          tag="HUD // 02"
+          title="Matriz Tipográfica Funcional"
+          description="Syne para títulos monumentais, Unbounded para contadores mecha, Space Grotesk para leitura técnica e IBM Plex Mono para telemetria"
+          accent="purple"
+        />
 
-        <div class="p-6 space-y-2">
-          <span class="text-[13px] leading-normal font-mono text-accent-primary">
-            H3 / 20px / Semibold
-          </span>
-          <p class="text-lg sm:text-xl font-semibold text-text-primary">
-            Classificação Bioacústica com Redes Neurais Convolucionais
-          </p>
-        </div>
-
-        <div class="p-6 space-y-2">
-          <span class="text-[13px] leading-normal font-mono text-accent-primary">
-            H4 / 14px / Semibold Uppercase Mono
-          </span>
-          <p class="text-sm font-semibold font-mono uppercase tracking-wider text-text-primary">
-            Especificação de Pipeline Experimental
-          </p>
-        </div>
-
-        <div class="p-6 space-y-2">
-          <span class="text-[13px] leading-normal font-mono text-accent-primary">
-            Body / 16px / Line-height 1.65 / Limite 65ch
-          </span>
-          <p class="text-base text-text-primary leading-[1.65] max-w-[65ch]">
-            Parágrafo principal otimizado para leitura longa em estudos de caso e artigos do Tech Journal.
-            A largura máxima de coluna é contida em 65 caracteres para preservar o conforto visual.
-          </p>
-          <p class="text-sm text-text-secondary leading-[1.65] max-w-[65ch]">
-            Parágrafo secundário (#AAA3B8) utilizado para resumos de cards, descrições contextuais e notas metodológicas.
-          </p>
-        </div>
-
-        <div class="p-6 space-y-3">
-          <span class="text-[13px] leading-normal font-mono text-accent-primary">
-            Caption & Code Block / JetBrains Mono / 13px–14px
-          </span>
-          <p class="text-[13px] leading-normal font-mono text-text-secondary">
-            FIG 01. COMPARATIVO ENTRE CENÁRIO A (CONTROLE) E CENÁRIO B (PROPOSTO)
-          </p>
-          <pre class="p-4 bg-bg-canvas border border-border-subtle text-[13px] leading-normal font-mono text-text-primary overflow-x-auto"><code>const calcularCargaInterna = (pse: number, duracaoMinutos: number): number =&gt; &#123;
-  return pse * duracaoMinutos; // Unidade Arbitrária (UA)
-&#125;;</code></pre>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03. Componentes Compartilhados e Matriz de Estados -->
-    <section id="componentes" class="space-y-6 scroll-mt-24">
-      <div class="flex flex-wrap items-baseline justify-between gap-2 border-b border-border-subtle pb-3">
-        <h2 class="text-xl font-semibold tracking-tight text-text-primary">
-          <span class="font-mono text-[13px] text-accent-primary mr-2">03.</span>
-          Componentes Compartilhados (`Button`, `Badge`, `Tabs`, `ControlField`, `LabContainer`)
-        </h2>
-        <span class="text-[13px] leading-normal font-mono text-text-secondary">
-          INSTÂNCIAS REAIS RENDERIZADAS
-        </span>
-      </div>
-
-      <div class="border border-border-subtle bg-bg-surface p-5 sm:p-6 space-y-8">
-        <div class="space-y-4">
-          <h3 class="text-[13px] leading-normal font-mono uppercase tracking-wider text-text-secondary">
-            Matriz de Estados Visuais de `Button.astro` (Alvos Mínimos 44×44px)
-          </h3>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
-              <caption class="sr-only">
-                Matriz de estados interativos do componente Button nas variantes Primary, Secondary e Ghost
-              </caption>
-              <thead>
-                <tr class="border-b border-border-subtle text-[13px] leading-normal font-mono text-text-secondary">
-                  <th scope="col" class="py-3 pr-4">VARIANTE</th>
-                  <th scope="col" class="py-3 px-3">NORMAL</th>
-                  <th scope="col" class="py-3 px-3">HOVER</th>
-                  <th scope="col" class="py-3 px-3">FOCUS (TAB)</th>
-                  <th scope="col" class="py-3 px-3">ACTIVE</th>
-                  <th scope="col" class="py-3 pl-3">DISABLED</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-border-subtle text-sm">
-                <tr>
-                  <th scope="row" class="py-4 pr-4 font-mono text-[13px] leading-normal text-text-secondary font-normal">
-                    Primary
-                  </th>
-                  <td class="py-4 px-3"><Button variant="primary">Explorar</Button></td>
-                  <td class="py-4 px-3"><Button variant="primary" forceState="hover">Explorar</Button></td>
-                  <td class="py-4 px-3"><Button variant="primary" forceState="focus">Explorar</Button></td>
-                  <td class="py-4 px-3"><Button variant="primary" forceState="active">Explorar</Button></td>
-                  <td class="py-4 pl-3"><Button variant="primary" disabled>Indisponível</Button></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="py-4 pr-4 font-mono text-[13px] leading-normal text-text-secondary font-normal">
-                    Secondary
-                  </th>
-                  <td class="py-4 px-3"><Button variant="secondary">Arquitetura</Button></td>
-                  <td class="py-4 px-3"><Button variant="secondary" forceState="hover">Arquitetura</Button></td>
-                  <td class="py-4 px-3"><Button variant="secondary" forceState="focus">Arquitetura</Button></td>
-                  <td class="py-4 px-3"><Button variant="secondary" forceState="active">Arquitetura</Button></td>
-                  <td class="py-4 pl-3"><Button variant="secondary" disabled>Indisponível</Button></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="py-4 pr-4 font-mono text-[13px] leading-normal text-text-secondary font-normal">
-                    Ghost
-                  </th>
-                  <td class="py-4 px-3"><Button variant="ghost">Código</Button></td>
-                  <td class="py-4 px-3"><Button variant="ghost" forceState="hover">Código</Button></td>
-                  <td class="py-4 px-3"><Button variant="ghost" forceState="focus">Código</Button></td>
-                  <td class="py-4 px-3"><Button variant="ghost" forceState="active">Código</Button></td>
-                  <td class="py-4 pl-3"><Button variant="ghost" disabled>Privado</Button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="pt-6 border-t border-border-subtle space-y-3">
-          <h3 class="text-[13px] leading-normal font-mono uppercase tracking-wider text-text-secondary">
-            Variantes de `Badge.astro` (Verde-limão restrito a status/métricas)
-          </h3>
-          <div class="flex flex-wrap gap-2.5">
-            <Badge variant="success">EM PRODUÇÃO</Badge>
-            <Badge variant="warning">EM DESENVOLVIMENTO</Badge>
-            <Badge variant="accent">PUBLICAÇÃO CIENTÍFICA</Badge>
-            <Badge variant="neutral">React Native</Badge>
-            <Badge variant="neutral">Astro 7</Badge>
-            <Badge variant="neutral">Python / CNN</Badge>
-            <Badge variant="neutral">Roblox Luau</Badge>
-          </div>
-        </div>
-
-        <div class="pt-6 border-t border-border-subtle grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div class="space-y-3">
-            <h3 class="text-[13px] leading-normal font-mono uppercase tracking-wider text-text-secondary">
-              `Tabs.astro` (Setas ← / → / Home / End)
-            </h3>
-            <Tabs id="ds-spec" ariaLabel="Especificações do Design System" tabs={specTabs} />
+        <div class="border-2 border-border-subtle bg-bg-panel divide-y divide-border-subtle shadow-hard-solid">
+          <div class="p-6 space-y-2">
+            <span class="text-xs font-mono font-bold text-eva-purple-light">
+              DISPLAY 01 // SYNE 900 EXTRA BOLD
+            </span>
+            <p class="text-3xl sm:text-5xl font-display font-black tracking-tight text-text-primary uppercase">
+              JUAN GARCIA // SOFTWARE ENGINEER
+            </p>
           </div>
 
-          <div class="space-y-3">
-            <h3 class="text-[13px] leading-normal font-mono uppercase tracking-wider text-text-secondary">
-              `ControlField.astro` (Text, Select, Range e Disabled)
-            </h3>
-            <div class="border border-border-subtle bg-bg-canvas p-5 space-y-4">
-              <ControlField
-                id="ds-input-cenario"
-                label="Filtro de Parâmetro"
-                type="text"
-                defaultValue="Cenário B (Proposto)"
-              />
-              <ControlField
-                id="ds-select-modelo"
-                label="Arquitetura de Modelo"
-                type="select"
-                options={[
-                  { value: 'cnn', label: 'CNN (Rede Neural Convolucional)' },
-                  { value: 'svm', label: 'SVM (Máquina de Vetores de Suporte)' },
-                  { value: 'hmm', label: 'GMM-HMM (Modelo Oculto de Markov)' },
-                ]}
-              />
-              <ControlField
-                id="ds-range-pse"
-                label="Percepção Subjetiva de Esforço (PSE)"
-                type="range"
-                min={0}
-                max={10}
-                defaultValue={7}
-                unit="PSE"
-              />
-              <ControlField
-                id="ds-input-disabled"
-                label="Conexão com Banco Externo (Bloqueado)"
-                type="text"
-                defaultValue="Desativado por diretriz de arquitetura estática"
-                disabled={true}
-              />
+          <div class="p-6 space-y-2">
+            <span class="text-xs font-mono font-bold text-accent-volt">
+              NUMERAÇÃO HUD // UNBOUNDED 800
+            </span>
+            <p class="text-2xl sm:text-3xl font-black tracking-tight text-text-primary font-mono uppercase">
+              01 // MISSION_DECK: FEATURED_PROJECTS
+            </p>
+          </div>
+
+          <div class="p-6 space-y-2">
+            <span class="text-xs font-mono font-bold text-text-secondary">
+              CORPO EDITORIAL // SPACE GROTESK (LEITURA TÉCNICA)
+            </span>
+            <p class="text-base text-text-secondary leading-relaxed max-w-[70ch] font-sans font-medium">
+              Texto corrido com tipografia geométrica humanista para máxima clareza em estudos de caso profundos, notas metodológicas e relatórios de engenharia.
+            </p>
+          </div>
+
+          <div class="p-6 space-y-2">
+            <span class="text-xs font-mono font-bold text-accent-alert">
+              TELEMETRIA OPERACIONAL // IBM PLEX MONO (TERMINAL NERV)
+            </span>
+            <pre class="p-4 bg-bg-surface border border-border-subtle text-xs font-mono text-accent-volt overflow-x-auto shadow-hard-solid"><code>[SYS_STATUS]: EVA-01 READY // SYNCHRONIZATION: 99.4% // MODE: PRODUCTION
+EXPERIMENTO_BIOACUSTICA: Cenário A (Controle) vs Cenário B (Proposto)</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03. BOTÕES HIERÁRQUICOS DE 3 NÍVEIS -->
+      <section id="componentes" class="space-y-6 scroll-mt-24">
+        <KineticHeading
+          index="03"
+          tag="HUD // 03"
+          title="Hierarquia de Ações (3 Níveis)"
+          description="01 Primary CTA (Acid Volt), 02 Secondary CTA (Eva Purple) e 03 Alert / Special Action (NERV Orange)"
+          accent="volt"
+        />
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Botões EVA-01 -->
+          <MangaPanel title="ArcadeButton.astro // Hierarquia Semântica" accent="purple" class="space-y-6">
+            <p class="text-xs font-mono text-text-secondary leading-relaxed">
+              Botões táteis com chanfro angular a 45 graus, alvo tátil mínimo de 44×44px e anel de foco em Acid Volt. Ao receber clique, geram síntese nativa de som via Web Audio API.
+            </p>
+            <div class="flex flex-wrap gap-4 items-center">
+              <ArcadeButton variant="volt" size="md">
+                <span>01 · PRIMARY CTA</span>
+                <span aria-hidden="true">►</span>
+              </ArcadeButton>
+
+              <ArcadeButton variant="purple" size="md">
+                <span>02 · SECONDARY CTA</span>
+                <span aria-hidden="true">↗</span>
+              </ArcadeButton>
+
+              <ArcadeButton variant="alert" size="md">
+                <span>03 · NERV ALERT</span>
+                <span aria-hidden="true">!</span>
+              </ArcadeButton>
+
+              <ArcadeButton variant="surface" size="md">
+                <span>SURFACE BUTTON</span>
+              </ArcadeButton>
             </div>
-          </div>
-        </div>
 
-        <div class="pt-6 border-t border-border-subtle space-y-3">
-          <h3 class="text-[13px] leading-normal font-mono uppercase tracking-wider text-text-secondary">
-            `LabContainer.astro` (Isolamento Padrão de Simuladores)
-          </h3>
-          <LabContainer
-            code="LAB-SHELL-00"
-            title="Container Padrão para Experiências Interativas da Fase 4"
-            statusLabel="AMBIENTE SIMULADO"
-            statusVariant="accent"
-            disclaimer="Execução 100% local no navegador sem conexão com banco de dados de produção."
-          >
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-[13px] leading-normal font-mono">
-              <div class="p-4 border border-border-subtle bg-bg-canvas space-y-1">
-                <span class="text-text-secondary">ENTRADA DE PARÂMETROS</span>
-                <p class="text-text-primary text-sm font-sans">Controles isolados com feedback imediato.</p>
-              </div>
-              <div class="p-4 border border-border-subtle bg-bg-canvas space-y-1">
-                <span class="text-text-secondary">PROCESSAMENTO LOCAL</span>
-                <p class="text-text-primary text-sm font-sans">Regras em TypeScript estrito sem API paga.</p>
-              </div>
-              <div class="p-4 border border-border-subtle bg-bg-canvas space-y-1">
-                <span class="text-text-secondary">SAÍDA DE TELEMETRIA</span>
-                <p class="text-metric-accent text-sm font-mono font-semibold">Indicadores de alto contraste</p>
+            <div class="pt-4 border-t border-border-subtle space-y-2">
+              <span class="text-xs font-mono text-text-secondary uppercase">Tamanhos Disponíveis:</span>
+              <div class="flex flex-wrap items-center gap-3">
+                <ArcadeButton variant="volt" size="sm">SMALL (SM)</ArcadeButton>
+                <ArcadeButton variant="volt" size="md">MEDIUM (MD)</ArcadeButton>
+                <ArcadeButton variant="volt" size="lg">LARGE (LG)</ArcadeButton>
               </div>
             </div>
-          </LabContainer>
-        </div>
-      </div>
-    </section>
+          </MangaPanel>
 
-    <!-- 04. Showcase Integrado da Identidade Oficial -->
-    <section id="showcase" class="space-y-4 scroll-mt-24">
-      <div class="flex flex-wrap items-baseline justify-between gap-2 border-b border-border-subtle pb-3">
-        <h2 class="text-xl font-semibold tracking-tight text-text-primary">
-          <span class="font-mono text-[13px] text-accent-primary mr-2">04.</span>
-          Showcase Integrado de Aplicação (`ThemeShowcase.astro` com Tema B — Violet Nature)
-        </h2>
-        <span class="text-[13px] leading-normal font-mono text-metric-accent">
-          ● COMPOSIÇÃO SEM DUPLICAÇÃO
-        </span>
-      </div>
-      <ThemeShowcase />
-    </section>
-  </main>
+          <!-- Badges & Tags EVA-01 -->
+          <MangaPanel title="Badges Mecha & Alertas Operacionais" accent="purple" class="space-y-6">
+            <p class="text-xs font-mono text-text-secondary leading-relaxed">
+              Indicadores com alto contraste visual para metadados de tecnologia, status de missão e coautorias de projetos.
+            </p>
+            <div class="flex flex-wrap gap-2.5">
+              <span class="px-2.5 py-1 text-xs font-mono font-bold bg-accent-volt text-text-on-volt uppercase manga-tag-chamfer shadow-hard-solid">
+                STATUS: EM PRODUÇÃO
+              </span>
+              <span class="px-2.5 py-1 text-xs font-mono font-bold bg-eva-purple text-text-primary uppercase manga-tag-chamfer shadow-hard-solid">
+                COAUTORIA: LPS (VICTOR EMANUEL)
+              </span>
+              <span class="px-2.5 py-1 text-xs font-mono font-bold bg-accent-alert text-text-on-volt uppercase manga-tag-chamfer shadow-hard-solid">
+                NERV ALERT // VII CoBICET
+              </span>
+              <Badge variant="neutral">React Native</Badge>
+              <Badge variant="neutral">TypeScript</Badge>
+              <Badge variant="neutral">Tailwind CSS v4</Badge>
+              <Badge variant="neutral">Python / CNN</Badge>
+            </div>
+
+            <div class="pt-4 border-t border-border-subtle">
+              <Tabs id="eva-tabs" ariaLabel="Especificações EVA-01" tabs={evaSpecs} />
+            </div>
+          </MangaPanel>
+        </div>
+      </section>
+
+      <!-- 04. 3D PERSPECTIVE CARDS -->
+      <section id="cards-3d" class="space-y-6 scroll-mt-24">
+        <KineticHeading
+          index="04"
+          tag="HUD // 04"
+          title="Decks de Missão (3D Tilt Suave)"
+          description="Cartões mecha com rotação em perspectiva 3D, reflexo dinâmico de luz e sombras sólidas sem borrão artificial"
+          accent="purple"
+        />
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <PerspectiveCard maxTilt={5}>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono text-accent-volt font-bold">MISSION 01 // PRODUCTION</span>
+                <span class="text-xs font-mono text-text-secondary">2025 — 2026</span>
+              </div>
+              <h3 class="font-display font-black text-2xl text-text-primary uppercase">
+                Lundgren Atelier
+              </h3>
+              <p class="text-sm text-text-secondary leading-relaxed font-sans font-medium">
+                Vitrine comercial autoral em produção com Astro, Tailwind CSS, Sanity.io e Cloudflare Pages.
+              </p>
+              <div class="flex items-center justify-between pt-3 border-t border-border-subtle">
+                <span class="text-xs font-mono text-eva-purple-light font-bold">STACK: ASTRO / TS / SANITY</span>
+                <span class="text-xs font-mono text-text-secondary">CLOUDFLARE</span>
+              </div>
+            </div>
+          </PerspectiveCard>
+
+          <PerspectiveCard maxTilt={5}>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono text-eva-purple-light font-bold">MISSION 02 // CO-OP</span>
+                <span class="text-xs font-mono text-text-secondary">2024</span>
+              </div>
+              <h3 class="font-display font-black text-2xl text-text-primary uppercase">
+                ArchFlow (Coautoria LPS)
+              </h3>
+              <p class="text-sm text-text-secondary leading-relaxed font-sans font-medium">
+                Sistema modular de engenharia de software em Java 17 com JPA e JavaFX 3D em coautoria com Victor Emanuel.
+              </p>
+              <div class="flex items-center justify-between pt-3 border-t border-border-subtle">
+                <span class="text-xs font-mono text-accent-volt font-bold">GITHUB OPEN REPO</span>
+                <span class="text-xs font-mono text-text-secondary">JAVA 17</span>
+              </div>
+            </div>
+          </PerspectiveCard>
+        </div>
+      </section>
+    </main>
+  </div>
 </BaseLayout>

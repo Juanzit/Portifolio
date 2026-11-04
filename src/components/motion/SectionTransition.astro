@@ -1,0 +1,36 @@
+---
+/**
+ * SectionTransition — Coordena a transição visual entre seções adjacentes
+ * desenhando uma linha divisória editorial proporcional ao progresso do scroll
+ * (`--section-progress`), sem criar lacunas, cortes ou mudanças bruscas de layout.
+ */
+interface Props {
+  as?: 'section' | 'div';
+  id?: string;
+  showTopRule?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as: Tag = 'section',
+  id,
+  showTopRule = false,
+  class: className = '',
+  ...rest
+} = Astro.props;
+---
+
+<Tag id={id} data-section-transition class:list={['relative', className]} {...rest}>
+  {
+    showTopRule && (
+      <div
+        aria-hidden="true"
+        class="w-full h-[1px] bg-border-subtle overflow-hidden"
+      >
+        <div class="section-transition-rule w-full h-full bg-gradient-to-r from-accent-solid/70 via-border-subtle to-transparent" />
+      </div>
+    )
+  }
+  <slot />
+</Tag>

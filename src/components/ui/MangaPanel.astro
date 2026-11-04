@@ -1,0 +1,64 @@
+---
+/**
+ * MangaPanel — Container com estética mecha EVA-01:
+ * - Borda sólida de 2px com sombra extrudada
+ * - Superfície em Mecha Panel (#211A2B) ou Deep Unit (#15111F)
+ * - Chanfro angular opcional (clip-path mecha) quando solicitado
+ */
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  title?: string;
+  tag?: string;
+  accent?: 'purple' | 'volt' | 'alert' | 'subtle' | 'vermilion' | 'cyan' | 'white';
+  chamfer?: boolean;
+  halftone?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as: Tag = 'div',
+  title,
+  tag,
+  accent = 'purple',
+  chamfer = false,
+  halftone = false,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const borderAccent = {
+  purple: 'border-border-subtle hover:border-eva-purple',
+  volt: 'border-border-subtle hover:border-accent-volt',
+  alert: 'border-border-subtle hover:border-accent-alert',
+  subtle: 'border-border-subtle',
+  // Aliases anteriores:
+  vermilion: 'border-border-subtle hover:border-accent-alert',
+  cyan: 'border-border-subtle hover:border-eva-purple',
+  white: 'border-border-subtle',
+}[accent];
+---
+
+<Tag
+  class:list={[
+    'border-2 bg-bg-surface p-5 sm:p-7 shadow-hard-solid transition-all relative overflow-hidden',
+    borderAccent,
+    chamfer && 'manga-panel-chamfer',
+    halftone && 'halftone-pattern',
+    className,
+  ]}
+  {...rest}
+>
+  {
+    (title || tag) && (
+      <header class="flex items-center justify-between border-b-2 border-border-subtle pb-3 mb-5 text-xs font-mono font-bold tracking-wider uppercase">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 bg-eva-purple inline-block" aria-hidden="true"></span>
+          <span class="text-text-primary">{title}</span>
+        </div>
+        {tag && <span class="text-accent-volt font-bold">[ {tag} ]</span>}
+      </header>
+    )
+  }
+  <slot />
+</Tag>

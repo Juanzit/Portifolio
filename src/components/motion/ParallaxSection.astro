@@ -1,0 +1,35 @@
+---
+/**
+ * ParallaxSection — Parallax sutil e proporcional ao scroll.
+ * Utilizado em vitrines de projetos e elementos visuais para criar profundidade
+ * discreta sem comprometer a legibilidade ou o desempenho (com redução automática em mobile).
+ */
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  amplitude?: number;
+  showcaseReveal?: boolean;
+  class?: string;
+  innerClass?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as: Tag = 'div',
+  amplitude = 18,
+  showcaseReveal = true,
+  class: className = '',
+  innerClass = '',
+  ...rest
+} = Astro.props;
+---
+
+<Tag
+  data-parallax
+  data-parallax-amplitude={String(amplitude)}
+  class:list={[showcaseReveal && 'scroll-showcase-frame', className]}
+  {...rest}
+>
+  <div data-parallax-layer class={innerClass}>
+    <slot />
+  </div>
+</Tag>

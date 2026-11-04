@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import ScrollProgress from '../components/motion/ScrollProgress.astro';
+import HUDOverlay from '../components/ui/HUDOverlay.astro';
 
 interface Props {
   title: string;
@@ -8,32 +10,72 @@ interface Props {
 
 const {
   title,
-  description = 'Portfólio de Juan Silva Garcia — Ciência da Computação (IF Sudeste MG)',
+  description = 'Portfólio de Juan Silva Garcia — Ciência da Computação (IF Sudeste MG) // EVA-01 Tactical Interface',
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800;900&family=Unbounded:wght@700;800;900&display=swap"
       rel="stylesheet"
     />
+    <script is:inline>
+      (function () {
+        try {
+          var savedTheme = localStorage.getItem('juan-theme');
+          if (savedTheme === 'light' || savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+          } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+
+          var prefersReduced =
+            window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (!prefersReduced) {
+            document.documentElement.classList.add('js-motion');
+            window.__motionSafetyTimer = setTimeout(function () {
+              if (!window.__motionInitialized) {
+                document.documentElement.classList.remove('js-motion');
+              }
+            }, 2500);
+          }
+        } catch (_) {}
+      })();
+    </script>
   </head>
-  <body class="min-h-screen bg-bg-canvas text-text-primary selection:bg-accent-solid/20 selection:text-text-primary">
+  <body class="min-h-screen bg-bg-canvas text-text-primary selection:bg-eva-purple selection:text-text-primary overflow-x-hidden font-sans relative antialiased">
+    <!-- Grade mecha de 40px discreta em violeta suave -->
+    <div class="fixed inset-0 pointer-events-none z-0 arcade-grid" aria-hidden="true"></div>
+
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-bg-surface focus:text-text-primary focus:px-4 focus:py-2 focus:border focus:border-accent-solid focus:text-sm focus:font-mono"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[90] focus:min-h-[44px] focus:inline-flex focus:items-center focus:bg-accent-volt focus:text-text-on-volt focus:px-4 focus:py-2 focus:border-2 focus:border-border-hard focus:text-sm focus:font-mono focus:shadow-hard-solid font-bold tracking-wider uppercase"
     >
-      Pular para o conteúdo principal
+      [ Pular para o conteúdo principal // SKIP_TO_MAIN ]
     </a>
-    <slot />
+
+    <ScrollProgress />
+    <HUDOverlay />
+
+    <div class="relative z-10 w-full overflow-x-clip">
+      <slot />
+    </div>
+
+    <script>
+      import { initPortfolioMotion } from '../lib/motion/runtime';
+
+      (window as Window & { __motionInitialized?: boolean }).__motionInitialized = true;
+      initPortfolioMotion();
+    </script>
   </body>
 </html>

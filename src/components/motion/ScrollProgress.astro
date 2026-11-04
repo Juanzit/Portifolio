@@ -1,0 +1,19 @@
+---
+/**
+ * ScrollProgress — Indicador discreto de progresso de leitura no topo da página.
+ * Utiliza CSS Scroll-Driven Animations (`animation-timeline: scroll(root)`) quando
+ * suportado pelo navegador, com fallback leve via requestAnimationFrame.
+ * Possui `aria-hidden="true"` para não poluir a árvore de leitura de tecnologias assistivas.
+ */
+---
+
+<div
+  aria-hidden="true"
+  class="fixed top-0 left-0 right-0 z-50 h-[2px] pointer-events-none overflow-hidden bg-transparent"
+>
+  <div
+    data-scroll-progress-bar
+    class="w-full h-full bg-gradient-to-r from-accent-solid via-accent-text to-metric-accent"
+  >
+  </div>
+</div>

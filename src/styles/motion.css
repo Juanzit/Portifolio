@@ -1,0 +1,235 @@
+/**
+ * Camada CSS de Movimento & Scroll-Driven Animations — NEO-MANGA & ARCADE
+ *
+ * Princípios:
+ * - Aceleração súbita e desaceleração cinematográfica expressiva (`cubic-bezier(0.19, 1, 0.22, 1)`).
+ * - Animação estrita no compositor (`transform`, `opacity`, `clip-path`).
+ * - Suporte total a `@media (prefers-reduced-motion: reduce)`.
+ */
+
+:root {
+  --motion-fast: 160ms;
+  --motion-base: 320ms;
+  --motion-slow: 700ms;
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --parallax-subtle: 0.08;
+  --parallax-medium: 0.18;
+  --parallax-strong: 0.32;
+  --tilt-max: 8deg;
+  --perspective-card: 1000px;
+}
+
+/* ==========================================================================
+   0. HEADER ELEVADO & HUD BAR
+   ========================================================================== */
+[data-site-header] {
+  transition:
+    background-color var(--motion-fast) var(--ease-out-expo),
+    border-color var(--motion-fast) var(--ease-out-expo),
+    box-shadow var(--motion-fast) var(--ease-out-expo);
+}
+
+[data-site-header][data-header-scrolled="true"] {
+  background-color: var(--bg-surface);
+  border-bottom: 2px solid var(--border-hard);
+  box-shadow: 0 8px 0px var(--shadow-color);
+}
+
+/* ==========================================================================
+   1. VIEWPORT-TRIGGERED: ANIMATE ON SCROLL & STAGGER
+   ========================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  html.js-motion [data-motion],
+  html.js-motion [data-stagger-item] {
+    opacity: var(--motion-initial-opacity, 0);
+    transform: translate3d(var(--motion-x, 0px), var(--motion-y, 24px), 0)
+      scale(var(--motion-scale, 1));
+    transition-property: opacity, transform, clip-path;
+    transition-duration: var(--motion-duration, var(--motion-base));
+    transition-timing-function: var(--motion-easing, var(--ease-out-expo));
+    transition-delay: var(--motion-delay, 0ms);
+  }
+
+  html.js-motion [data-motion][data-motion-clip="true"]:not([data-motion-state="visible"]) {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+
+  html.js-motion [data-motion][data-motion-state="visible"],
+  html.js-motion [data-stagger-item][data-motion-state="visible"] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  /* ========================================================================
+     2. REVEAL TEXT & TIPOGRAFIA MONUMENTAL
+     ======================================================================== */
+  html.js-motion [data-reveal-text] {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-y, 24px), 0);
+    transition:
+      opacity var(--reveal-duration, var(--motion-slow)) var(--ease-out-expo)
+        var(--reveal-delay, 0ms),
+      transform var(--reveal-duration, var(--motion-slow)) var(--ease-out-expo)
+        var(--reveal-delay, 0ms);
+  }
+
+  html.js-motion [data-reveal-text][data-motion-state="visible"] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  html.js-motion [data-reveal-text] [data-reveal-unit] {
+    display: inline-block;
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition:
+      opacity 450ms var(--ease-out-expo) var(--unit-delay, 0ms),
+      transform 550ms var(--ease-out-expo) var(--unit-delay, 0ms);
+  }
+
+  html.js-motion [data-reveal-text][data-motion-state="visible"] [data-reveal-unit] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* ========================================================================
+     3. PARALLAX SUTIL
+     ======================================================================== */
+  html.js-motion [data-parallax-layer] {
+    transform: translate3d(0, var(--parallax-y, 0px), 0);
+    transition: transform 80ms linear;
+  }
+
+  /* ========================================================================
+     4. SCROLL PROGRESS INDICATOR (NEO-MANGA CYBER VOLT)
+     ======================================================================== */
+  [data-scroll-progress-bar] {
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+  }
+
+  @supports (animation-timeline: scroll()) {
+    @keyframes portfolio-scroll-progress {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    [data-scroll-progress-bar] {
+      animation: portfolio-scroll-progress auto linear;
+      animation-timeline: scroll(root block);
+    }
+  }
+
+  /* ========================================================================
+     5. SECTION TRANSITION: DIAGONAL SLICE & TECH RULES
+     ======================================================================== */
+  .section-transition-rule {
+    transform-origin: 0 50%;
+    transform: scaleX(var(--section-progress, 1));
+    transition: transform 120ms var(--ease-out-expo);
+  }
+
+  /* ========================================================================
+     6. STICKY STORY SECTION (JRPG QUESTLINE PROGRESSION)
+     ======================================================================== */
+  .story-timeline-fill {
+    transform-origin: 50% 0%;
+    transform: scaleY(var(--story-progress, 0));
+    transition: transform 100ms linear;
+  }
+
+  [data-story-step] {
+    transition:
+      border-color var(--motion-fast) var(--ease-out-expo),
+      background-color var(--motion-fast) var(--ease-out-expo),
+      transform var(--motion-fast) var(--ease-out-expo);
+  }
+
+  [data-story-step][data-step-active="true"] {
+    border-color: var(--accent-volt);
+    background-color: var(--bg-surface);
+    box-shadow: 4px 4px 0px var(--shadow-color);
+  }
+
+  [data-story-step] [data-step-dot] {
+    transition:
+      background-color var(--motion-fast) var(--ease-out-expo),
+      transform var(--motion-fast) var(--ease-out-expo),
+      box-shadow var(--motion-fast) var(--ease-out-expo);
+  }
+
+  [data-story-step][data-step-active="true"] [data-step-dot],
+  [data-story-step][data-step-active="passed"] [data-step-dot] {
+    background-color: var(--accent-volt);
+    border-color: var(--border-hard);
+  }
+
+  [data-story-step][data-step-active="true"] [data-step-dot] {
+    transform: scale(1.35);
+    box-shadow: 0 0 0 4px var(--pop-vermilion-glow);
+  }
+
+  /* ========================================================================
+     7. PERSPECTIVE CARD & CHARACTER SELECT TILT (VIDEOGAME BEHAVIOR)
+     ======================================================================== */
+  [data-perspective-card] {
+    perspective: var(--perspective-card);
+    transform-style: preserve-3d;
+  }
+
+  [data-perspective-inner] {
+    transition: transform var(--motion-fast) var(--ease-out-expo),
+                box-shadow var(--motion-fast) var(--ease-out-expo);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    [data-perspective-card]:hover [data-perspective-inner] {
+      transform: rotateX(var(--card-tilt-x, 0deg)) rotateY(var(--card-tilt-y, 0deg)) translateZ(10px);
+      box-shadow: 8px 8px 0px var(--shadow-color);
+    }
+  }
+
+  /* ========================================================================
+     8. BOTÕES MAGNÉTICOS & ARCADE
+     ======================================================================== */
+  @media (hover: hover) and (pointer: fine) {
+    [data-magnetic] {
+      transform: translate3d(var(--magnetic-x, 0px), var(--magnetic-y, 0px), 0);
+      transition:
+        transform var(--motion-fast) var(--ease-out-expo),
+        background-color var(--motion-fast) var(--ease-out-expo),
+        border-color var(--motion-fast) var(--ease-out-expo),
+        color var(--motion-fast) var(--ease-out-expo);
+    }
+  }
+}
+
+/* ==========================================================================
+   9. GARANTIA ABSOLUTA DE ACESSIBILIDADE PARA REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  [data-motion],
+  [data-stagger-item],
+  [data-reveal-text],
+  [data-reveal-text] [data-reveal-unit],
+  [data-parallax-layer],
+  [data-perspective-inner],
+  [data-magnetic] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  [data-scroll-progress-bar] {
+    display: none !important;
+  }
+}

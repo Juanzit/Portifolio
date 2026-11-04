@@ -1,0 +1,41 @@
+---
+import { MOTION_TOKENS } from '../../lib/motion/tokens';
+
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  stagger?: number;
+  baseDelay?: number;
+  threshold?: number;
+  rootMargin?: string;
+  once?: boolean;
+  id?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as: Tag = 'div',
+  stagger = MOTION_TOKENS.stagger.base,
+  baseDelay = 0,
+  threshold = 0.12,
+  rootMargin = '0px 0px -6% 0px',
+  once = true,
+  id,
+  class: className = '',
+  ...rest
+} = Astro.props;
+---
+
+<Tag
+  id={id}
+  data-stagger-container
+  data-stagger-interval={String(stagger)}
+  data-stagger-delay={String(baseDelay)}
+  data-stagger-threshold={String(threshold)}
+  data-stagger-margin={rootMargin}
+  data-stagger-once={once ? 'true' : 'false'}
+  class={className}
+  {...rest}
+>
+  <slot />
+</Tag>

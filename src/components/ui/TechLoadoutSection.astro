@@ -1,0 +1,540 @@
+---
+import PixelIcon from './PixelIcon.astro';
+import { techLoadoutModules } from '../../data/portfolio';
+
+interface Props {
+  id?: string;
+  class?: string;
+}
+
+const { id = 'tech-loadout', class: className = '' } = Astro.props;
+
+const totalItems = techLoadoutModules.reduce((acc, m) => acc + m.itemCount, 0);
+---
+
+<section
+  id={id}
+  aria-labelledby="tech-loadout-title"
+  class:list={['space-y-6 scroll-mt-24', className]}
+  data-tech-loadout-section
+>
+  <!-- 1. CABEÇALHO CONCISO COM TIPOGRAFIA MONUMENTAL (MENOR ALTURA VERTICAL) -->
+  <div class="space-y-2 border-b border-border-subtle pb-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+      <div class="flex items-center gap-2">
+        <span class="inline-block px-2.5 py-0.5 bg-accent-volt text-text-on-volt font-bold uppercase tracking-wider manga-tag-chamfer shadow-hard-solid">
+          TECH LOADOUT // EVA-01 SYSTEM
+        </span>
+        <span class="text-text-secondary text-[11px] hidden sm:inline-block">
+          INVENTORY & COMPETENCY MATRIX
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2 text-[11px] font-mono text-text-secondary">
+        <span class="w-2 h-2 rounded-full bg-accent-volt inline-block" aria-hidden="true"></span>
+        <span class="font-bold text-text-primary">04 MÓDULOS</span>
+        <span class="text-border-subtle" aria-hidden="true">|</span>
+        <span class="text-accent-volt font-bold">{totalItems} ITENS CATALOGADOS</span>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 pt-1">
+      <h2
+        id="tech-loadout-title"
+        class="font-display font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-text-primary text-shadow-3d leading-none"
+      >
+        Tech Loadout<span class="text-accent-volt">.</span>
+      </h2>
+      <p class="text-xs sm:text-sm font-sans text-text-secondary font-medium max-w-[40rem]">
+        Competências técnicas auditadas organizadas em 4 compartimentos modulares. Selecione ou filtre para inspecionar o contexto de aplicação em software e pesquisa.
+      </p>
+    </div>
+  </div>
+
+  <!-- 2. DOCK DE TELEMETRIA SUPERIOR VERIFICÁVEL (SEM MÉTRICAS FICTÍCIAS) -->
+  <div
+    class="border-2 border-border-subtle bg-bg-surface px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs font-mono shadow-hard-solid manga-tag-chamfer"
+    aria-live="polite"
+    data-loadout-telemetry-dock
+  >
+    <div class="flex items-center gap-3">
+      <span class="w-2.5 h-2.5 bg-accent-volt inline-block" aria-hidden="true"></span>
+      <span class="text-text-secondary uppercase text-[11px]">STATUS:</span>
+      <span class="px-2 py-0.5 bg-eva-purple text-text-primary text-[10px] font-bold" data-dock-status>
+        MÓDULO SELECIONADO
+      </span>
+      <span class="text-text-primary font-bold tracking-wide" data-dock-title>
+        BAY 01 // 01 — LANGUAGE CORE
+      </span>
+    </div>
+
+    <div class="flex items-center gap-3 text-text-secondary text-[11px]">
+      <span class="text-accent-volt font-bold" data-dock-count>
+        06 TECNOLOGIAS CATALOGADAS
+      </span>
+      <span class="hidden md:inline-block text-border-subtle" aria-hidden="true">|</span>
+      <span class="hidden md:inline-block text-text-secondary" data-dock-scope>
+        Runtimes e linguagens para sistemas, web, pesquisa e jogos
+      </span>
+    </div>
+  </div>
+
+  <!-- 3. BARRA DE FILTROS POR CATEGORIA (ABAS TÁTICAS) -->
+  <div
+    class="flex flex-wrap items-center gap-2"
+    role="tablist"
+    aria-label="Filtro de compartimentos tecnológicos"
+  >
+    <button
+      type="button"
+      role="tab"
+      id="tab-all-bays"
+      aria-selected="true"
+      aria-controls="panel-loadout-grid"
+      data-loadout-filter="all"
+      class="loadout-tab-btn active px-3.5 py-2 min-h-[44px] text-xs font-mono font-bold uppercase border-2 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-volt bg-accent-volt text-text-on-volt border-border-hard shadow-hard-solid"
+    >
+      [ TODOS OS MÓDULOS (04) ]
+    </button>
+
+    {
+      techLoadoutModules.map((mod) => (
+        <button
+          type="button"
+          role="tab"
+          id={`tab-bay-${mod.id}`}
+          aria-selected="false"
+          aria-controls={`bay-card-${mod.id}`}
+          data-loadout-filter={mod.id}
+          class="loadout-tab-btn px-3 py-2 min-h-[44px] text-xs font-mono font-bold uppercase border-2 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-volt bg-bg-panel text-text-secondary border-border-subtle hover:border-eva-purple hover:text-text-primary"
+        >
+          <span class="text-eva-purple-light">[{mod.slot}]</span> {mod.categoryName.split(' ')[0]} ({mod.itemCount < 10 ? `0${mod.itemCount}` : mod.itemCount})
+        </button>
+      ))
+    }
+  </div>
+
+  <!-- 4. GRADE DOS 4 MÓDULOS (2x2 NO DESKTOP / 1 COLUNA NO MOBILE) -->
+  <div
+    id="panel-loadout-grid"
+    class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6"
+    data-loadout-grid
+  >
+    {
+      techLoadoutModules.map((mod, index) => (
+        <article
+          id={`bay-card-${mod.id}`}
+          data-bay-id={mod.id}
+          data-selected={index === 0 ? 'true' : 'false'}
+          class:list={[
+            'loadout-card relative border-2 bg-bg-panel p-5 sm:p-6 shadow-hard-solid space-y-4 transition-all duration-200 overflow-hidden group cursor-pointer',
+            index === 0
+              ? 'border-accent-volt ring-1 ring-accent-volt/40 shadow-[0_0_15px_rgba(198,245,66,0.1)]'
+              : 'border-border-subtle hover:border-eva-purple',
+          ]}
+          tabindex="0"
+          role="region"
+          aria-label={`Módulo ${mod.slot}: ${mod.title}`}
+        >
+          <!-- Efeito Scanline Sutil de Ativação Única -->
+          <div
+            aria-hidden="true"
+            class="scanline-overlay pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <div class="scanline-bar w-full h-1 bg-accent-volt/25 blur-[1px]"></div>
+          </div>
+
+          <!-- Cabeçalho do Card: BAY, Ícone Pixel Art, Título e Total de Itens -->
+          <header class="flex items-start justify-between gap-3 border-b border-border-subtle pb-3 relative z-10">
+            <div class="flex items-center gap-3">
+              <!-- Ícone Pixel Art 24x24 com Moldura Tática -->
+              <div class="p-2 border-2 border-border-subtle bg-bg-surface group-hover:border-accent-volt transition-colors shadow-hard-solid shrink-0">
+                <PixelIcon name={mod.icon} size={26} glow />
+              </div>
+
+              <div class="space-y-0.5">
+                <div class="flex items-center gap-2 text-xs font-mono font-bold">
+                  <span class="text-accent-volt">[{mod.slot}]</span>
+                  <span class="text-text-secondary text-[11px] uppercase tracking-wider">
+                    {mod.categoryName}
+                  </span>
+                </div>
+                <h3 class="font-display font-black text-xl sm:text-2xl text-text-primary uppercase tracking-tight">
+                  {mod.title}
+                </h3>
+              </div>
+            </div>
+
+            <!-- Indicador Numérico Verificável de Tecnologias -->
+            <div class="text-right shrink-0">
+              <span class="inline-block px-2 py-0.5 bg-bg-surface border border-border-subtle font-mono font-bold text-xs text-accent-volt">
+                {mod.itemCount < 10 ? `0${mod.itemCount}` : mod.itemCount} ITENS
+              </span>
+            </div>
+          </header>
+
+          <!-- Escopo Contextual Curto e Objetivo -->
+          <p class="text-xs font-sans text-text-secondary font-medium leading-relaxed relative z-10">
+            {mod.domainScope}
+          </p>
+
+          <!-- Grade de Chips das Tecnologias -->
+          <div class="space-y-2 relative z-10">
+            <ul class="flex flex-wrap gap-2 text-xs font-mono font-bold list-none p-0 m-0">
+              {mod.skills.map((skill) => (
+                <li
+                  class:list={[
+                    'tech-chip px-2.5 py-1.5 border transition-all flex items-center gap-1.5 select-none',
+                    skill.highlight
+                      ? 'border-accent-volt/50 bg-bg-surface text-text-primary shadow-[0_0_8px_rgba(198,245,66,0.06)] hover:border-accent-volt hover:text-accent-volt'
+                      : 'border-border-subtle bg-bg-surface/80 text-text-secondary hover:border-eva-purple hover:text-text-primary',
+                  ]}
+                >
+                  <span
+                    class:list={[
+                      'w-1.5 h-1.5 inline-block shrink-0',
+                      skill.highlight ? 'bg-accent-volt' : 'bg-eva-purple',
+                    ]}
+                    aria-hidden="true"
+                  />
+                  <span>{skill.name}</span>
+                  {skill.badge && (
+                    <span class="text-[9px] px-1 py-0.2 bg-bg-panel border border-border-subtle text-eva-purple-light font-mono font-bold uppercase">
+                      {skill.badge}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Painel Expansível de Inspeção do Contexto de Produção -->
+          <div
+            id={`bay-details-${mod.id}`}
+            class="bay-details-panel border-t border-border-subtle pt-3 space-y-1.5 relative z-10 hidden"
+            data-details-panel
+          >
+            <div class="text-[10px] font-mono font-bold uppercase text-accent-volt">
+              // APLICAÇÃO REAL EM ENGENHARIA & PESQUISA
+            </div>
+            <p class="text-xs font-sans text-text-secondary leading-relaxed font-medium">
+              {mod.contextNote}
+            </p>
+          </div>
+
+          <!-- Rodapé do Card: Seletor de Inspeção e Estado Selecionado/Disponível -->
+          <footer class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-mono relative z-10">
+            <button
+              type="button"
+              class="bay-inspect-btn min-h-[44px] px-3 py-1.5 flex items-center gap-1.5 border border-border-subtle bg-bg-surface hover:border-accent-volt hover:bg-bg-panel-raised text-xs font-mono font-bold uppercase transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-volt cursor-pointer text-text-primary"
+              aria-expanded="false"
+              aria-controls={`bay-details-${mod.id}`}
+              data-inspect-trigger={mod.id}
+            >
+              <span class="inspect-icon text-accent-volt" aria-hidden="true">[+]</span>
+              <span class="inspect-label">INSPECIONAR CONTEXTO</span>
+            </button>
+
+            <span class="selection-status font-bold uppercase text-[11px] flex items-center gap-1.5">
+              <span
+                class:list={[
+                  'w-2 h-2 inline-block rounded-full',
+                  index === 0 ? 'bg-accent-volt' : 'bg-border-subtle',
+                ]}
+                data-status-dot
+                aria-hidden="true"
+              />
+              <span
+                data-status-label
+                class:list={[index === 0 ? 'text-accent-volt' : 'text-text-secondary']}
+              >
+                {index === 0 ? 'MÓDULO SELECIONADO' : 'MÓDULO DISPONÍVEL'}
+              </span>
+            </span>
+          </footer>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  /* Efeito Scanline Sutil de Curta Duração */
+  @keyframes scanline-sweep {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    30% {
+      opacity: 0.6;
+    }
+    80% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(400px);
+      opacity: 0;
+    }
+  }
+
+  .scanline-overlay {
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(0, 0, 0, 0.2) 51%
+    );
+    background-size: 100% 4px;
+  }
+
+  .loadout-card:hover .scanline-bar,
+  .loadout-card[data-selected='true'] .scanline-bar {
+    animation: scanline-sweep 1.2s ease-out 1;
+  }
+
+  /* Estado Selecionado do Card */
+  .loadout-card[data-selected='true'] {
+    border-color: var(--color-accent-volt, #C6F542);
+    box-shadow: 0 0 18px rgba(198, 245, 66, 0.12), inset 0 0 12px rgba(198, 245, 66, 0.02);
+  }
+
+  /* Foco por teclado no Card */
+  .loadout-card:focus-visible {
+    outline: none;
+    border-color: var(--color-accent-volt, #C6F542);
+    box-shadow: 0 0 0 2px var(--color-accent-volt, #C6F542);
+  }
+
+  /* Painel de Detalhes Aberto */
+  .bay-details-panel:not(.hidden) {
+    animation: panel-open 0.25s ease-out;
+  }
+
+  @keyframes panel-open {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Acessibilidade para Movimento Reduzido */
+  @media (prefers-reduced-motion: reduce) {
+    .scanline-bar,
+    .scanline-overlay {
+      display: none !important;
+      animation: none !important;
+    }
+
+    .loadout-card,
+    .tech-chip,
+    .loadout-tab-btn,
+    .bay-details-panel {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+</style>
+
+<script>
+  function setupTechLoadoutRefinement() {
+    const section = document.querySelector('[data-tech-loadout-section]');
+    if (!section) return;
+
+    const cards = Array.from(section.querySelectorAll('.loadout-card')) as HTMLElement[];
+    const filterTabs = Array.from(section.querySelectorAll('.loadout-tab-btn')) as HTMLButtonElement[];
+    const inspectBtns = Array.from(section.querySelectorAll('.bay-inspect-btn')) as HTMLButtonElement[];
+
+    const dockTitle = section.querySelector('[data-dock-title]') as HTMLElement;
+    const dockStatus = section.querySelector('[data-dock-status]') as HTMLElement;
+    const dockCount = section.querySelector('[data-dock-count]') as HTMLElement;
+    const dockScope = section.querySelector('[data-dock-scope]') as HTMLElement;
+
+    const bayData: Record<
+      string,
+      { slot: string; title: string; count: string; scope: string }
+    > = {
+      '01': {
+        slot: 'BAY 01',
+        title: 'BAY 01 // 01 — LANGUAGE CORE',
+        count: '06 TECNOLOGIAS CATALOGADAS',
+        scope: 'Runtimes e linguagens para sistemas, web, pesquisa e jogos',
+      },
+      '02': {
+        slot: 'BAY 02',
+        title: 'BAY 02 // 02 — APP & SYSTEMS DEV',
+        count: '08 TECNOLOGIAS CATALOGADAS',
+        scope: 'Frameworks e bibliotecas para aplicações móveis, web e desktop',
+      },
+      '03': {
+        slot: 'BAY 03',
+        title: 'BAY 03 // 03 — DATA, AI & ALGORITHMS',
+        count: '06 TECNOLOGIAS CATALOGADAS',
+        scope: 'Pré-processamento acústico, modelos preditivos e grafos',
+      },
+      '04': {
+        slot: 'BAY 04',
+        title: 'BAY 04 // 04 — ENGINEERING TOOLKIT',
+        count: '07 TECNOLOGIAS CATALOGADAS',
+        scope: 'Versionamento, persistência, modelagem 3D e documentação UML',
+      },
+    };
+
+    // 1. SELEÇÃO DE MÓDULO (CLIQUE OU FOCO NO CARD)
+    function selectBay(bayId: string) {
+      cards.forEach((card) => {
+        const isTarget = card.dataset.bayId === bayId;
+        card.setAttribute('data-selected', isTarget ? 'true' : 'false');
+
+        const statusDot = card.querySelector('[data-status-dot]');
+        const statusLabel = card.querySelector('[data-status-label]');
+
+        if (statusDot) {
+          if (isTarget) {
+            statusDot.classList.add('bg-accent-volt');
+            statusDot.classList.remove('bg-border-subtle');
+          } else {
+            statusDot.classList.remove('bg-accent-volt');
+            statusDot.classList.add('bg-border-subtle');
+          }
+        }
+
+        if (statusLabel) {
+          statusLabel.textContent = isTarget ? 'MÓDULO SELECIONADO' : 'MÓDULO DISPONÍVEL';
+          if (isTarget) {
+            statusLabel.classList.add('text-accent-volt');
+            statusLabel.classList.remove('text-text-secondary');
+          } else {
+            statusLabel.classList.remove('text-accent-volt');
+            statusLabel.classList.add('text-text-secondary');
+          }
+        }
+      });
+
+      // Atualiza o dock superior com informações verificáveis
+      if (bayData[bayId]) {
+        const info = bayData[bayId];
+        if (dockTitle) dockTitle.textContent = info.title;
+        if (dockStatus) dockStatus.textContent = 'MÓDULO SELECIONADO';
+        if (dockCount) dockCount.textContent = info.count;
+        if (dockScope) dockScope.textContent = info.scope;
+      }
+    }
+
+    // 2. FILTRAGEM POR CATEGORIA (ABAS TÁTICAS)
+    function applyFilter(filterId: string) {
+      // Atualiza estado visual das abas
+      filterTabs.forEach((tab) => {
+        const isMatch = tab.dataset.loadoutFilter === filterId;
+        tab.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+        if (isMatch) {
+          tab.classList.add('bg-accent-volt', 'text-text-on-volt', 'border-border-hard', 'shadow-hard-solid');
+          tab.classList.remove('bg-bg-panel', 'text-text-secondary', 'border-border-subtle');
+        } else {
+          tab.classList.remove('bg-accent-volt', 'text-text-on-volt', 'border-border-hard', 'shadow-hard-solid');
+          tab.classList.add('bg-bg-panel', 'text-text-secondary', 'border-border-subtle');
+        }
+      });
+
+      if (filterId === 'all') {
+        // Exibe todos os módulos
+        cards.forEach((c) => {
+          c.classList.remove('hidden');
+        });
+        if (dockTitle) dockTitle.textContent = '04 MÓDULOS // 27 ITENS CATALOGADOS';
+        if (dockStatus) dockStatus.textContent = 'VISÃO GERAL COMPLETA';
+        if (dockCount) dockCount.textContent = '27 TECNOLOGIAS EM 04 MÓDULOS';
+        if (dockScope) dockScope.textContent = 'Selecione um módulo para inspecionar seu contexto de engenharia';
+      } else {
+        // Filtra para exibir o módulo correspondente e seleciona-o
+        cards.forEach((c) => {
+          if (c.dataset.bayId === filterId) {
+            c.classList.remove('hidden');
+          } else {
+            c.classList.add('hidden');
+          }
+        });
+        selectBay(filterId);
+      }
+    }
+
+    // 3. INSPEÇÃO DO MÓDULO (TOGGLE DE DETALHES DE PRODUÇÃO)
+    function toggleInspection(trigger: HTMLButtonElement) {
+      const bayId = trigger.dataset.inspectTrigger;
+      if (!bayId) return;
+
+      const detailsPanel = section?.querySelector(`#bay-details-${bayId}`);
+      if (!detailsPanel) return;
+
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+      const willExpand = !isExpanded;
+
+      trigger.setAttribute('aria-expanded', willExpand ? 'true' : 'false');
+      const label = trigger.querySelector('.inspect-label');
+      const icon = trigger.querySelector('.inspect-icon');
+
+      if (willExpand) {
+        detailsPanel.classList.remove('hidden');
+        if (label) label.textContent = 'RECOLHER CONTEXTO';
+        if (icon) icon.textContent = '[-]';
+        trigger.classList.add('border-accent-volt', 'text-accent-volt');
+      } else {
+        detailsPanel.classList.add('hidden');
+        if (label) label.textContent = 'INSPECIONAR CONTEXTO';
+        if (icon) icon.textContent = '[+]';
+        trigger.classList.remove('border-accent-volt', 'text-accent-volt');
+      }
+
+      // Ao inspecionar, também seleciona o módulo
+      selectBay(bayId);
+    }
+
+    // Vincula eventos nas abas
+    filterTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const filter = tab.dataset.loadoutFilter;
+        if (filter) applyFilter(filter);
+      });
+    });
+
+    // Vincula eventos nos cards (seleção ao clicar ou focar)
+    cards.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        // Se o clique veio do botão de inspecionar, deixa o botão cuidar disso
+        const target = e.target as HTMLElement;
+        if (target.closest('.bay-inspect-btn')) return;
+
+        const bayId = card.dataset.bayId;
+        if (bayId) selectBay(bayId);
+      });
+
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          const target = e.target as HTMLElement;
+          if (target === card) {
+            e.preventDefault();
+            const bayId = card.dataset.bayId;
+            if (bayId) selectBay(bayId);
+          }
+        }
+      });
+    });
+
+    // Vincula eventos nos botões de inspecionar
+    inspectBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleInspection(btn);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupTechLoadoutRefinement);
+  } else {
+    setupTechLoadoutRefinement();
+  }
+  document.addEventListener('astro:page-load', setupTechLoadoutRefinement);
+</script>

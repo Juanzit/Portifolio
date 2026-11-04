@@ -1,0 +1,46 @@
+---
+/**
+ * MagneticButton — Botão ou link com atração magnética discreta (máx. 3.5px–4.5px)
+ * restrita a dispositivos com ponteiro preciso (`(hover: hover) and (pointer: fine)`).
+ * Desativado automaticamente em dispositivos touch e quando `prefers-reduced-motion` está ativo.
+ * Preserva integralmente a área mínima de toque (44x44px) e o anel de foco por teclado.
+ */
+interface Props {
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  strength?: number;
+  target?: string;
+  rel?: string;
+  disabled?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  href,
+  type = 'button',
+  strength = 4,
+  target,
+  rel,
+  disabled = false,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  href={href}
+  type={!href ? type : undefined}
+  target={href ? target : undefined}
+  rel={href ? rel : undefined}
+  disabled={!href ? disabled : undefined}
+  aria-disabled={disabled ? 'true' : undefined}
+  data-magnetic
+  data-magnetic-strength={String(strength)}
+  class={className}
+  {...rest}
+>
+  <slot />
+</Tag>

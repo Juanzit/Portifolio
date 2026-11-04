@@ -52,6 +52,107 @@ export interface CompactProjectItem {
 
 export const heroTechLine = 'React Native · Python / Machine Learning · Java · JavaScript';
 
+export interface TechSkill {
+  name: string;
+  badge?: string;
+  highlight?: boolean;
+}
+
+export interface TechLoadoutModule {
+  id: string;
+  code: string;
+  slot: string;
+  title: string;
+  categoryName: string;
+  itemCount: number;
+  icon: 'cpu' | 'display' | 'neural' | 'wrench';
+  domainScope: string;
+  contextNote: string;
+  skills: TechSkill[];
+}
+
+export const techLoadoutModules: TechLoadoutModule[] = [
+  {
+    id: '01',
+    code: 'LANG_CORE',
+    slot: 'BAY 01',
+    title: '01 — LANGUAGE CORE',
+    categoryName: 'Linguagens de Programação',
+    itemCount: 6,
+    icon: 'cpu',
+    domainScope: 'Runtimes e linguagens para sistemas, web, pesquisa e jogos',
+    contextNote: 'Linguagens aplicadas no ecossistema ShapeMeApp, no visualizador 3D do ArchFlow, nos experimentos de bioacústica e nas simulações em Luau no Roblox Studio.',
+    skills: [
+      { name: 'Python', badge: 'RESEARCH & DEV', highlight: true },
+      { name: 'Java 17', badge: 'BACKEND', highlight: true },
+      { name: 'JavaScript', badge: 'FULLSTACK', highlight: true },
+      { name: 'TypeScript', badge: 'TYPED WEB' },
+      { name: 'C++', badge: 'ALGORITHMS' },
+      { name: 'Luau', badge: 'GAME SCRIPT' },
+    ],
+  },
+  {
+    id: '02',
+    code: 'APP_DEV',
+    slot: 'BAY 02',
+    title: '02 — APP & SYSTEMS DEV',
+    categoryName: 'Frameworks, Web & Mobile',
+    itemCount: 8,
+    icon: 'display',
+    domainScope: 'Frameworks e bibliotecas para aplicações móveis, web e desktop',
+    contextNote: 'Arquitetura mobile do ShapeMeApp com Expo, vitrine do Lundgren Atelier em produção no Cloudflare Pages e aplicação desktop com JavaFX 3D.',
+    skills: [
+      { name: 'React Native', badge: 'MOBILE', highlight: true },
+      { name: 'React', badge: 'FRONTEND', highlight: true },
+      { name: 'Expo / Router', badge: 'MOBILE & WEB' },
+      { name: 'Astro', badge: 'SSR & SSG', highlight: true },
+      { name: 'Tailwind CSS', badge: 'DESIGN SYSTEM' },
+      { name: 'Node.js', badge: 'RUNTIME' },
+      { name: 'JavaFX 3D / Swing', badge: 'DESKTOP' },
+      { name: 'Pygame Zero', badge: 'GAME ENGINE' },
+    ],
+  },
+  {
+    id: '03',
+    code: 'DATA_AI',
+    slot: 'BAY 03',
+    title: '03 — DATA, AI & ALGORITHMS',
+    categoryName: 'Inteligência Artificial & Teoria',
+    itemCount: 6,
+    icon: 'neural',
+    domainScope: 'Pré-processamento acústico, modelos preditivos e grafos',
+    contextNote: 'Pipeline de extração espectral (Librosa) e classificação supervisionada com CNNs (TensorFlow/Keras) e SVMs (Scikit-learn) com F1 = 0,82 no Cenário B, publicado no CoBICET e EAMC.',
+    skills: [
+      { name: 'Machine Learning (CNN / SVM)', badge: 'CORE AI', highlight: true },
+      { name: 'Librosa (Bioacústica & Áudio)', badge: 'SPECTRAL', highlight: true },
+      { name: 'Scikit-learn', badge: 'SUPERVISED' },
+      { name: 'TensorFlow / Keras', badge: 'DEEP LEARNING' },
+      { name: 'GMM-HMM', badge: 'PROBABILISTIC' },
+      { name: 'Grafos & Otimização (Simulated Annealing)', badge: 'HEURISTICS' },
+    ],
+  },
+  {
+    id: '04',
+    code: 'TOOLKIT',
+    slot: 'BAY 04',
+    title: '04 — ENGINEERING TOOLKIT',
+    categoryName: 'Ferramentas, Infra & Modelagem',
+    itemCount: 7,
+    icon: 'wrench',
+    domainScope: 'Versionamento, persistência, modelagem 3D e documentação UML',
+    contextNote: 'Gestão de repositórios no GitHub, persistência NoSQL com Firebase e relacional com MySQL/Hibernate, modelagem 3D autoral no Blender e 16 diagramas UML no Viga-Mestre.',
+    skills: [
+      { name: 'Git & GitHub', badge: 'VERSIONING', highlight: true },
+      { name: 'Firebase (Firestore & Auth)', badge: 'CLOUD NoSQL', highlight: true },
+      { name: 'Cloudflare Pages', badge: 'DEPLOYMENT' },
+      { name: 'Blender 3D', badge: '3D MODELING' },
+      { name: 'Roblox Studio', badge: 'GAME DEV' },
+      { name: 'MySQL & JPA / Hibernate', badge: 'ORM & RELATIONAL' },
+      { name: 'Engenharia de Requisitos & UML', badge: 'ARCHITECTURE' },
+    ],
+  },
+];
+
 export const archFlowProject = {
   title: 'ArchFlow — Sistema de Gerenciamento Arquitetônico',
   stack: 'Java 17 · Maven · Hibernate/JPA · MySQL · Swing/FlatLaf · JavaFX 3D',

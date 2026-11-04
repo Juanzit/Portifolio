@@ -1,0 +1,33 @@
+---
+/**
+ * StickyStorySection — Componente de storytelling sincronizado ao scroll.
+ * Mantém a coluna de contexto/resumo ancorada temporariamente em telas grandes (`lg:sticky`)
+ * enquanto os marcos complementares na coluna oposta são revelados e destacados
+ * conforme o progresso da leitura (`--story-progress`).
+ */
+interface Props {
+  id?: string;
+  class?: string;
+  stickyTopClass?: string;
+}
+
+const {
+  id,
+  class: className = '',
+  stickyTopClass = 'lg:sticky lg:top-24',
+} = Astro.props;
+---
+
+<div
+  id={id}
+  data-sticky-story
+  class:list={['grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start', className]}
+>
+  <div class:list={['lg:col-span-5', stickyTopClass]}>
+    <slot name="sticky" />
+  </div>
+
+  <div class="lg:col-span-7 relative">
+    <slot name="content" />
+  </div>
+</div>

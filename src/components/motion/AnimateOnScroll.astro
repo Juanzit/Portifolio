@@ -1,0 +1,67 @@
+---
+import { MOTION_PRESETS, MOTION_TOKENS, type MotionPresetName } from '../../lib/motion/tokens';
+
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  preset?: MotionPresetName;
+  translateX?: number;
+  translateY?: number;
+  scale?: number;
+  delay?: number;
+  duration?: number;
+  easing?: string;
+  threshold?: number;
+  rootMargin?: string;
+  once?: boolean;
+  id?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as: Tag = 'div',
+  preset = 'fade-up',
+  translateX,
+  translateY,
+  scale,
+  delay = 0,
+  duration,
+  easing,
+  threshold = MOTION_TOKENS.viewport.defaultThreshold,
+  rootMargin = MOTION_TOKENS.viewport.defaultRootMargin,
+  once = true,
+  id,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const baseConfig = MOTION_PRESETS[preset];
+const x = translateX ?? baseConfig.translateX;
+const y = translateY ?? baseConfig.translateY;
+const s = scale ?? baseConfig.scale;
+const d = duration ?? baseConfig.duration;
+const e = easing ?? baseConfig.easing;
+
+const styleVars = [
+  `--motion-x: ${x}px`,
+  `--motion-y: ${y}px`,
+  `--motion-scale: ${s}`,
+  `--motion-duration: ${d}ms`,
+  `--motion-delay: ${delay}ms`,
+  `--motion-easing: ${e}`,
+].join('; ');
+---
+
+<Tag
+  id={id}
+  data-motion={preset}
+  data-motion-clip={baseConfig.clipReveal ? 'true' : undefined}
+  data-motion-threshold={String(threshold)}
+  data-motion-margin={rootMargin}
+  data-motion-once={once ? 'true' : 'false'}
+  style={styleVars}
+  class={className}
+  {...rest}
+>
+  <slot />
+</Tag>
