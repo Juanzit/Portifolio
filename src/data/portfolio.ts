@@ -188,8 +188,8 @@ export const experiences: ExperienceItem[] = [
   },
   {
     period: '06/2025 — 06/2026',
-    role: 'Pesquisador em Inteligência Artificial (IC)',
-    org: 'IF Sudeste MG',
+    role: 'Pesquisa em Inteligência Artificial (IC)',
+    org: 'Iniciação Científica · IF Sudeste MG',
     meta: 'Iniciação Científica · Campus Rio Pomba',
     shortSummary: 'Pipelines bioacústicos (Mel/MFCC) e avaliação de CNN, SVM e GMM-HMM (136 espécies).',
     fullDescription:
@@ -197,12 +197,12 @@ export const experiences: ExperienceItem[] = [
   },
   {
     period: '08/2024 — 01/2026',
-    role: 'Desenvolvedor Mobile Júnior — ShapeMeApp',
-    org: 'IF Sudeste MG',
+    role: 'Desenvolvimento Mobile — ShapeMeApp',
+    org: 'Projeto de Extensão · IF Sudeste MG',
     meta: 'Projeto de Extensão · Campus Rio Pomba',
     shortSummary: 'Evolução mobile em React Native/Expo, modelagem Firebase e testes de usabilidade.',
     fullDescription:
-      'Atuação no projeto "Emagreça na Musculação no IF Sudeste MG — Campus Rio Pomba", realizando evolução mobile em React Native/Expo, modelagem NoSQL no Firebase, testes de usabilidade, QA e gestão com Jira e GitHub.',
+      'Atuação no projeto de extensão "Emagreça na Musculação no IF Sudeste MG — Campus Rio Pomba", realizando evolução mobile em React Native/Expo, modelagem NoSQL no Firebase, testes de usabilidade, QA e gestão com Jira e GitHub.',
   },
   {
     period: '06/2022 — 11/2025',

@@ -1,16 +1,18 @@
 # Status do Projeto — Portfólio Juan Silva Garcia
 
-## Fase Atual: Fase 2.4 — Refinamento Final da Home (Trajetória Resumida, LinkedIn Verificado e Auditoria de Desempenho)
+## Fase Atual: Fase 2.5 — Revisão Final de Encerramento da Fase 2 (Atribuição de Extensão, Redução de CLS por Fallback Tipográfico, Auditoria Mobile 390×844 e Prévia Comparativa Violet Nature)
 
-### 1. Implementado e Consolidado na Fase 2.4
-- **Identidade Visual & Assinatura Gráfica Preservadas ([src/styles/global.css](file:///c:/Projetos/Portifolio/src/styles/global.css), [src/components/layout/Header.astro](file:///c:/Projetos/Portifolio/src/components/layout/Header.astro), [public/favicon.svg](file:///c:/Projetos/Portifolio/public/favicon.svg))**:
-  - **Direção 1 — Caderno de Campo & Oficina Editorial** mantida integralmente sem substituir tokens de cor antes de decisão específica sobre a proposta *Editorial Violet Nature*.
-  - **Opção 1 Oficializada**: monograma editorial `JG.` em `Newsreader` itálico com ponto terracota no cabeçalho e no `favicon.svg`.
-- **Redução Efetiva da Seção de Trajetória e da Home ([src/pages/index.astro](file:///c:/Projetos/Portifolio/src/pages/index.astro), [src/data/portfolio.ts](file:///c:/Projetos/Portifolio/src/data/portfolio.ts))**:
-  - A seção `#trajetoria` deixou de exibir o currículo condensado completo e passou a apresentar apenas: (1) **Formação em 2 linhas** (`Bacharelado em Ciência da Computação` e `Técnico em Informática`), (2) **Destaque único para a Publicação Principal** (*Anais do VII CoBICET 2026*, `ISSN 2764-0582`, com nota de apresentação no *XVIII EAMC / LNCC 2026*) e (3) **Seleção de 4 experiências relevantes** (`CNA Digital`, `Kodland`, `Pesquisador em IA` e `Desenvolvedor Mobile Júnior — ShapeMeApp`), reservando `experiences` completas, `scientificOutputs` completas e `certificationsAndExtension` em `src/data/portfolio.ts` para as futuras páginas internas.
-  - Altura final medida da Home: **Desktop (`1440×900`) = `5.465 px` (`6,1 telas`, redução total de `-41,8%` frente aos `9.384 px` da Fase 2.2; `#trajetoria` com `576 px` cabendo na mesma tela que `#contato`)** e **Mobile (`390×844`) = `10.325 px` (`12,2 telas`, redução total de `-35,7%` frente aos `16.052 px` da Fase 2.2; `#trajetoria` reduzida para `1.176 px`)**.
-- **LinkedIn Oficial Atualizado (`https://br.linkedin.com/in/juan-silva-garcia`)**:
-  - Todos os links de LinkedIn na Home (Hero e Contato) foram atualizados para o perfil público verificado `https://br.linkedin.com/in/juan-silva-garcia` (`in/juan-silva-garcia`).
+### 1. Implementado e Consolidado na Fase 2.5
+- **Conferência e Ajuste Factual das Experiências ([src/data/portfolio.ts](file:///c:/Projetos/Portifolio/src/data/portfolio.ts))**:
+  - A atuação no `ShapeMeApp` foi atualizada de `"Desenvolvedor Mobile Júnior — ShapeMeApp"` para **`"Desenvolvimento Mobile — ShapeMeApp"`** (`Projeto de Extensão · IF Sudeste MG · 08/2024 — 01/2026`), refletindo com precisão sua natureza comprovada de projeto de extensão sem inferir vínculo empregatício/CLT não confirmado.
+  - A iniciação científica também teve sua natureza explicitada na linha institucional (`Pesquisa em Inteligência Artificial (IC) · Iniciação Científica · IF Sudeste MG · 06/2025 — 06/2026`).
+  - O registro `"Desenvolvedor Java — IF Sudeste MG (09/2025 – 01/2026)"` permanece fora da seção de experiências profissionais até confirmação se corresponde ao projeto acadêmico `ArchFlow` ou a vínculo institucional distinto.
+- **Investigação e Redução de `-84,9%` no CLS de Carregamento Frio ([src/styles/global.css](file:///c:/Projetos/Portifolio/src/styles/global.css), [src/pages/index.astro](file:///c:/Projetos/Portifolio/src/pages/index.astro))**:
+  - Identificados via `PerformanceObserver` (`LayoutShiftAttribution` / `entry.sources`) os elementos exatos que causavam o `CLS = 0,1095` no carregamento frio (`SECTION#projetos`, `<p>Estudo Ciência da Computação...</p>` e `<aside>`), provocados pela oscilação da unidade `ch` (`max-w-[34ch]` / `max-w-[60ch]`) durante a troca sequencial entre a fonte de sistema, `Newsreader` Roman e `Newsreader` Italic.
+  - Adicionadas declarações `@font-face` de fallback calibradas (`Newsreader Fallback` com `size-adjust: 96.5%`, `ascent-override: 97%`, `descent-override: 24%` e `Plus Jakarta Sans Fallback` com `size-adjust: 101.5%`, `ascent-override: 98%`, `descent-override: 24%`) e substituídas as larguras máximas em `ch` por `rem` (`max-w-[36rem]` / `max-w-[42rem]`), reduzindo o CLS frio de **`0,1095` para `0,0165`** (Desktop) e **`0,0225`** (Mobile), e **`0,0000`** no carregamento aquecido (`N = 3` execuções).
+- **Auditoria Completa Mobile (`390×844`) e Desktop (`1440×900`)**:
+  - Desktop (`1440×900`): `scrollHeight = 5.465 px` (`6,1 telas`), `horizontalOverflow = false` (`1440 === 1440`).
+  - Mobile (`390×844`): `scrollHeight = 10.364 px` (`12,3 telas`), `horizontalOverflow = false` (`390 === 390`), menu mobile testado (`aria-expanded`, abertura, links de âncora e fechamento via `Escape`).
   - Estrutura enxuta em **5 seções**:
     1. **Hero Editorial**: texto pessoal aprovado + linha discreta de competências principais (`React Native · Python / Machine Learning · Java · JavaScript`).
     2. **Quatro Projetos em Destaque (`#projetos`)**: composições individualizadas preservadas (`Lundgren Atelier` com `fetchpriority="high"`, `Detecção Acústica de Aves Ameaçadas`, `ShapeMeApp` e `Núcleo Selvagem`).
