@@ -97,9 +97,9 @@ const { techLine, linkedinUrl, lattesUrl } = Astro.props;
           <a
             href="#tech-loadout"
             class="inline-flex flex-wrap items-center gap-2 border-2 border-border-subtle hover:border-accent-volt bg-bg-panel px-3.5 py-2 shadow-hard-solid text-xs font-mono font-bold tracking-wider manga-tag-chamfer transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-volt text-text-primary"
-            aria-label="Ir para o Tech Loadout completo de tecnologias"
+            aria-label="Ir para a matriz completa de tecnologias e competências"
           >
-            <span class="text-eva-purple-light group-hover:text-accent-volt transition-colors" aria-hidden="true">LOADOUT:</span>
+            <span class="text-eva-purple-light group-hover:text-accent-volt transition-colors" aria-hidden="true">STACK:</span>
             <span>{techLine}</span>
             <span class="text-accent-volt font-bold group-hover:translate-y-0.5 transition-transform" aria-hidden="true">↓</span>
           </a>
@@ -109,19 +109,19 @@ const { techLine, linkedinUrl, lattesUrl } = Astro.props;
         <StaggerContainer stagger={60} baseDelay={420} class="pt-2 flex flex-wrap items-center gap-4">
           <StaggerItem index={0}>
             <ArcadeButton href="#projetos" variant="volt" size="lg">
-              Ver Projetos [01] ►
+              Ver projetos ►
             </ArcadeButton>
           </StaggerItem>
 
           <StaggerItem index={1}>
             <ArcadeButton href="#github" variant="purple" size="lg">
-              Colaborações [02] ↗
+              Colaborações & GitHub ↗
             </ArcadeButton>
           </StaggerItem>
 
           <StaggerItem index={2}>
             <ArcadeButton href="#contato" variant="surface" size="lg">
-              Contato [04] ✉
+              Contato ✉
             </ArcadeButton>
           </StaggerItem>
         </StaggerContainer>

@@ -407,6 +407,7 @@ export const certificationsAndExtension: CertificationItem[] = [
 
 export const contactLinks = {
   email: 'juansilvagarcia11037@gmail.com',
+  mailtoUrl: 'mailto:juansilvagarcia11037@gmail.com',
   linkedinUrl: 'https://br.linkedin.com/in/juan-silva-garcia',
   linkedinLabel: 'in/juan-silva-garcia',
   githubUrl: 'https://github.com/Juanzit',
